@@ -1,0 +1,8 @@
+/* Hover states from the design’s style-hover attributes. */
+.hm-1:hover { border-color: #ffd400 !important; color: #ffd400 !important; }
+.hm-2:hover { background: #fff !important; color: #0a0a0a !important; }
+.hm-3:hover { border-color: #ffd400 !important; }
+.hm-4:hover { background: #fff !important; }
+.hm-5:hover { transform: scale(1.05) !important; }
+.hm-6:hover { background: #ffd400 !important; color: #0a0a0a !important; border-color: #ffd400 !important; }
+.hm-7:hover { background: #141414 !important; color: #f5f5f2 !important; }

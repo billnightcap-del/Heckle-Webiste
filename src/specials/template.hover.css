@@ -1,0 +1,5 @@
+/* Hover states from the design’s style-hover attributes. */
+.sp-1:hover { background: rgba(255,255,255,0.04) !important; }
+.sp-2:hover { transform: translateY(-6px) !important; }
+.sp-3:hover { background: #141414 !important; color: #f5f5f2 !important; }
+.sp-4:hover { background: #ffd400 !important; color: #0a0a0a !important; border-color: #ffd400 !important; }

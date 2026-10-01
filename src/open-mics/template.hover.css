@@ -1,0 +1,7 @@
+/* Hover states from the design’s style-hover attributes. */
+.om-1:hover { background: #141414 !important; }
+.om-2:hover { border-color: #ffd400 !important; color: #ffd400 !important; }
+.om-3:hover { border-color: #ff9f1c !important; color: #ff9f1c !important; }
+.om-4:hover { color: #fff !important; }
+.om-5:hover { background: #fff !important; }
+.om-6:hover { color: #ffd400 !important; }
