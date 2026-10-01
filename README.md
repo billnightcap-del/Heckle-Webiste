@@ -21,8 +21,10 @@ npm run build     # static site in dist/
 npm run preview   # serve dist/ locally
 ```
 
-`dist/` uses relative paths, so it can be uploaded as-is to any static host
-(Netlify, Vercel, Cloudflare Pages, GitHub Pages, S3), including under a sub-path.
+**Live site:** https://billnightcap-del.github.io/Heckle-Webiste/. `.github/workflows/deploy.yml`
+publishes it to GitHub Pages on every push to `main` that changes the site (pushes that only touch
+reports, memory or docs are skipped). `dist/` uses relative paths, so it also works as-is on any
+other static host.
 
 ## How the code maps to the design
 
@@ -43,10 +45,11 @@ Both are built in and switched off until their IDs are set (see `.env.example`):
 
 - **The Setlist (Beehiiv):** publication `hecklecomedy.beehiiv.com`, form "Heckle site · The
   Setlist (home page)". Publish the form in Beehiiv, copy the `src` URL from its embed script, and
-  set `VITE_BEEHIIV_EMBED_SRC`. The home page's sign-up box becomes the Beehiiv form. Until then the
+  set `VITE_BEEHIIV_EMBED_SRC` (for the live site, as a repository variable: Settings → Secrets and
+  variables → Actions → Variables). The home page's sign-up box becomes the Beehiiv form. Until then the
   button says "Opening soon", so nobody thinks they've subscribed.
 - **Google Analytics 4:** create a GA4 property with a web data stream for the site's address,
-  then set `VITE_GA_ID`. Events: `game_play` and `game_complete` (with `game`), `joke_submit`,
+  then set `VITE_GA_ID` the same way. Events: `game_play` and `game_complete` (with `game`), `joke_submit`,
   `mic_submit` and `festival_submit_click`. To answer "do the games bring people back next week",
   open GA4's Retention report, or build a cohort exploration on `game_play`.
 

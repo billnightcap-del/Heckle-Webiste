@@ -21,7 +21,8 @@ no email list and no analytics on the site (see blockers 4 and 5).
    property.
 
 ## Site status
-Not deployed yet. No public URL. Code is on `main` in this repo.
+Published by GitHub Pages from `main` once the repo is public: https://billnightcap-del.github.io/Heckle-Webiste/
+**This repo is public.** Everything here, including reports and memory, is readable by anyone. Write accordingly: no private contact details, credentials, or anything said in confidence.
 
 ## Escalation rule
 Not written yet; COS drafts it, and the operator approves it. Until then: money, legal, a broken
@@ -33,5 +34,5 @@ the weekly rollup.
 | --- | --- | --- |
 | 2026-10-01 | Run all six seats as named Claude Code sessions, with memory and reports in this repo. | Claude chat projects for now. |
 | 2026-10-01 | Email list on Beehiiv; analytics on Google Analytics 4. | Kit, Buttondown, Plausible, Cloudflare Web Analytics. |
-| 2026-10-01 | Hosting: not yet. The site stays unpublished for now. | — |
+| 2026-10-01 | Make the repo public and host on GitHub Pages, accepting that reports and memory are public. | Cloudflare Pages with a private repo; splitting private files into a second repo. |
 | 2026-10-01 | Weekly COS rollup and audit, Mondays, US Central. | Daily runs; per-seat scheduled runs. |
