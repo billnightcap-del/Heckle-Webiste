@@ -3,13 +3,13 @@
 Kept current by the COS seat. Replace sections, don't append forever.
 
 ## Current state
-Seat set up 2026-10-01. First assignment not started. It's the last item in `agents/seats/cos.md`.
+First assignment (escalation rule + first rollup) started 2026-10-01. Clarifying questions sent to the operator; drafting waits on answers. Audit pre-check: all five other seats show *Last run: Never*, empty inboxes, no reports.
 
 ## Open items
 - First assignment.
 
 ## Waiting on
-Nothing yet.
+Operator answers to the 6 clarifying questions (2026-10-01): interrupt channel, money/legal thresholds, quiet hours, blocker order, hosting/provider status, rollup day + build hours.
 
 ## Last run
 Never.
