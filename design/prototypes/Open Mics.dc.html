@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0a0a0a"/><text x="50" y="64" text-anchor="middle" font-family="Arial Narrow,Arial,sans-serif" font-weight="900" font-size="40" fill="#ffd400">OM</text></svg></template>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&amp;display=swap">
+<style>
+body { margin: 0; background: #0a0a0a; color: #f5f5f2; font-family: 'Archivo', system-ui, sans-serif; text-wrap: pretty; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: #ffd400; }
+::selection { background: #ffd400; color: #0a0a0a; }
+:focus-visible { outline: 2px solid #ffd400; outline-offset: 2px; }
+select option { background: #0a0a0a; color: #f5f5f2; }
+input::placeholder, textarea::placeholder { color: #7a7a76; }
+</style>
+</helmet>
+
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
+
+<header style="position: sticky; top: 0; z-index: 30; background: rgba(10,10,10,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.12);">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 12px clamp(16px, 3vw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px;">
+    <a href="Heckle.dc.html" style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 0.9; text-transform: uppercase;">Heckle<span style="color: #ffd400;">.</span></a>
+    <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #a3a39e; margin-right: auto;">Open Mic Finder</span>
+    <a href="Game Night v2.html" style="font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;">Games</a>
+    <nav style="display: flex; border: 1px solid rgba(255,255,255,0.25);">
+      <a href="#find" onClick="{{ goFind }}" style="white-space: nowrap; padding: 10px 16px; background: {{ tabFindBg }}; color: {{ tabFindFg }}; font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;">Find a Mic</a>
+      <a href="#submit" onClick="{{ goSubmit }}" style="white-space: nowrap; padding: 10px 16px; background: {{ tabSubBg }}; color: {{ tabSubFg }}; font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;">Submit a Mic</a>
+    </nav>
+  </div>
+</header>
+
+<sc-if value="{{ isFind }}" hint-placeholder-val="{{ true }}">
+<section style="border-bottom: 1px solid rgba(255,255,255,0.12); background: radial-gradient(ellipse 50% 80% at 85% 0%, rgba(255,212,0,0.12), transparent 70%);" data-screen-label="Find — Header">
+  <div style="max-width: 1440px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(16px, 3vw, 40px) 28px; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-end; justify-content: space-between;">
+      <h1 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(64px, 10vw, 160px); line-height: 0.8; text-transform: uppercase;">Open Mics<br><span style="color: #ffd400;">{{ cityName }}</span></h1>
+      <div style="display: flex; gap: 0; border: 1px solid rgba(255,255,255,0.18);">
+        <div style="padding: 14px 20px; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 48px; line-height: 0.85; color: #ffd400;">{{ tonightCount }}</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #a3a39e;">Tonight</span>
+        </div>
+        <div style="padding: 14px 20px; display: flex; flex-direction: column; gap: 4px; border-left: 1px solid rgba(255,255,255,0.18);">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 48px; line-height: 0.85;">{{ weekCount }}</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #a3a39e;">This week</span>
+        </div>
+        <div style="padding: 14px 20px; display: flex; flex-direction: column; gap: 4px; border-left: 1px solid rgba(255,255,255,0.18);">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 48px; line-height: 0.85;">{{ freeCount }}</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #a3a39e;">Free</span>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch;">
+      <label style="position: relative; flex: 0 1 300px; min-width: 220px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">City</span>
+        <select value="{{ city }}" onChange="{{ onCity }}" style="appearance: none; -webkit-appearance: none; height: 52px; padding: 0 44px 0 16px; background: #ffd400; color: #0a0a0a; border: 0; border-radius: 0; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;">
+          <sc-for list="{{ cities }}" as="c" hint-placeholder-count="25">
+            <option value="{{ c.slug }}">{{ c.label }}</option>
+          </sc-for>
+        </select>
+        <svg style="position: absolute; right: 14px; bottom: 16px; pointer-events: none; color: #0a0a0a;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+      </label>
+      <label style="flex: 1 1 260px; min-width: 200px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Search</span>
+        <input value="{{ q }}" onInput="{{ onQ }}" placeholder="Venue, neighborhood, host…" style="height: 52px; padding: 0 16px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <label style="flex: 0 1 220px; min-width: 180px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Sign-up</span>
+        <select value="{{ signup }}" onChange="{{ onSignup }}" style="height: 52px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 15px;">
+          <sc-for list="{{ signupOpts }}" as="o" hint-placeholder-count="5">
+            <option value="{{ o }}">{{ o }}</option>
+          </sc-for>
+        </select>
+      </label>
+      <label style="flex: 0 1 240px; min-width: 190px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Freshness</span>
+        <select value="{{ fresh }}" onChange="{{ onFresh }}" style="height: 52px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 15px;">
+          <sc-for list="{{ freshOpts }}" as="o" hint-placeholder-count="4">
+            <option value="{{ o }}">{{ o }}</option>
+          </sc-for>
+        </select>
+      </label>
+    </div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <sc-for list="{{ dayChips }}" as="d" hint-placeholder-count="9">
+        <button type="button" onClick="{{ d.onClick }}" style="height: 38px; padding: 0 14px; background: {{ d.bg }}; color: {{ d.fg }}; border: 1px solid {{ d.bd }}; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap;">{{ d.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 32px clamp(16px, 3vw, 40px) clamp(56px, 7vw, 96px); display: flex; flex-wrap: wrap; gap: 40px;" data-screen-label="Find — Schedule">
+  <div style="flex: 3 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 40px;">
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="border: 1px dashed rgba(255,255,255,0.25); padding: 40px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+        <span style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 0.9; text-transform: uppercase;">Crickets.</span>
+        <span style="font-family: 'Newsreader', serif; font-size: 19px; color: #d6d6d2;">No mics match those filters in {{ cityName }}. Know one we’re missing?</span>
+        <a href="#submit" onClick="{{ goSubmit }}" style="font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #ffd400;">Submit a mic →</a>
+      </div>
+    </sc-if>
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+      <div style="display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 2px solid {{ g.rule }}; padding-bottom: 8px;">
+          <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: 44px; line-height: 1; text-transform: uppercase; color: {{ g.color }};">{{ g.label }}</h2>
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #a3a39e;">{{ g.count }}</span>
+        </div>
+        <sc-for list="{{ g.rows }}" as="m" hint-placeholder-count="3">
+          <div style="display: grid; grid-template-columns: clamp(84px, 10vw, 128px) minmax(0, 1fr); gap: clamp(14px, 2vw, 28px); padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.12); transition: background .2s; opacity: {{ m.opacity }};" style-hover="background: #141414;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <span style="font-weight: 900; font-stretch: 62%; font-size: clamp(34px, 3.4vw, 46px); line-height: 0.85;">{{ m.timeShort }}</span>
+              <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #a3a39e;">{{ m.ampm }}</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: flex-start;">
+              <div style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 280px; min-width: 0;">
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                  <span style="font-weight: 800; font-stretch: 70%; font-size: 26px; line-height: 1; text-transform: uppercase;">{{ m.name }}</span>
+                  <sc-if value="{{ m.isNew }}" hint-placeholder-val="{{ false }}">
+                    <span style="background: #ffd400; color: #0a0a0a; padding: 2px 7px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">New</span>
+                  </sc-if>
+                  <sc-if value="{{ m.isDead }}" hint-placeholder-val="{{ false }}">
+                    <span style="border: 1px solid #ff9f1c; color: #ff9f1c; padding: 2px 7px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">Reported closed · rechecking</span>
+                  </sc-if>
+                </div>
+                <span style="font-family: 'Newsreader', serif; font-size: 18px; color: #d6d6d2;">{{ m.venue }} · {{ m.hood }}</span>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+                  <span style="border: 1px solid rgba(255,255,255,0.22); padding: 3px 8px; font-size: 12px; font-weight: 600;">{{ m.signup }}</span>
+                  <span style="border: 1px solid rgba(255,255,255,0.22); padding: 3px 8px; font-size: 12px; font-weight: 600;">{{ m.setLen }}</span>
+                  <span style="border: 1px solid rgba(255,255,255,0.22); padding: 3px 8px; font-size: 12px; font-weight: 600;">{{ m.frequency }}</span>
+                  <span style="border: 1px solid {{ m.costBd }}; color: {{ m.costFg }}; padding: 3px 8px; font-size: 12px; font-weight: 700;">{{ m.cost }}</span>
+                  <sc-if value="{{ m.isBringer }}" hint-placeholder-val="{{ false }}">
+                    <span style="background: #ff9f1c; color: #0a0a0a; padding: 3px 8px; font-size: 12px; font-weight: 800;">Bringer · {{ m.bringerNote }}</span>
+                  </sc-if>
+                </div>
+                <span style="display: flex; gap: 8px; align-items: center; font-size: 13px; color: #d6d6d2; margin-top: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>{{ m.window }}</span>
+              </div>
+              <div style="flex: 0 0 auto; max-width: 100%; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; text-align: right;">
+                <span style="display: inline-flex; gap: 6px; align-items: center; padding: 3px 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; background: {{ m.freshBg }}; color: {{ m.freshFg }}; border: 1px solid {{ m.freshBd }};">{{ m.freshText }}</span>
+                <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #a3a39e; white-space: nowrap;">via {{ m.source }}</span>
+                <span style="font-size: 13px; color: #b5b5b0; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ m.host }}</span>
+                <div style="display: flex; gap: 6px; justify-content: flex-end;">
+                  <button type="button" onClick="{{ m.confirm }}" disabled="{{ m.confirmedByMe }}" style="height: 34px; padding: 0 10px; background: transparent; color: {{ m.confirmFg }}; border: 1px solid {{ m.confirmBd }}; white-space: nowrap; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;" style-hover="border-color: #ffd400; color: #ffd400;">{{ m.confirmLabel }}</button>
+                  <button type="button" onClick="{{ m.report }}" style="white-space: nowrap; height: 34px; padding: 0 10px; background: transparent; color: #a3a39e; border: 1px solid rgba(255,255,255,0.22); font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;" style-hover="border-color: #ff9f1c; color: #ff9f1c;">{{ m.reportLabel }}</button>
+                  <a href="{{ m.url }}" target="_blank" rel="noopener" style="white-space: nowrap; height: 34px; display: inline-flex; align-items: center; padding: 0 10px; border: 1px solid rgba(255,255,255,0.22); font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;">Listing ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+  <aside style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 24px; align-self: flex-start; position: sticky; top: 96px;">
+    <div style="background: #ffd400; color: #0a0a0a; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+      <span style="font-weight: 900; font-stretch: 62%; font-size: 44px; line-height: 0.88; text-transform: uppercase;">Run a mic?</span>
+      <span style="font-size: 16px; line-height: 1.45; font-weight: 500;">List it free. It shows up in your city’s schedule the moment you submit.</span>
+      <a href="#submit" onClick="{{ goSubmit }}" style="align-self: flex-start; background: #0a0a0a; color: #ffd400; padding: 12px 16px; font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;" style-hover="color: #fff;">Submit your mic</a>
+    </div>
+    <div style="border: 1px solid rgba(255,255,255,0.18); padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">Data</span>
+      <span style="font-size: 14px; line-height: 1.5; color: #d6d6d2;">{{ dataNote }}</span>
+      <span style="font-size: 13px; color: #a3a39e;">Sources: Ticketmaster, venue calendars, comic submissions.</span>
+    </div>
+    <div style="border: 1px solid rgba(255,255,255,0.18); padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">How “confirmed” works</span>
+      <span style="font-size: 14px; line-height: 1.5; color: #d6d6d2;">Every listing shows when a host, a comic or our pipeline last saw it running. Went tonight? Tap <strong style="color: #f5f5f2;">Still running</strong>. Showed up to a sports bar? Tap <strong style="color: #f5f5f2;">Report closed</strong> and we pull it for a recheck.</span>
+      <span style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #a3a39e;">
+        <span><span style="display: inline-block; width: 10px; height: 10px; background: #ffd400; margin-right: 8px;"></span>Confirmed in the last 14 days</span>
+        <span><span style="display: inline-block; width: 10px; height: 10px; border: 1px solid #f5f5f2; margin-right: 8px;"></span>15–45 days</span>
+        <span><span style="display: inline-block; width: 10px; height: 10px; border: 1px solid #7a7a76; margin-right: 8px;"></span>Older — call ahead</span>
+      </span>
+    </div>
+  </aside>
+</section>
+</sc-if>
+
+<sc-if value="{{ isSubmit }}" hint-placeholder-val="{{ false }}">
+<section style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(16px, 3vw, 40px) clamp(56px, 7vw, 96px); display: flex; flex-wrap: wrap; gap: 48px;" data-screen-label="Submit a Mic">
+  <div style="flex: 1.4 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">Free listing · 25 cities</span>
+      <h1 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(64px, 9vw, 140px); line-height: 0.8; text-transform: uppercase;">Submit<br>Your <span style="color: #ffd400;">Mic.</span></h1>
+      <p style="margin: 0; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.4; max-width: 46ch; color: #d6d6d2;">Tell us when and where. We sort it into the right city and weekday automatically.</p>
+    </div>
+    <sc-if value="{{ justSubmitted }}" hint-placeholder-val="{{ false }}">
+      <div style="background: #ffd400; color: #0a0a0a; padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between;">
+        <span style="font-weight: 800; font-stretch: 70%; font-size: 24px; text-transform: uppercase;">✓ {{ lastName }} is listed in {{ lastCity }}</span>
+        <button type="button" onClick="{{ viewLast }}" style="background: #0a0a0a; color: #ffd400; border: 0; padding: 12px 16px; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;">See it in the schedule</button>
+      </div>
+    </sc-if>
+    <form onSubmit="{{ onSubmit }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px;">
+      <label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Mic name *</span>
+        <input name="name" required placeholder="e.g. Tuesday Tight Five" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">City *</span>
+        <select name="city" required style="height: 50px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+          <sc-for list="{{ cities }}" as="c" hint-placeholder-count="25">
+            <option value="{{ c.slug }}">{{ c.label }}</option>
+          </sc-for>
+        </select>
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Neighborhood</span>
+        <input name="hood" placeholder="e.g. East Village" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Venue *</span>
+        <input name="venue" required placeholder="Bar, club or café" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Address</span>
+        <input name="address" placeholder="Street address" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <fieldset style="grid-column: 1 / -1; border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+        <legend style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e; padding: 0; margin-bottom: 8px;">Day(s) *</legend>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <sc-for list="{{ dayToggles }}" as="d" hint-placeholder-count="7">
+            <button type="button" onClick="{{ d.onClick }}" aria-pressed="{{ d.pressed }}" style="width: 64px; height: 44px; background: {{ d.bg }}; color: {{ d.fg }}; border: 1px solid {{ d.bd }}; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;">{{ d.label }}</button>
+          </sc-for>
+        </div>
+      </fieldset>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Start time *</span>
+        <input name="time" type="time" required value="20:00" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px; color-scheme: dark;">
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Frequency</span>
+        <select name="frequency" style="height: 50px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+          <option>Weekly</option><option>Every other week</option><option>Monthly</option><option>One-off</option>
+        </select>
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Sign-up</span>
+        <select name="signup" style="height: 50px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+          <option>List in person</option><option>Online sign-up</option><option>Bucket draw</option><option>Bringer</option>
+        </select>
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Set length</span>
+        <select name="setLen" style="height: 50px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+          <option>3 min</option><option selected>5 min</option><option>7 min</option><option>10 min</option>
+        </select>
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">When sign-up opens</span>
+        <input name="window" placeholder="e.g. List at the bar, 7:30 pm" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Bringer rule (if any)</span>
+        <input name="bringer" placeholder="e.g. 2 guests = 1 spot" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Cost</span>
+        <input name="cost" placeholder="Free, $5, 1-drink min" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Host</span>
+        <input name="host" placeholder="Name or @handle" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Link (Instagram, event page, website)</span>
+        <input name="url" type="url" placeholder="https://" style="height: 50px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 16px;">
+      </label>
+      <sc-if value="{{ dayError }}" hint-placeholder-val="{{ false }}">
+        <span style="grid-column: 1 / -1; color: #ffd400; font-size: 14px; font-weight: 600;">Pick at least one day.</span>
+      </sc-if>
+      <button type="submit" style="grid-column: 1 / -1; justify-self: start; height: 56px; padding: 0 28px; background: #ffd400; color: #0a0a0a; border: 0; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;" style-hover="background: #fff;">List my mic</button>
+    </form>
+  </div>
+  <aside style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px; align-self: flex-start; position: sticky; top: 96px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #ffd400; padding-bottom: 10px;">
+      <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: 36px; line-height: 1; text-transform: uppercase;">Submitted, by city</h2>
+      <span style="font-size: 13px; font-weight: 700; color: #ffd400;">{{ subTotal }}</span>
+    </div>
+    <sc-if value="{{ noSubs }}" hint-placeholder-val="{{ true }}">
+      <span style="font-family: 'Newsreader', serif; font-size: 18px; color: #b5b5b0;">Nothing submitted yet. Yours could be first.</span>
+    </sc-if>
+    <sc-for list="{{ subsByCity }}" as="sc" hint-placeholder-count="0">
+      <div style="display: flex; flex-direction: column; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px;">
+        <button type="button" onClick="{{ sc.view }}" style="display: flex; justify-content: space-between; align-items: baseline; background: transparent; color: inherit; border: 0; padding: 8px 0; font-family: inherit; cursor: pointer; text-align: left;" style-hover="color: #ffd400;">
+          <span style="font-weight: 800; font-stretch: 70%; font-size: 22px; text-transform: uppercase;">{{ sc.name }}</span>
+          <span style="font-size: 13px; font-weight: 700; color: #a3a39e;">{{ sc.count }} →</span>
+        </button>
+        <sc-for list="{{ sc.items }}" as="it" hint-placeholder-count="1">
+          <div style="display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 6px 0; font-size: 14px;">
+            <span style="font-weight: 700; color: #ffd400;">{{ it.when }}</span>
+            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ it.name }} · {{ it.venue }}</span>
+            <button type="button" onClick="{{ it.remove }}" aria-label="Remove" style="background: transparent; border: 0; color: #7a7a76; cursor: pointer; font-size: 16px; padding: 0 4px;" style-hover="color: #ffd400;">×</button>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </aside>
+</section>
+</sc-if>
+
+<footer style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.12);">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 24px clamp(16px, 3vw, 40px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #a3a39e;">
+    <span>© 2026 Heckle Media · Open Mic Finder</span>
+    <a href="Heckle.dc.html">← Back to Heckle</a>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CITIES = [
+  ['new-york', 'New York', 'NY', ['East Village', 'Williamsburg', 'Astoria', 'Bushwick']],
+  ['los-angeles', 'Los Angeles', 'CA', ['Silver Lake', 'West Hollywood', 'North Hollywood', 'Echo Park']],
+  ['chicago', 'Chicago', 'IL', ['Wicker Park', 'Logan Square', 'Lakeview', 'Pilsen']],
+  ['houston', 'Houston', 'TX', ['Montrose', 'The Heights', 'EaDo', 'Midtown']],
+  ['phoenix', 'Phoenix', 'AZ', ['Roosevelt Row', 'Downtown', 'Tempe', 'Arcadia']],
+  ['philadelphia', 'Philadelphia', 'PA', ['Fishtown', 'South Philly', 'Center City', 'Northern Liberties']],
+  ['san-antonio', 'San Antonio', 'TX', ['Southtown', 'Pearl', 'Downtown', 'Alamo Heights']],
+  ['san-diego', 'San Diego', 'CA', ['North Park', 'Pacific Beach', 'Gaslamp', 'Hillcrest']],
+  ['dallas', 'Dallas', 'TX', ['Deep Ellum', 'Bishop Arts', 'Lower Greenville', 'Uptown']],
+  ['austin', 'Austin', 'TX', ['East Austin', 'South Congress', 'Downtown', 'Hyde Park']],
+  ['san-francisco', 'San Francisco', 'CA', ['Mission', 'North Beach', 'Haight', 'SoMa']],
+  ['seattle', 'Seattle', 'WA', ['Capitol Hill', 'Ballard', 'Fremont', 'Georgetown']],
+  ['denver', 'Denver', 'CO', ['RiNo', 'LoHi', 'Baker', 'Capitol Hill']],
+  ['washington-dc', 'Washington', 'DC', ['U Street', 'Adams Morgan', 'H Street', 'Dupont Circle']],
+  ['boston', 'Boston', 'MA', ['Somerville', 'Cambridge', 'Allston', 'South End']],
+  ['nashville', 'Nashville', 'TN', ['East Nashville', 'The Gulch', 'Midtown', '12 South']],
+  ['atlanta', 'Atlanta', 'GA', ['Little Five Points', 'Old Fourth Ward', 'East Atlanta', 'Midtown']],
+  ['miami', 'Miami', 'FL', ['Wynwood', 'Little Havana', 'Brickell', 'Coconut Grove']],
+  ['portland', 'Portland', 'OR', ['Alberta', 'Hawthorne', 'Pearl District', 'Mississippi']],
+  ['las-vegas', 'Las Vegas', 'NV', ['Arts District', 'Fremont', 'The Strip', 'Chinatown']],
+  ['minneapolis', 'Minneapolis', 'MN', ['Uptown', 'Northeast', 'Loring Park', 'Dinkytown']],
+  ['new-orleans', 'New Orleans', 'LA', ['Marigny', 'Bywater', 'Mid-City', 'Uptown']],
+  ['detroit', 'Detroit', 'MI', ['Corktown', 'Midtown', 'Eastern Market', 'Hamtramck']],
+  ['charlotte', 'Charlotte', 'NC', ['NoDa', 'Plaza Midwood', 'South End', 'Uptown']],
+  ['columbus', 'Columbus', 'OH', ['Short North', 'German Village', 'Clintonville', 'Franklinton']]
+].map(([slug, name, state, hoods]) => ({ slug, name, state, hoods, label: `${name}, ${state}` }));
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const DAYS_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const ORDER = [1, 2, 3, 4, 5, 6, 0];
+const SIGNUPS = ['List in person', 'Online sign-up', 'Bucket draw', 'Bringer'];
+const MIC_NAMES = ['Tight Five', 'Rough Draft', 'The Bucket', 'Last Call Mic', 'Laugh Lab', 'Green Light', 'Graveyard Shift', 'Early Birds', 'New Material Night', 'Hot Seat', 'Punchline Club', 'Deep Cuts'];
+const VENUES = ['The Back Room', 'Brick & Barrel', 'Corner Tap', 'The Green Door', 'Night Owl Café', 'Lucky’s Lounge', 'The Cellar', 'Half Pint', 'Blue Moon Tavern', 'Common Room', 'The Parlor', 'Dive Inn'];
+const HOSTS = ['@micwithmaya', 'Hosted by Leo R.', '@thebucketmic', 'Hosted by Jess & Tom', '@roughdraftcomedy', 'Hosted by Andre K.'];
+const SOURCES = ['Venue site', 'Ticketmaster', 'Calendar feed', 'Venue site'];
+const COSTS = ['Free', 'Free', 'Free', '1-drink min', '$5'];
+const FREQS = ['Weekly', 'Weekly', 'Weekly', 'Every other week', 'Monthly'];
+const KEY = 'heckle-open-mic-submissions', REP_KEY = 'heckle-open-mic-reports';
+const WINDOWS = { 'List in person': ['List at the bar 30 min before', 'List opens at 7:30 pm', 'Sign-up sheet at the door, 1 hr before'], 'Online sign-up': ['Online, opens noon day-of', 'Online, opens Monday 10 am', 'Online, closes 2 hrs before'], 'Bucket draw': ['Names in the bucket by start time', 'Bucket closes 15 min in'], 'Bringer': ['Arrive 30 min early with guests'] };
+const FRESH = ['Any freshness', 'Confirmed ≤ 14 days', 'Confirmed ≤ 45 days', 'Hide reported closed'];
+const DAYMS = 864e5;
+
+function rng(seed) { let h = 2166136261; for (const c of seed) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return () => ((h = Math.imul(h ^ (h >>> 15), 2246822507) ^ Math.imul(h ^ (h >>> 13), 3266489909)) >>> 0) / 4294967296; }
+const pick = (r, a) => a[Math.floor(r() * a.length)];
+function sample() {
+  const out = [];
+  for (const c of CITIES) {
+    const r = rng(c.slug), n = 9 + Math.floor(r() * 7);
+    for (let i = 0; i < n; i++) {
+      out.push({ id: `${c.slug}-${i}`, city: c.slug, name: pick(r, MIC_NAMES), venue: pick(r, VENUES), hood: pick(r, c.hoods),
+        day: Math.floor(r() * 7), time: 17 + Math.floor(r() * 13) / 2, signup: pick(r, SIGNUPS), setLen: pick(r, ['3 min', '5 min', '5 min', '7 min']),
+        cost: pick(r, COSTS), frequency: pick(r, FREQS), host: pick(r, HOSTS), source: pick(r, SOURCES), url: '#', confirmedAgo: Math.floor(r() * r() * 120) });
+      const m = out[out.length - 1]; m.window = pick(r, WINDOWS[m.signup]); if (m.signup === 'Bringer') { m.bringer = pick(r, ['2 guests = 1 spot', '1 guest + 1 drink each', '3 guests for a 7']); m.cost = 'Bringer'; }
+    }
+  }
+  return out;
+}
+const fmt = (t) => { const h = Math.floor(t), m = Math.round((t - h) * 60), h12 = ((h + 11) % 12) + 1; return { short: `${h12}:${String(m).padStart(2, '0')}`, ampm: h >= 12 && h < 24 ? 'PM' : 'AM' }; };
+
+class Component extends DCLogic {
+  state = { view: 'find', city: 'new-york', day: 'all', signup: 'All sign-ups', fresh: 'Any freshness', q: '', subs: [], reports: {}, live: null, formDays: [], dayError: false, last: null };
+  saveReports(reports) { this.setState({ reports }); try { localStorage.setItem(REP_KEY, JSON.stringify(reports)); } catch {} }
+  mark(id, kind) { const r = { ...this.state.reports }, cur = r[id] || {}; r[id] = kind === 'ok' ? { ...cur, ok: Date.now(), dead: false } : { ...cur, dead: !cur.dead }; this.saveReports(r); }
+  sampleMics = sample();
+
+  componentDidMount() {
+    this.readHash = () => this.setState({ view: location.hash === '#submit' ? 'submit' : 'find' });
+    window.addEventListener('hashchange', this.readHash); this.readHash();
+    try { this.setState({ subs: JSON.parse(localStorage.getItem(KEY) || '[]'), reports: JSON.parse(localStorage.getItem(REP_KEY) || '{}') }); } catch {}
+    fetch('./open-mics.json').then((r) => (r.ok ? r.json() : null)).then((j) => j && Array.isArray(j.mics) && this.setState({ live: j })).catch(() => {});
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this.readHash); }
+  saveSubs(subs) { this.setState({ subs }); try { localStorage.setItem(KEY, JSON.stringify(subs)); } catch {} }
+  go(view, city) { history.replaceState(null, '', view === 'submit' ? '#submit' : '#find'); this.setState({ view, ...(city ? { city, day: 'all', q: '' } : {}) }); window.scrollTo({ top: 0 }); }
+
+  renderVals() {
+    const s = this.state, today = new Date().getDay();
+    const base = s.live ? s.live.mics.map((m, i) => ({ id: 'live-' + i, hood: m.hood || '', signup: m.signup || 'See listing', setLen: m.setLen || '—', host: m.host || '', ...m })) : this.sampleMics;
+    const subs = s.subs.map((m) => ({ ...m, source: 'Submitted', isNew: true, confirmedAgo: Math.floor((Date.now() - new Date(m.submitted || Date.now())) / DAYMS) }));
+    const ago = (m) => { const rep = s.reports[m.id]; return rep && rep.ok ? Math.floor((Date.now() - rep.ok) / DAYMS) : (m.confirmedAgo ?? (m.confirmed ? Math.floor((Date.now() - new Date(m.confirmed)) / DAYMS) : 999)); };
+    const dead = (m) => !!(s.reports[m.id] && s.reports[m.id].dead);
+    const cityObj = CITIES.find((c) => c.slug === s.city) || CITIES[0];
+    const inCity = [...base, ...subs].filter((m) => m.city === cityObj.slug);
+    const q = s.q.trim().toLowerCase();
+    const filtered = inCity.filter((m) => (s.signup === 'All sign-ups' || m.signup === s.signup) &&
+      (!q || `${m.name} ${m.venue} ${m.hood} ${m.host}`.toLowerCase().includes(q)) &&
+      (s.day === 'all' || (s.day === 'tonight' ? m.day === today : m.day === Number(s.day))) &&
+      (s.fresh === 'Any freshness' || (s.fresh === 'Hide reported closed' ? !dead(m) : !dead(m) && ago(m) <= (s.fresh.includes('14') ? 14 : 45))));
+    const groups = ORDER.map((d) => {
+      const rows = filtered.filter((m) => m.day === d).sort((a, b) => dead(a) - dead(b) || a.time - b.time).map((m) => {
+        const f = fmt(m.time), free = /free/i.test(m.cost || ''), a = ago(m), isDead = dead(m), mine = !!(s.reports[m.id] && s.reports[m.id].ok);
+        const tier = a <= 14 ? 0 : a <= 45 ? 1 : 2;
+        return { ...m, timeShort: f.short, ampm: f.ampm, isNew: !!m.isNew, cost: m.cost || 'Cost TBA', hood: m.hood || cityObj.name,
+          window: m.window || 'Sign-up time not listed — ask the host', isBringer: m.signup === 'Bringer' || !!m.bringer, bringerNote: m.bringer || 'bring guests',
+          isDead, opacity: isDead ? 0.5 : 1,
+          freshText: a >= 999 ? 'Not yet confirmed' : a === 0 ? '✓ Confirmed today' : `✓ Confirmed ${a}d ago`,
+          freshBg: tier === 0 ? '#ffd400' : 'transparent', freshFg: tier === 0 ? '#0a0a0a' : tier === 1 ? '#f5f5f2' : '#8a8a86', freshBd: tier === 0 ? '#ffd400' : tier === 1 ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.18)',
+          confirm: () => this.mark(m.id, 'ok'), confirmedByMe: mine, confirmLabel: mine ? 'Thanks ✓' : 'Still running', confirmFg: mine ? '#ffd400' : '#f5f5f2', confirmBd: mine ? '#ffd400' : 'rgba(255,255,255,0.22)',
+          report: () => this.mark(m.id, 'dead'), reportLabel: isDead ? 'Undo report' : 'Report closed',
+          costFg: free ? '#ffd400' : '#f5f5f2', costBd: free ? '#ffd400' : 'rgba(255,255,255,0.22)', url: m.url || '#' };
+      });
+      const isToday = d === today;
+      return { label: isToday ? `${DAYS_LONG[d]} · Tonight` : DAYS_LONG[d], rows, count: `${rows.length} mic${rows.length === 1 ? '' : 's'}`,
+        color: isToday ? '#ffd400' : '#f5f5f2', rule: isToday ? '#ffd400' : '#f5f5f2' };
+    }).filter((g) => g.rows.length);
+    const chip = (key, label) => { const on = String(s.day) === String(key); return { label, bg: on ? '#ffd400' : 'transparent', fg: on ? '#0a0a0a' : '#f5f5f2', bd: on ? '#ffd400' : 'rgba(255,255,255,0.25)', onClick: () => this.setState({ day: key }) }; };
+    const byCity = CITIES.map((c) => {
+      const items = s.subs.filter((m) => m.city === c.slug).sort((a, b) => a.day - b.day || a.time - b.time);
+      return { name: c.label, count: items.length, view: () => this.go('find', c.slug),
+        items: items.map((m) => ({ ...m, when: `${DAYS[m.day]} ${fmt(m.time).short}${fmt(m.time).ampm.toLowerCase()}`, remove: () => this.saveSubs(s.subs.filter((x) => x.id !== m.id)) })) };
+    }).filter((c) => c.count);
+    const isFind = s.view === 'find';
+    return {
+      isFind, isSubmit: !isFind,
+      tabFindBg: isFind ? '#ffd400' : 'transparent', tabFindFg: isFind ? '#0a0a0a' : '#f5f5f2',
+      tabSubBg: !isFind ? '#ffd400' : 'transparent', tabSubFg: !isFind ? '#0a0a0a' : '#f5f5f2',
+      goFind: (e) => { e.preventDefault(); this.go('find'); },
+      goSubmit: (e) => { e.preventDefault(); this.go('submit'); },
+      cities: CITIES, city: cityObj.slug, cityName: cityObj.name,
+      onCity: (e) => this.setState({ city: e.target.value }),
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }),
+      signup: s.signup, signupOpts: ['All sign-ups', ...SIGNUPS], onSignup: (e) => this.setState({ signup: e.target.value }),
+      fresh: s.fresh, freshOpts: FRESH, onFresh: (e) => this.setState({ fresh: e.target.value }),
+      dayChips: [chip('all', 'All week'), chip('tonight', 'Tonight'), ...ORDER.map((d) => chip(String(d), DAYS[d]))],
+      tonightCount: inCity.filter((m) => m.day === today).length, weekCount: inCity.length,
+      freeCount: inCity.filter((m) => /free/i.test(m.cost || '')).length,
+      groups, noResults: !groups.length,
+      dataNote: s.live ? `Live data, updated ${new Date(s.live.updated).toLocaleDateString()}.` : 'Showing sample listings. Run the pipeline to publish live data (open-mics.json).',
+      dayToggles: ORDER.map((d) => { const on = s.formDays.includes(d); return { label: DAYS[d], pressed: on ? 'true' : 'false', bg: on ? '#ffd400' : 'transparent', fg: on ? '#0a0a0a' : '#f5f5f2', bd: on ? '#ffd400' : 'rgba(255,255,255,0.25)',
+        onClick: () => this.setState((p) => ({ formDays: on ? p.formDays.filter((x) => x !== d) : [...p.formDays, d], dayError: false })) }; }),
+      dayError: s.dayError,
+      onSubmit: (e) => {
+        e.preventDefault();
+        if (!s.formDays.length) { this.setState({ dayError: true }); return; }
+        const f = Object.fromEntries(new FormData(e.currentTarget));
+        const [hh, mm] = (f.time || '20:00').split(':').map(Number);
+        const stamp = Date.now();
+        const entries = s.formDays.map((d) => ({ id: `sub-${stamp}-${d}`, city: f.city, name: f.name, venue: f.venue, hood: f.hood, address: f.address, day: d, time: hh + mm / 60,
+          frequency: f.frequency, signup: f.bringer ? 'Bringer' : f.signup, setLen: f.setLen, cost: f.cost, host: f.host, url: f.url, window: f.window, bringer: f.bringer, submitted: new Date(stamp).toISOString() }));
+        this.saveSubs([...s.subs, ...entries]);
+        e.currentTarget.reset();
+        this.setState({ formDays: [], last: { name: f.name, city: f.city } });
+      },
+      justSubmitted: !!s.last, lastName: s.last?.name, lastCity: (CITIES.find((c) => c.slug === s.last?.city) || {}).name,
+      viewLast: () => this.go('find', s.last.city),
+      subsByCity: byCity, subTotal: `${s.subs.length} listing${s.subs.length === 1 ? '' : 's'}`, noSubs: !s.subs.length
+    };
+  }
+}
+</script>
+</body>
+</html>

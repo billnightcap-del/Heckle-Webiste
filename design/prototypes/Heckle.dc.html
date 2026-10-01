@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0a0a0a"/><text x="50" y="64" text-anchor="middle" font-family="Arial Narrow,Arial,sans-serif" font-weight="900" font-size="40" fill="#ffd400">H.</text></svg></template>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #0a0a0a; color: #f5f5f2; font-family: 'Archivo', system-ui, sans-serif; text-wrap: pretty; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: #ffd400; }
+::selection { background: #ffd400; color: #0a0a0a; }
+:focus-visible { outline: 2px solid #ffd400; outline-offset: 2px; }
+.rail::-webkit-scrollbar { height: 0; }
+</style>
+</helmet>
+
+<div style="display: flex; flex-direction: column; min-height: 100vh; overflow-x: clip;">
+
+<sc-if value="{{ showTicker }}" hint-placeholder-val="{{ true }}">
+<div style="background: #ffd400; color: #0a0a0a; overflow: hidden; display: flex; align-items: stretch;">
+  <div style="flex: none; position: relative; z-index: 2; background: #0a0a0a; color: #ffd400; padding: 9px 16px; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
+    <span style="width: 8px; height: 8px; border-radius: 50%; background: #ffd400;"></span>Live
+  </div>
+  <div style="overflow: hidden; flex: 1;">
+    <div ref="{{ tickerRef }}" style="display: flex; gap: 44px; width: max-content; padding: 9px 0 9px 24px; will-change: transform;">
+      <sc-for list="{{ tickerLoop }}" as="t" hint-placeholder-count="10">
+        <div style="display: flex; gap: 10px; align-items: baseline; font-size: 14px; white-space: nowrap; font-weight: 500;">
+          <span style="font-weight: 800; font-stretch: 75%; letter-spacing: 0.08em; text-transform: uppercase;">{{ t.k }}</span>
+          <span>{{ t.t }}</span>
+          <span style="margin-left: 34px; font-weight: 800;">/</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<header style="position: sticky; top: 0; z-index: 30; background: rgba(10,10,10,0.9); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.12);">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 12px clamp(16px, 3vw, 40px); display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px;">
+    <nav style="display: flex; gap: 20px; flex-wrap: wrap; font-weight: 700; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;">
+      <a href="#latest">Stand-Up</a><a href="#clips">Video</a><a href="Specials.dc.html">Specials</a><a href="#craft">Craft</a><a href="Festivals.dc.html">Festivals</a><a href="Open Mics.dc.html" style="color: #ffd400;">Open Mics</a><a href="Game Night v2.html">Games</a>
+    </nav>
+    <a href="#top" style="font-weight: 900; font-stretch: 62%; font-size: clamp(34px, 4vw, 48px); line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase;">Heckle<span style="color: #ffd400;">.</span></a>
+    <div style="display: flex; gap: 10px; justify-content: flex-end; align-items: center;">
+      <button type="button" aria-label="Search" style="width: 40px; height: 40px; display: grid; place-items: center; background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.2); cursor: pointer;" style-hover="border-color: #ffd400; color: #ffd400;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      </button>
+      <a href="#setlist" style="height: 40px; display: inline-flex; align-items: center; padding: 0 16px; background: #ffd400; color: #0a0a0a; font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;" style-hover="background: #fff; color: #0a0a0a;">Subscribe</a>
+    </div>
+  </div>
+  <div style="border-top: 1px solid rgba(255,255,255,0.08);">
+    <div class="rail" style="max-width: 1440px; margin: 0 auto; padding: 9px clamp(16px, 3vw, 40px); display: flex; gap: 26px; overflow-x: auto; scrollbar-width: none; font-size: 13px; font-weight: 500; color: #b5b5b0; white-space: nowrap;">
+      <a href="Specials.dc.html" style="color: #ffd400;">Specials</a><a href="Festivals.dc.html">Festivals</a><a href="Game Night v2.html">Game Night</a><a href="#latest">Tours</a><a href="#latest">Late Night</a><a href="#latest">Sketch</a><a href="#latest">Podcasts</a><a href="#latest">Festivals</a><a href="#watch">Comics to Watch</a><a href="#originals">Originals</a><a href="#latest">Film &amp; TV</a><a href="#latest">Internet</a>
+    </div>
+  </div>
+</header>
+
+<section id="stage" style="position: relative; overflow: hidden; min-height: max(720px, calc(100vh - 100px)); display: flex; flex-direction: column; background: radial-gradient(ellipse 50% 60% at 50% 38%, rgba(255,212,0,0.13), transparent 70%), #0a0a0a; border-bottom: 1px solid rgba(255,255,255,0.12);" data-screen-label="Landing — 3D Mic">
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 36%; transform: translateY(-50%); text-align: center; pointer-events: none; font-weight: 900; font-stretch: 62%; font-size: clamp(130px, min(30vw, 44vh), 500px); line-height: 0.78; letter-spacing: -0.02em; text-transform: uppercase; color: #f5f5f2; white-space: nowrap;">Heckle</div>
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 36%; transform: translateY(-50%); text-align: center; pointer-events: none; font-weight: 900; font-stretch: 62%; font-size: clamp(130px, min(30vw, 44vh), 500px); line-height: 0.78; letter-spacing: -0.02em; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1.5px #ffd400; white-space: nowrap; z-index: 2; opacity: 0.55;">Heckle</div>
+  <div style="position: absolute; inset: 0; z-index: 1;">
+    <x-import component-from-global-scope="heckle-mic" from="./heckle-mic.js?v=3" autorotate="true" style="position: absolute; inset: 0;" hint-size="100%,100%"></x-import>
+  </div>
+  <div style="position: relative; z-index: 3; margin-top: auto; pointer-events: none; background: linear-gradient(to top, #0a0a0a 55%, rgba(10,10,10,0)); padding-top: 64px;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px) clamp(24px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-end; justify-content: space-between;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 460px; pointer-events: auto;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">Comedy, culture &amp; the people who bomb for it</span>
+        <p style="margin: 0; font-family: 'Newsreader', serif; font-size: clamp(20px, 1.8vw, 26px); line-height: 1.3;">Stand-up, sketch, specials and late night — plus 1,400 open mics, updated nightly.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <a href="#top" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; background: #ffd400; color: #0a0a0a; font-weight: 800; font-stretch: 75%; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase;" style-hover="background: #fff; color: #0a0a0a;">Read today’s issue</a>
+          <a href="Open Mics.dc.html" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border: 1px solid rgba(255,255,255,0.3); font-weight: 800; font-stretch: 75%; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase;" style-hover="border-color: #ffd400;">Find a mic</a>
+        </div>
+      </div>
+      <a href="#joke" style="pointer-events: auto; flex: 1 1 340px; max-width: 460px; display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; background: rgba(10,10,10,0.8); border: 1px solid rgba(255,212,0,0.55); backdrop-filter: blur(8px);" style-hover="border-color: #ffd400;">
+        <span style="display: flex; justify-content: space-between; gap: 12px; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;"><span style="color: #ffd400;">“ Joke of the Week</span><span style="color: #a3a39e;">Week 39</span></span>
+        <p style="margin: 0; font-family: 'Newsreader', serif; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.35; color: #f5f5f2;">My dad says comedy isn’t a real job. Rich, coming from a man who’s done the same eleven minutes at Thanksgiving since 1994.</p>
+        <span style="display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: #a3a39e;"><span>Dana Okafor · Columbus, OH</span><span style="color: #f5f5f2; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">Submit yours →</span></span>
+      </a>
+      <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-end; text-align: right;">
+        <span style="display: inline-flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #a3a39e;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path></svg>Drag to spin · Tap to test
+        </span>
+        <a href="#week" style="pointer-events: auto; display: inline-flex; gap: 10px; align-items: center; font-weight: 800; font-stretch: 75%; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Set &amp; Bomb of the Week
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="top" style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: clamp(20px, 3vw, 36px) clamp(16px, 3vw, 40px) clamp(40px, 5vw, 72px); display: flex; flex-wrap: wrap; gap: clamp(20px, 2.5vw, 32px);" data-screen-label="Hero">
+  <article onMouseMove="{{ onHeroMove }}" onMouseLeave="{{ onHeroLeave }}" style="flex: 2 1 520px; min-width: 0; perspective: 1200px;">
+    <div ref="{{ heroCard }}" style="position: relative; aspect-ratio: 16 / 11; min-height: 460px; transform-style: preserve-3d; will-change: transform;">
+      <div style="position: absolute; inset: 0; overflow: hidden; background: #161616;">
+        <div ref="{{ heroImg }}" style="position: absolute; inset: -5%; will-change: transform;">
+          <image-slot id="hero-a" shape="rect" placeholder="Cover film still — comic mid-set under a single spotlight"></image-slot>
+        </div>
+      </div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.95) 8%, rgba(10,10,10,0.2) 55%, transparent); pointer-events: none;"></div>
+      <div ref="{{ heroType }}" style="position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(20px, 3vw, 40px); display: flex; flex-direction: column; gap: 16px; pointer-events: none; will-change: transform;">
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <span style="background: #ffd400; color: #0a0a0a; padding: 4px 8px; font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;">Cover Story</span>
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #d6d6d2;">Issue 041</span>
+        </div>
+        <h1 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(56px, 8.6vw, 148px); line-height: 0.84; letter-spacing: -0.015em; text-transform: uppercase;">Nobody Bombs <span style="color: #ffd400;">Online.</span></h1>
+        <p style="margin: 0; font-family: 'Newsreader', serif; font-style: italic; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.35; max-width: 46ch; color: #e8e8e4;">How the sixty-second clip rewired stand-up — and the comics building ninety-minute hours in open defiance of it.</p>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; pointer-events: auto;">
+          <button type="button" onClick="{{ openFilm }}" style="display: inline-flex; gap: 10px; align-items: center; background: #ffd400; color: #0a0a0a; border: 0; padding: 12px 18px; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;" style-hover="background: #fff;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>Watch the film · 14:22
+          </button>
+          <span style="font-size: 13px; color: #b5b5b0;">By Dana Oyelaran · 22 min read</span>
+        </div>
+      </div>
+    </div>
+  </article>
+  <article style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+    <a href="#" style="display: block; position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #161616;">
+      <div data-parallax="0.08" style="position: absolute; inset: -8% 0; will-change: transform;">
+        <image-slot id="hero-b" shape="rect" placeholder="Portrait — late-night host at the desk"></image-slot>
+      </div>
+      <span style="position: absolute; top: 14px; left: 14px; z-index: 2; pointer-events: none; background: #0a0a0a; color: #ffd400; padding: 4px 8px; font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;">Late Night</span>
+    </a>
+    <h2 style="margin: 0; font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(30px, 2.8vw, 42px); line-height: 1.02; letter-spacing: -0.01em;"><a href="#">The Last Desk Standing: Inside the Final Season of Network Late Night</a></h2>
+    <span style="font-size: 13px; color: #b5b5b0;">By Marisol Tan · 16 min read</span>
+  </article>
+</section>
+
+<div aria-hidden="true" style="border-top: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); overflow: hidden; padding: 14px 0;">
+  <div ref="{{ bandRef }}" style="display: flex; gap: 40px; width: max-content; white-space: nowrap; font-weight: 900; font-stretch: 62%; font-size: clamp(64px, 10vw, 150px); line-height: 0.9; text-transform: uppercase; will-change: transform;">
+    <span>Stand-Up</span><span style="color: #ffd400;">✶</span><span style="color: transparent; -webkit-text-stroke: 1.5px #f5f5f2;">Sketch</span><span style="color: #ffd400;">✶</span><span>Specials</span><span style="color: #ffd400;">✶</span><span style="color: transparent; -webkit-text-stroke: 1.5px #f5f5f2;">Podcasts</span><span style="color: #ffd400;">✶</span><span>Late Night</span><span style="color: #ffd400;">✶</span><span style="color: transparent; -webkit-text-stroke: 1.5px #f5f5f2;">Crowd Work</span>
+  </div>
+</div>
+
+<section id="latest" style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(16px, 3vw, 40px);" data-screen-label="Latest">
+  <div style="display: flex; flex-wrap: wrap; gap: 48px 40px;">
+    <div style="flex: 3 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #f5f5f2; padding-bottom: 10px;">
+        <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: 44px; line-height: 1; text-transform: uppercase;">The Latest</h2>
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #ffd400;">Mon, Sep 28</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 40px 28px;">
+        <sc-for list="{{ stories }}" as="s" hint-placeholder-count="6">
+          <article style="display: flex; flex-direction: column; gap: 12px; min-width: 0;">
+            <a href="#" style="display: block; position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #161616;">
+              <div style="position: absolute; inset: 0; transition: transform .7s cubic-bezier(.2,.7,.2,1);" style-hover="transform: scale(1.05);">
+                <image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.ph }}"></image-slot>
+              </div>
+            </a>
+            <span style="font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">{{ s.k }}</span>
+            <h3 style="margin: 0; font-family: 'Newsreader', serif; font-weight: 600; font-size: 25px; line-height: 1.1;"><a href="#">{{ s.t }}</a></h3>
+            <span style="font-size: 13px; color: #a3a39e;">{{ s.by }}</span>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+    <aside style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column;">
+      <div style="border-bottom: 2px solid #ffd400; padding-bottom: 10px;">
+        <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: 44px; line-height: 1; text-transform: uppercase; color: #ffd400;">Most Read</h2>
+      </div>
+      <sc-for list="{{ mostRead }}" as="m" hint-placeholder-count="5">
+        <a href="#" style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: start; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.12);">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 64px; line-height: 0.8; color: transparent; -webkit-text-stroke: 1.5px #ffd400;">{{ m.n }}</span>
+          <span style="display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-weight: 800; font-stretch: 75%; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #a3a39e;">{{ m.k }}</span>
+            <span style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 20px; line-height: 1.2;">{{ m.t }}</span>
+          </span>
+        </a>
+      </sc-for>
+    </aside>
+  </div>
+</section>
+
+<section id="week" style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px) clamp(56px, 7vw, 104px);" data-screen-label="Set &amp; Bomb of the Week">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; border-bottom: 2px solid #f5f5f2; padding-bottom: 12px; margin-bottom: 28px;">
+    <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(44px, 5vw, 72px); line-height: 0.9; text-transform: uppercase;">Killed <span style="color: #ffd400;">/</span> Died</h2>
+    <span style="font-family: 'Newsreader', serif; font-style: italic; font-size: 18px; color: #b5b5b0;">The week’s best set, and its bravest disaster. Every bomb is submitted by the comic.</span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+    <article style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px; padding: clamp(18px, 2vw, 28px); background: #ffd400; color: #0a0a0a;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+        <span style="background: #ffd400; color: #0a0a0a; padding: 5px 10px; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;">★ Set of the Week</span>
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #3a3a00;">Week 39 · Don't Tell Comedy</span>
+      </div>
+      <a href="https://www.youtube.com/watch?v=_eIhU898UMo" target="_blank" rel="noopener" style="display: block; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #0a0a0a;">
+        <img src="https://i.ytimg.com/vi/_eIhU898UMo/maxresdefault.jpg" alt="Rosebud Baker performing for Don't Tell Comedy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
+        <span style="position: absolute; left: 14px; bottom: 14px; z-index: 2; pointer-events: none; display: inline-flex; gap: 8px; align-items: center; background: #0a0a0a; color: #f5f5f2; padding: 8px 12px; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>Watch on YouTube
+        </span>
+      </a>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #0a0a0a;">Rosebud Baker</span>
+        <h3 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(40px, 4.4vw, 68px); line-height: 0.88; text-transform: uppercase;">Why Women Commit Crimes</h3>
+        <p style="margin: 0; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.4; max-width: 46ch; color: #1a1a1a;">A traitorous couples therapist, being the breadwinner in her marriage, and why single mothers deserve to be love-bombed. Brand new on Don't Tell's channel.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(10,10,10,0.25); margin-top: auto;">
+        <div style="padding: 14px 12px 0 0; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 32px; line-height: 0.9;">Sep 28</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #3a3a00;">Released</span>
+        </div>
+        <div style="padding: 14px 12px 0 12px; border-left: 1px solid rgba(10,10,10,0.25); display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 32px; line-height: 0.9;">Don't Tell</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #3a3a00;">Channel</span>
+        </div>
+        <div style="padding: 14px 0 0 12px; border-left: 1px solid rgba(10,10,10,0.25); display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 32px; line-height: 0.9;">Mother Lode</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #3a3a00;">Latest special</span>
+        </div>
+      </div>
+    </article>
+    <article style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px; padding: clamp(18px, 2vw, 28px); border: 1px solid rgba(255,255,255,0.25);">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+        <span style="background: #f5f5f2; color: #0a0a0a; padding: 5px 10px; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;">✕ Bomb of the Week</span>
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #a3a39e;">Week 39 · Laugh Shack, Tampa</span>
+      </div>
+      <a href="#" style="display: block; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #161616;">
+        <image-slot id="bomb-of-week" shape="rect" placeholder="Bomb of the Week — clip still, 16:9"></image-slot>
+        <span style="position: absolute; left: 14px; bottom: 14px; z-index: 2; pointer-events: none; display: inline-flex; gap: 8px; align-items: center; background: #0a0a0a; color: #f5f5f2; padding: 8px 12px; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>Watch · 5:12
+        </span>
+      </a>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">Ollie Szabo</span>
+        <h3 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(40px, 4.4vw, 68px); line-height: 0.88; text-transform: uppercase;">The Longest Five Minutes in Florida</h3>
+        <p style="margin: 0; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.4; max-width: 46ch; color: #d6d6d2;">A new ten-minute bit about tax brackets, debuted at a bachelorette brunch. He narrates the silence himself. It is, somehow, perfect.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,0.18); margin-top: auto;">
+        <div style="padding: 14px 12px 0 0;  display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 0.9;">0.3</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #a3a39e;">Laughs / min</span>
+        </div>
+        <div style="padding: 14px 12px 0 12px; border-left: 1px solid rgba(255,255,255,0.18); display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 0.9;">1</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #a3a39e;">Cough, audible</span>
+        </div>
+        <div style="padding: 14px 0 0 12px; border-left: 1px solid rgba(255,255,255,0.18); display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 0.9;">4.1s</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #a3a39e;">Longest silence</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="joke" style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px) clamp(56px, 7vw, 104px);" data-screen-label="Joke of the Week">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; border-bottom: 2px solid #f5f5f2; padding-bottom: 12px; margin-bottom: 28px;">
+    <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(44px, 5vw, 72px); line-height: 0.9; text-transform: uppercase;">Joke of the Week</h2>
+    <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Submissions close Sunday · Winner runs Monday</span>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 40px;">
+    <form onSubmit="{{ submitJoke }}" style="flex: 1.3 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+      <p style="margin: 0; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.45; color: #c8c8c3; max-width: 52ch;">One joke. Your best one. Our editors read every entry and the winner gets top billing here next week, credited to you.</p>
+      <label style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Your joke</span>
+        <textarea value="{{ jokeText }}" onChange="{{ onJokeText }}" rows="5" maxlength="{{ jokeMax }}" placeholder="Setup, punchline. Tags welcome." required="{{ true }}" style="background: #141414; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); padding: 16px; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.4; resize: vertical;"></textarea>
+        <span style="align-self: flex-end; font-size: 12px; color: {{ jokeCountColor }};">{{ jokeCount }}</span>
+      </label>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px;">
+        <label style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Name or stage name</span>
+          <input value="{{ jokeName }}" onChange="{{ onJokeName }}" required="{{ true }}" style="background: #141414; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); padding: 12px 14px; font: inherit; font-size: 16px;">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">City</span>
+          <input value="{{ jokeCity }}" onChange="{{ onJokeCity }}" style="background: #141414; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); padding: 12px 14px; font: inherit; font-size: 16px;">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">Instagram / TikTok (optional)</span>
+          <input value="{{ jokeHandle }}" onChange="{{ onJokeHandle }}" placeholder="@" style="background: #141414; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); padding: 12px 14px; font: inherit; font-size: 16px;">
+        </label>
+      </div>
+      <label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.4; color: #c8c8c3;">
+        <input type="checkbox" checked="{{ jokeOriginal }}" onChange="{{ onJokeOriginal }}" required="{{ true }}" style="accent-color: #ffd400; width: 18px; height: 18px; margin: 1px 0 0;">
+        <span>This joke is mine, and Heckle can publish it with credit.</span>
+      </label>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+        <button type="submit" style="padding: 14px 22px; border: 0; background: #ffd400; color: #0a0a0a; cursor: pointer; font: inherit; font-weight: 800; font-stretch: 75%; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase;" style-hover="background: #fff;">Submit joke</button>
+        <span style="font-size: 14px; color: #ffd400;">{{ jokeMsg }}</span>
+      </div>
+    </form>
+    <aside style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+      <div style="background: #ffd400; color: #0a0a0a; padding: 22px; display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;">★ This week’s winner</span>
+        <p style="margin: 0; font-family: 'Newsreader', serif; font-size: 24px; line-height: 1.3;">My dad says comedy isn’t a real job. Rich, coming from a man who’s done the same eleven minutes at Thanksgiving since 1994.</p>
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #3a3a00;">Dana Okafor · Columbus, OH</span>
+      </div>
+      <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #a3a39e;">Your entries</span>
+      <sc-for list="{{ myJokes }}" as="j" hint-placeholder-count="0">
+        <div style="border: 1px solid rgba(255,255,255,0.18); padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+          <p style="margin: 0; font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.4; white-space: pre-wrap;">{{ j.text }}</p>
+          <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: #a3a39e;">
+            <span>{{ j.byline }}</span>
+            <span style="color: #ffd400; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">In review</span>
+          </div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ noJokes }}" hint-placeholder-val="{{ true }}">
+        <div style="border: 1px dashed rgba(255,255,255,0.25); padding: 28px 20px; font-size: 15px; line-height: 1.45; color: #a3a39e;">Nothing yet. Your submissions show up here while the editors read them.</div>
+      </sc-if>
+    </aside>
+  </div>
+</section>
+
+<section id="clips" style="background: #141414; padding: clamp(48px, 6vw, 88px) 0; border-top: 1px solid rgba(255,255,255,0.08);" data-screen-label="Video">
+  <div style="max-width: 1440px; margin: 0 auto 32px; padding: 0 clamp(16px, 3vw, 40px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">Video · Hover to preview</span>
+      <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(52px, 7vw, 104px); line-height: 0.85; text-transform: uppercase;">The Tight Minute</h2>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button type="button" onClick="{{ railPrev }}" aria-label="Previous" style="width: 48px; height: 48px; display: grid; place-items: center; background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.25); cursor: pointer;" style-hover="background: #ffd400; color: #0a0a0a; border-color: #ffd400;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+      </button>
+      <button type="button" onClick="{{ railNext }}" aria-label="Next" style="width: 48px; height: 48px; display: grid; place-items: center; background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.25); cursor: pointer;" style-hover="background: #ffd400; color: #0a0a0a; border-color: #ffd400;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+      </button>
+    </div>
+  </div>
+  <div ref="{{ railRef }}" class="rail" style="display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0 max(clamp(16px, 3vw, 40px), calc((100% - 1440px) / 2 + clamp(16px, 3vw, 40px))) 8px; scrollbar-width: none;">
+    <sc-for list="{{ clips }}" as="c" hint-placeholder-count="7">
+      <a href="#" onMouseEnter="{{ c.enter }}" onMouseLeave="{{ c.leave }}" style="flex: 0 0 clamp(210px, 19vw, 270px); scroll-snap-align: start; display: flex; flex-direction: column; gap: 12px;">
+        <div style="position: relative; aspect-ratio: 9 / 16; overflow: hidden; background: #1e1e1e; outline: {{ c.outline }}; outline-offset: -2px; transition: outline-color .2s;">
+          <div style="position: absolute; inset: 0; transform: {{ c.zoom }}; transition: transform 6s linear;">
+            <image-slot id="{{ c.id }}" shape="rect" placeholder="Vertical clip, 9:16"></image-slot>
+          </div>
+          <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75), transparent 45%); pointer-events: none;"></div>
+          <span style="position: absolute; top: 12px; left: 12px; z-index: 2; pointer-events: none; font-size: 12px; font-weight: 700; background: {{ c.badgeBg }}; color: {{ c.badgeFg }}; padding: 3px 7px; letter-spacing: 0.06em; text-transform: uppercase;">{{ c.badge }}</span>
+          <div style="position: absolute; left: 12px; right: 12px; bottom: 14px; z-index: 2; pointer-events: none; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #ffd400;">{{ c.who }}</span>
+            <span style="font-weight: 800; font-stretch: 70%; font-size: 24px; line-height: 0.98; text-transform: uppercase;">{{ c.t }}</span>
+            <div style="height: 3px; background: rgba(255,255,255,0.25);">
+              <div style="height: 100%; background: #ffd400; width: {{ c.prog }}; transition: {{ c.trans }};"></div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section id="watch" style="padding: clamp(56px, 7vw, 104px) 0; overflow: hidden;" data-screen-label="Comics to Watch">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+    <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px; position: relative; z-index: 2;">
+      <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">The List · Class of 2026</span>
+      <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(60px, 7.5vw, 120px); line-height: 0.84; text-transform: uppercase;">8 Comics<br><span style="color: transparent; -webkit-text-stroke: 1.5px #f5f5f2;">To Watch</span></h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #b5b5b0;">Drag the ring or use the arrows.</p>
+      <div style="border-top: 2px solid #ffd400; padding-top: 18px; display: flex; flex-direction: column; gap: 10px; min-height: 180px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;"><span>No. {{ active.n }}</span><span>{{ active.city }}</span></div>
+        <div style="font-weight: 900; font-stretch: 62%; font-size: 48px; line-height: 0.9; text-transform: uppercase;">{{ active.name }}</div>
+        <p style="margin: 0; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.35;">{{ active.pitch }}</p>
+        <div style="font-size: 13px; color: #a3a39e;">{{ active.credit }}</div>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button type="button" onClick="{{ ringPrev }}" aria-label="Previous comic" style="width: 48px; height: 48px; display: grid; place-items: center; background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.25); cursor: pointer;" style-hover="background: #ffd400; color: #0a0a0a; border-color: #ffd400;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></button>
+        <button type="button" onClick="{{ ringNext }}" aria-label="Next comic" style="width: 48px; height: 48px; display: grid; place-items: center; background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.25); cursor: pointer;" style-hover="background: #ffd400; color: #0a0a0a; border-color: #ffd400;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></button>
+      </div>
+    </div>
+    <div onPointerDown="{{ ringDown }}" style="flex: 1.7 1 560px; min-width: 0; height: 600px; perspective: 1400px; perspective-origin: 50% 35%; display: grid; place-items: center; cursor: grab; touch-action: pan-y; user-select: none;">
+      <div ref="{{ ringRef }}" style="position: relative; width: 220px; height: 320px; transform-style: preserve-3d; will-change: transform;">
+        <sc-for list="{{ comics }}" as="c" hint-placeholder-count="8">
+          <div style="position: absolute; inset: 0; transform: {{ c.transform }}; display: flex; flex-direction: column; background: #161616; border: 1px solid {{ c.border }}; transition: border-color .3s;">
+            <div style="flex: 1; position: relative; pointer-events: none; overflow: hidden;">
+              <image-slot id="{{ c.id }}" shape="rect" placeholder="Portrait"></image-slot>
+            </div>
+            <div style="padding: 10px 12px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; background: #0a0a0a;">
+              <span style="font-weight: 800; font-stretch: 70%; font-size: 18px; text-transform: uppercase; line-height: 1;">{{ c.name }}</span>
+              <span style="font-weight: 800; font-size: 12px; color: #ffd400;">{{ c.n }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ranked" style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px) clamp(56px, 7vw, 104px);" data-screen-label="Reviews">
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #f5f5f2; padding-bottom: 16px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">Reviews · Ranked</span>
+      <h2 style="margin: 0; font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.02em;">The Best Specials of 2026, <em style="font-weight: 400;">So Far</em></h2>
+    </div>
+    <div style="display: flex; border: 1px solid rgba(255,255,255,0.25);">
+      <sc-for list="{{ filters }}" as="fl" hint-placeholder-count="4">
+        <button type="button" onClick="{{ fl.onClick }}" style="background: {{ fl.bg }}; color: {{ fl.fg }}; border: 0; padding: 10px 14px; font-family: inherit; font-weight: 700; font-stretch: 75%; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap;">{{ fl.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column;">
+    <sc-for list="{{ rankedRows }}" as="r" hint-placeholder-count="6">
+      <a href="#" style="display: grid; grid-template-columns: clamp(56px, 8vw, 120px) clamp(80px, 9vw, 128px) minmax(0, 1fr); gap: clamp(16px, 2.5vw, 36px); align-items: center; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.12); transition: background .2s, padding .3s;" style-hover="background: #141414; color: #f5f5f2;">
+        <span style="font-weight: 900; font-stretch: 62%; font-size: clamp(56px, 7vw, 104px); line-height: 0.8; color: #ffd400;">{{ r.rank }}</span>
+        <div style="position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: #161616; pointer-events: none;">
+          <image-slot id="{{ r.id }}" shape="rect" placeholder="Key art"></image-slot>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 320px; min-width: 0;">
+            <span style="font-weight: 900; font-stretch: 62%; font-size: clamp(32px, 3.2vw, 48px); line-height: 0.92; text-transform: uppercase;">{{ r.title }}</span>
+            <span style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.4; color: #d6d6d2;">{{ r.verdict }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-start; min-width: 180px;">
+            <div style="display: flex; gap: 4px;" aria-label="{{ r.scoreLabel }}">
+              <sc-for list="{{ r.pips }}" as="p" hint-placeholder-count="5">
+                <span style="width: 22px; height: 8px; background: {{ p.bg }};"></span>
+              </sc-for>
+            </div>
+            <span style="font-size: 13px; font-weight: 600;">{{ r.comic }} · <span style="color: #a3a39e;">{{ r.format }} · {{ r.runtime }}</span></span>
+          </div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section id="craft" ref="{{ storyRef }}" style="background: #ffd400; color: #0a0a0a;" data-screen-label="Anatomy of a Joke">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 0 clamp(32px, 5vw, 96px);">
+    <div style="flex: 1.2 1 480px; min-width: 0;">
+      <div style="position: sticky; top: 96px; min-height: calc(100vh - 96px); display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: 40px 0; box-sizing: border-box;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;">Craft · Anatomy of a Joke</span>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ jokeLines }}" as="j" hint-placeholder-count="4">
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(30px, 3.4vw, 52px); line-height: 1.04; letter-spacing: -0.015em; opacity: {{ j.op }}; transform: translateX({{ j.x }}); transition: opacity .5s, transform .6s cubic-bezier(.2,.7,.2,1);">{{ j.t }}</div>
+          </sc-for>
+        </div>
+        <div style="border: 2px solid #0a0a0a; padding: 16px 16px 12px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; justify-content: space-between; font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;"><span>Room audio</span><span>{{ meterLabel }}</span></div>
+          <div style="display: flex; gap: 3px; align-items: flex-end; height: 72px;">
+            <sc-for list="{{ bars }}" as="b" hint-placeholder-count="48">
+              <span style="flex: 1; height: {{ b.h }}; background: #0a0a0a; transition: height .6s cubic-bezier(.2,.7,.2,1);"></span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="flex: 1 1 360px; min-width: 0; padding: 16vh 0;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="min-height: 72vh; display: flex; flex-direction: column; justify-content: center; gap: 24px; opacity: {{ s.op }}; transition: opacity .4s;">
+          <span style="font-weight: 900; font-stretch: 62%; font-size: 120px; line-height: 0.8;">{{ s.n }}</span>
+          <h3 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: 56px; line-height: 0.9; text-transform: uppercase;">{{ s.t }}</h3>
+          <p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 40ch; font-weight: 500;">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="originals" style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: clamp(56px, 7vw, 104px) clamp(16px, 3vw, 40px);" data-screen-label="Originals">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-bottom: 2px solid #f5f5f2; padding-bottom: 10px; margin-bottom: 32px;">
+    <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: 44px; line-height: 1; text-transform: uppercase;">Heckle Originals</h2>
+    <a href="#" style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #ffd400;">All series →</a>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 32px 20px;">
+    <sc-for list="{{ series }}" as="s" hint-placeholder-count="4">
+      <a href="#" style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #161616;">
+          <div data-parallax="0.06" style="position: absolute; inset: -10% 0; will-change: transform;">
+            <image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.ph }}"></image-slot>
+          </div>
+          <span style="position: absolute; bottom: 12px; left: 12px; z-index: 2; pointer-events: none; background: #ffd400; color: #0a0a0a; padding: 3px 8px; font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;">{{ s.eps }}</span>
+        </div>
+        <span style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 0.9; text-transform: uppercase;">{{ s.t }}</span>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #b5b5b0;">{{ s.d }}</p>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section id="setlist" style="border-top: 1px solid rgba(255,255,255,0.12);" data-screen-label="Newsletter">
+  <div style="max-width: 1440px; margin: 0 auto; padding: clamp(56px, 7vw, 104px) clamp(16px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-end; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column; gap: 14px; flex: 1 1 460px;">
+      <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">Newsletter · Daily, 7 a.m.</span>
+      <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(64px, 9vw, 140px); line-height: 0.82; text-transform: uppercase;">The Setlist<span style="color: #ffd400;">.</span></h2>
+      <p style="margin: 0; font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.4; max-width: 44ch; color: #d6d6d2;">Tour drops, new specials, and the one clip worth your minute. Five items, every morning.</p>
+    </div>
+    <form onSubmit="{{ onSubscribe }}" style="display: flex; gap: 0; flex: 1 1 380px; max-width: 520px; border: 1px solid rgba(255,255,255,0.3);">
+      <input type="email" required placeholder="you@example.com" aria-label="Email address" style="flex: 1; min-width: 0; min-height: 56px; padding: 0 16px; background: transparent; border: 0; color: #f5f5f2; font-family: inherit; font-size: 16px; outline: none;">
+      <button type="submit" style="min-height: 56px; padding: 0 22px; background: #ffd400; color: #0a0a0a; border: 0; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;" style-hover="background: #fff;">{{ subLabel }}</button>
+    </form>
+  </div>
+</section>
+
+<footer style="background: #ffd400; color: #0a0a0a; margin-top: auto;">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 48px clamp(16px, 3vw, 40px) 28px; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; gap: 48px; flex-wrap: wrap; font-size: 15px; font-weight: 500;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;">Sections</span>
+        <a href="#latest">Stand-Up</a><a href="#clips">Video</a><a href="#ranked">Reviews</a><a href="#craft">Craft</a><a href="Game Night v2.html">Game Night</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;">Originals</span>
+        <a href="#originals">Tight Five</a><a href="#originals">Green Room</a><a href="#originals">Bombed</a><a href="#originals">Night Shift</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;">Heckle</span>
+        <a href="#">About</a><a href="#">Pitch us</a><a href="#">Advertise</a><a href="#">Careers</a>
+      </div>
+    </div>
+    <div style="font-weight: 900; font-stretch: 62%; font-size: clamp(120px, 26vw, 400px); line-height: 0.75; letter-spacing: -0.02em; text-transform: uppercase; margin-left: -0.04em;">Heckle.</div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 500; border-top: 1px solid #0a0a0a; padding-top: 16px;">
+      <span>© 2026 Heckle Media. Comedy, culture, and the people who bomb for it.</span>
+      <span>Privacy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ filmOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeFilm }}" style="position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 24px; background: rgba(0,0,0,0.9);">
+    <div onClick="{{ stop }}" style="width: min(1100px, 100%); display: flex; flex-direction: column; gap: 14px;">
+      <div style="position: relative; aspect-ratio: 16 / 9; background: #161616;">
+        <image-slot id="film-frame" shape="rect" placeholder="Film poster frame, 16:9"></image-slot>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+        <span style="font-weight: 900; font-stretch: 62%; font-size: 32px; text-transform: uppercase;">Nobody Bombs Online · 14:22</span>
+        <button type="button" onClick="{{ closeFilm }}" style="background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.3); padding: 10px 16px; font-family: inherit; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;" style-hover="border-color: #ffd400; color: #ffd400;">Close</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motion&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Behavior&quot;}, &quot;autoRotate&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Behavior&quot;}, &quot;showTicker&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot;}}">
+const TICKER = [
+  { k: 'Tour', t: 'Mara Quell adds 22 arena dates after a sold-out spring' },
+  { k: 'Special', t: '“Soft Opinions” streams Friday' },
+  { k: 'Festival', t: 'Fringe comedy lineup drops at noon ET' },
+  { k: 'Podcast', t: 'Green Room ep. 112 is live' },
+  { k: 'Late Night', t: 'Another network desk goes dark in January' }
+];
+const STORIES = [
+  { k: 'Festivals', t: 'Inside the Fringe Lottery: 3,000 Comics, 40 Slots, One Very Tired Booker', by: 'Marisol Tan · 16 min', ph: 'Packed green room' },
+  { k: 'Specials', t: 'Wren Okafor Made the Year’s Best Hour in Four Years Flat', by: 'Theo Lindqvist · 9 min', ph: 'Comic backstage, portrait' },
+  { k: 'Podcasts', t: 'The Comedy Podcast Boom Is Over. The Good Ones Are Just Getting Started.', by: 'Ama Boateng · 11 min', ph: 'Podcast studio, two mics' },
+  { k: 'Sketch', t: 'Why Every Sketch Troupe Is Suddenly Shooting on a Single Phone', by: 'Jules Harker · 7 min', ph: 'Sketch set, behind the scenes' },
+  { k: 'Clubs', t: 'The Basement Turns 30: An Oral History of New York’s Rowdiest Room', by: 'Nadia Faroq · 24 min', ph: 'Brick-wall club stage' },
+  { k: 'Internet', t: 'Crowd Work Clips Are Eating Stand-Up. Here’s Who’s Fighting Back.', by: 'Dana Oyelaran · 8 min', ph: 'Phone filming a show' }
+];
+const MOST = [
+  { k: 'Tour', t: 'Every Comedy Tour Hitting Arenas This Fall, Ranked by Ticket Price' },
+  { k: 'Late Night', t: 'What Actually Happens When a Talk Show Gets Canceled' },
+  { k: 'Interview', t: 'Keisha Moreau on Writing Her Mom Into Every Joke — With Permission' },
+  { k: 'Specials', t: 'Seven Hours You Missed This Summer' },
+  { k: 'Culture', t: 'The Heckler Who Became a Headliner' }
+];
+const CLIPS = [
+  { who: 'Priya Castellane', t: 'The Front Row Dentist', d: '0:58' },
+  { who: 'Rafa Delgado', t: 'Bilingual Airport Security', d: '0:44' },
+  { who: 'Ollie Szabo', t: 'I Rewatched My Worst Set', d: '1:02' },
+  { who: 'Keisha Moreau', t: 'Mom Found My Special', d: '0:51' },
+  { who: 'Sunny Ahmadi', t: 'Open Mic, 1:47 A.M.', d: '0:39' },
+  { who: 'Dev Castillo', t: 'Objection, Toddler', d: '0:57' },
+  { who: 'Wren Okafor', t: 'Soft Opinions, Hard Truths', d: '1:00' }
+];
+const COMICS = [
+  { name: 'Priya Castellane', city: 'Chicago', pitch: 'Crowd work that plays like a TED talk slowly going wrong.', credit: 'Headlined Zanies, 14 nights' },
+  { name: 'Jonah Reyes-Whitfield', city: 'Austin', pitch: 'Deadpan airport material, nine laughs a minute.', credit: 'Debut hour taping in March' },
+  { name: 'Keisha Moreau', city: 'Atlanta', pitch: 'Family stories so specific they turn universal by the second tag.', credit: 'Writer, two network sitcoms' },
+  { name: 'Ollie Szabo', city: 'Toronto', pitch: 'Built an act out of replaying his worst sets on stage. It works.', credit: 'New Faces, 2025' },
+  { name: 'Sunny Ahmadi', city: 'Los Angeles', pitch: 'Open-mic veteran with the tightest fifteen in the city.', credit: 'Opening a stadium tour' },
+  { name: 'Rafa Delgado', city: 'Miami', pitch: 'Bilingual punchlines that land twice — once per language.', credit: 'Viral clip, 41M views' },
+  { name: 'Wren Okafor', city: 'London', pitch: 'The year’s best special, from four years on stage.', credit: '“Soft Opinions,” out Friday' },
+  { name: 'Dev Castillo', city: 'New York', pitch: 'Observational comedy with a lawyer’s precision.', credit: 'Residency at The Basement' }
+];
+const RANKED = [
+  { title: 'Soft Opinions', comic: 'Wren Okafor', format: 'Hour', runtime: '62 min', score: 5, verdict: 'The most confident debut in years — every callback earns its spot.' },
+  { title: 'Carry-On Only', comic: 'Jonah Reyes-Whitfield', format: 'Hour', runtime: '58 min', score: 5, verdict: 'A travel hour that somehow never mentions peanuts.' },
+  { title: 'Row Two', comic: 'Priya Castellane', format: 'Crowd Work', runtime: '71 min', score: 4, verdict: 'Unscripted and structured at once. Nobody else can do this.' },
+  { title: 'Group Chat', comic: 'Keisha Moreau', format: 'Hour', runtime: '55 min', score: 4, verdict: 'The mother material alone justifies the runtime.' },
+  { title: 'Two Drink Minimum', comic: 'The Wednesday Players', format: 'Sketch', runtime: '44 min', score: 4, verdict: 'A sketch special that feels like a live show, in the best way.' },
+  { title: 'Doble', comic: 'Rafa Delgado', format: 'Hour', runtime: '60 min', score: 3, verdict: 'Two languages, one mostly airtight hour.' }
+];
+const SERIES = [
+  { t: 'Tight Five', eps: 'S3 · 12 eps', d: 'Five minutes, one take, no edits. New comics every Tuesday.', ph: 'Single mic on a dark stage' },
+  { t: 'Green Room', eps: 'Podcast · 112 eps', d: 'Two headliners, one couch, the hour before showtime.', ph: 'Green room couch' },
+  { t: 'Bombed', eps: 'S1 · 8 eps', d: 'Comics rewatch their worst sets and explain what died.', ph: 'Empty club, chairs stacked' },
+  { t: 'Night Shift', eps: 'S2 · 10 eps', d: 'Riding along with the comics doing four spots a night.', ph: 'Comic in a cab at night' }
+];
+const STEPS = [
+  { t: 'Setup', d: 'Establish a world the room already agrees with. Short, specific, no jokes yet — you are borrowing trust.', line: 'My dad just learned to text.' },
+  { t: 'Premise', d: 'Name the strange thing. The audience leans in because they can feel the turn coming.', line: 'He signs every message like a letter.' },
+  { t: 'Punchline', d: 'Collide the premise with reality. Land on the funniest word — then stop talking.', line: '“Your mother is in the hospital. Love, Dad.”' },
+  { t: 'Tag', d: 'Ride the laugh with a second hit off the same premise. The best comics tag three deep.', line: 'Next text: “She’s fine. Sorry for the tone.”' }
+];
+const METER = ['Murmur', 'Leaning in', 'Big laugh', 'Applause break'];
+const AMP = [0.14, 0.3, 0.8, 1];
+const BASE = Array.from({ length: 48 }, (_, i) => 0.3 + 0.7 * Math.abs(Math.sin(i * 1.7) * Math.cos(i * 0.43)));
+const N = COMICS.length, STEP_DEG = 360 / N, RADIUS = 420;
+const FILTERS = ['All', 'Hour', 'Crowd Work', 'Sketch'];
+const pad = (n) => String(n).padStart(2, '0');
+
+class Component extends DCLogic {
+  state = { ringIdx: 0, step: 0, filmOpen: false, filter: 'All', subscribed: false, hover: null, joke: { text: '', name: '', city: '', handle: '', original: false }, myJokes: [], jokeMsg: '' };
+  setJoke(k, v) { this.setState((s) => ({ joke: { ...s.joke, [k]: v }, jokeMsg: '' })); }
+  submitJoke = (e) => {
+    e.preventDefault();
+    const j = this.state.joke;
+    if (!j.text.trim() || !j.name.trim() || !j.original) return;
+    const entry = { text: j.text.trim(), name: j.name.trim(), city: j.city.trim(), handle: j.handle.trim(), at: Date.now() };
+    const myJokes = [entry, ...this.state.myJokes];
+    try { localStorage.setItem('heckle-jokes-v1', JSON.stringify(myJokes)); } catch {}
+    this.setState({ myJokes, joke: { text: '', name: j.name, city: j.city, handle: j.handle, original: false }, jokeMsg: "Got it. Winners hear from us by Monday." });
+  };
+  tickerRef = React.createRef(); bandRef = React.createRef(); heroCard = React.createRef(); heroImg = React.createRef(); heroType = React.createRef();
+  ringRef = React.createRef(); railRef = React.createRef(); storyRef = React.createRef();
+  rot = 0; target = null; drag = null; tick = 0; tx = 0; ty = 0; cx = 0; cy = 0;
+
+  motion() { return (this.props.motion ?? true) && !this.reduced; }
+
+  componentDidMount() {
+    try { this.setState({ myJokes: JSON.parse(localStorage.getItem('heckle-jokes-v1') || '[]') }); } catch {}
+    this.reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.onPMove = (e) => {
+      if (!this.drag) return;
+      this.rot = this.drag.rot + (e.clientX - this.drag.x) * 0.35;
+      this.syncIdx();
+    };
+    this.onPUp = () => {
+      if (!this.drag) return;
+      this.drag = null;
+      this.target = Math.round(this.rot / STEP_DEG) * STEP_DEG;
+      document.body.style.cursor = '';
+    };
+    this.onScroll = () => {
+      const el = this.storyRef.current; if (!el) return;
+      const r = el.getBoundingClientRect(), vh = window.innerHeight;
+      const p = Math.min(0.999, Math.max(0, (vh * 0.5 - r.top) / r.height));
+      const step = Math.floor(p * STEPS.length);
+      if (step !== this.state.step) this.setState({ step });
+    };
+    window.addEventListener('pointermove', this.onPMove);
+    window.addEventListener('pointerup', this.onPUp);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    const loop = () => {
+      this.raf = requestAnimationFrame(loop);
+      const m = this.motion();
+      const tk = this.tickerRef.current;
+      if (tk) {
+        if (m) this.tick -= 0.6;
+        const half = tk.scrollWidth / 2;
+        if (half && -this.tick >= half) this.tick += half;
+        tk.style.transform = `translate3d(${this.tick}px,0,0)`;
+      }
+      const vh = window.innerHeight;
+      const band = this.bandRef.current;
+      if (band) {
+        const r = band.getBoundingClientRect();
+        band.style.transform = m ? `translate3d(${(r.top - vh) * 0.5}px,0,0)` : '';
+      }
+      document.querySelectorAll('[data-parallax]').forEach((el) => {
+        const r = el.parentElement.getBoundingClientRect();
+        const f = parseFloat(el.dataset.parallax) || 0;
+        el.style.transform = m ? `translate3d(0,${(r.top + r.height / 2 - vh / 2) * -f}px,0)` : '';
+      });
+      this.cx += (this.tx - this.cx) * 0.08; this.cy += (this.ty - this.cy) * 0.08;
+      const on = m ? 1 : 0;
+      if (this.heroCard.current) this.heroCard.current.style.transform = `rotateY(${this.cx * 7 * on}deg) rotateX(${-this.cy * 6 * on}deg)`;
+      if (this.heroImg.current) this.heroImg.current.style.transform = `translate3d(${-this.cx * 18 * on}px,${-this.cy * 14 * on}px,0) scale(1.04)`;
+      if (this.heroType.current) this.heroType.current.style.transform = `translate3d(${this.cx * 14 * on}px,${this.cy * 10 * on}px,60px)`;
+      if (!this.drag) {
+        if (this.target != null) {
+          this.rot += (this.target - this.rot) * 0.12;
+          if (Math.abs(this.target - this.rot) < 0.05) { this.rot = this.target; this.target = null; this.idle = performance.now(); }
+        } else if (m && (this.props.autoRotate ?? true) && performance.now() - (this.idle || 0) > 2500) {
+          this.rot -= 0.07;
+        }
+        this.syncIdx();
+      }
+      if (this.ringRef.current) this.ringRef.current.style.transform = `translateZ(${-RADIUS}px) rotateY(${this.rot}deg)`;
+    };
+    loop();
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    window.removeEventListener('pointermove', this.onPMove);
+    window.removeEventListener('pointerup', this.onPUp);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+  syncIdx() {
+    const idx = ((-Math.round(this.rot / STEP_DEG)) % N + N) % N;
+    if (idx !== this.state.ringIdx) this.setState({ ringIdx: idx });
+  }
+  nudge(d) { const base = this.target ?? Math.round(this.rot / STEP_DEG) * STEP_DEG; this.target = base + d * STEP_DEG; }
+
+  renderVals() {
+    const { ringIdx, step, filter, hover } = this.state;
+    const c = COMICS[ringIdx];
+    const rows = RANKED.filter((r) => filter === 'All' || r.format === filter);
+    const jk = this.state.joke, JMAX = 400;
+    return {
+      jokeText: jk.text, jokeName: jk.name, jokeCity: jk.city, jokeHandle: jk.handle, jokeOriginal: jk.original, jokeMax: JMAX,
+      jokeCount: `${jk.text.length} / ${JMAX}`, jokeCountColor: jk.text.length > JMAX - 40 ? '#ffd400' : '#7a7a76',
+      onJokeText: (e) => this.setJoke('text', e.target.value), onJokeName: (e) => this.setJoke('name', e.target.value),
+      onJokeCity: (e) => this.setJoke('city', e.target.value), onJokeHandle: (e) => this.setJoke('handle', e.target.value),
+      onJokeOriginal: (e) => this.setJoke('original', e.target.checked), submitJoke: this.submitJoke, jokeMsg: this.state.jokeMsg,
+      myJokes: this.state.myJokes.map((m) => ({ text: m.text, byline: [m.name, m.city, m.handle].filter(Boolean).join(' · ') })),
+      noJokes: !this.state.myJokes.length,
+      showTicker: this.props.showTicker ?? true,
+      tickerLoop: [...TICKER, ...TICKER],
+      onHeroMove: (e) => { const r = e.currentTarget.getBoundingClientRect(); this.tx = (e.clientX - r.left) / r.width - 0.5; this.ty = (e.clientY - r.top) / r.height - 0.5; },
+      onHeroLeave: () => { this.tx = 0; this.ty = 0; },
+      openFilm: () => this.setState({ filmOpen: true }),
+      closeFilm: () => this.setState({ filmOpen: false }),
+      stop: (e) => e.stopPropagation(),
+      filmOpen: this.state.filmOpen,
+      stories: STORIES.map((s, i) => ({ ...s, id: 'story-' + i })),
+      mostRead: MOST.map((m, i) => ({ ...m, n: i + 1 })),
+      clips: CLIPS.map((cl, i) => {
+        const on = hover === i;
+        return {
+          ...cl, id: 'clip-' + i,
+          enter: () => this.setState({ hover: i }),
+          leave: () => this.setState({ hover: null }),
+          zoom: on ? 'scale(1.12)' : 'scale(1)',
+          prog: on ? '100%' : '0%',
+          trans: on ? 'width 6s linear' : 'width .2s',
+          outline: on ? '2px solid #ffd400' : '2px solid transparent',
+          badge: on ? '● Playing' : cl.d,
+          badgeBg: on ? '#ffd400' : 'rgba(10,10,10,0.8)',
+          badgeFg: on ? '#0a0a0a' : '#f5f5f2'
+        };
+      }),
+      railPrev: () => this.railRef.current && this.railRef.current.scrollBy({ left: -560 }),
+      railNext: () => this.railRef.current && this.railRef.current.scrollBy({ left: 560 }),
+      comics: COMICS.map((cm, i) => ({ ...cm, id: 'comic-' + i, n: pad(i + 1), transform: `rotateY(${i * STEP_DEG}deg) translateZ(${RADIUS}px)`, border: i === ringIdx ? '#ffd400' : 'rgba(255,255,255,0.14)' })),
+      active: { ...c, n: pad(ringIdx + 1) },
+      ringDown: (e) => { this.drag = { x: e.clientX, rot: this.rot }; this.target = null; this.idle = performance.now() + 1e9; document.body.style.cursor = 'grabbing'; },
+      ringPrev: () => this.nudge(1),
+      ringNext: () => this.nudge(-1),
+      filters: FILTERS.map((f) => ({ label: f, bg: f === filter ? '#ffd400' : 'transparent', fg: f === filter ? '#0a0a0a' : '#f5f5f2', onClick: () => this.setState({ filter: f }) })),
+      rankedRows: rows.map((r, i) => ({ ...r, id: 'rank-' + RANKED.indexOf(r), rank: pad(i + 1), scoreLabel: r.score + ' out of 5', pips: [0, 1, 2, 3, 4].map((p) => ({ bg: p < r.score ? '#ffd400' : 'rgba(255,255,255,0.18)' })) })),
+      series: SERIES.map((s, i) => ({ ...s, id: 'series-' + i })),
+      steps: STEPS.map((s, i) => ({ ...s, n: pad(i + 1), op: i === step ? 1 : 0.28 })),
+      jokeLines: STEPS.map((s, i) => ({ t: s.line, op: i <= step ? 1 : 0.12, x: i <= step ? '0px' : '-24px' })),
+      bars: BASE.map((b) => ({ h: Math.max(4, b * AMP[step] * 100) + '%' })),
+      meterLabel: METER[step],
+      onSubscribe: (e) => { e.preventDefault(); this.setState({ subscribed: true }); },
+      subLabel: this.state.subscribed ? 'You’re in ✓' : 'Sign up'
+    };
+  }
+}
+</script>
+</body>
+</html>

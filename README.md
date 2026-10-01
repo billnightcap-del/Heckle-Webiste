@@ -1,7 +1,7 @@
 # Heckle — website
 
 The production build of the Heckle designs from Claude Design (the "Heckle.com originial"
-project). It is a static multi-page site: Vite + React for the
+project; see `design/`). It is a static multi-page site: Vite + React for the
 editorial pages and plain ES modules for Game Night. No backend is needed to run it.
 
 | Page | URL | Built from |
