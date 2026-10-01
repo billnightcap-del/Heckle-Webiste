@@ -77,6 +77,11 @@ Newsreader serif for body and features. Square corners. Voice: a knowing insider
 
 ## Content rules
 
+- **Real data only (operator rule, 2026-10-01).** Mics, scores, fees, view counts and other figures
+  appear only when they come from a public online source, with its link and the date it was
+  checked. Otherwise show "not available". Any placeholder still on the site must be labelled
+  "Sample". Never fill gaps with generated or estimated values.
+
 - Specials: titles, comics, years and networks are real; scores, views, rank movement and
   "on now" are generated sample data and are labelled as such on the page. Keep that label
   until real data replaces them. Don't present invented data as real anywhere.

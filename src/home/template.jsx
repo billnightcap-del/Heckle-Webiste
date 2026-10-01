@@ -13,7 +13,7 @@ export default function render(v) {
           <div style={{ background: "#ffd400", color: "#0a0a0a", overflow: "hidden", display: "flex", alignItems: "stretch" }}>
             <div style={{ flex: "none", position: "relative", zIndex: "2", background: "#0a0a0a", color: "#ffd400", padding: "9px 16px", fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", display: "flex", alignItems: "center", gap: "8px" }}>
               <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#ffd400" }} />
-              Live
+              Sample headlines
               {" "}
             </div>
             <div style={{ overflow: "hidden", flex: "1" }}>
@@ -139,7 +139,7 @@ export default function render(v) {
                 {"Comedy, culture & the people who bomb for it"}
               </span>
               <p style={{ margin: "0", fontFamily: "'Newsreader', serif", fontSize: "clamp(20px, 1.8vw, 26px)", lineHeight: "1.3" }}>
-                Stand-up, sketch, specials and late night — plus 1,400 open mics, updated nightly.
+                Stand-up, sketch, specials and late night, plus open mics where every listing links to its source.
               </p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", alignItems: "center" }}>
                 <a className="hm-2" href="#top" style={{ display: "inline-flex", alignItems: "center", height: "48px", padding: "0 20px", background: "#ffd400", color: "#0a0a0a", fontWeight: "800", fontStretch: "75%", fontSize: "15px", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -156,7 +156,7 @@ export default function render(v) {
                   “ Joke of the Week
                 </span>
                 <span style={{ color: "#a3a39e" }}>
-                  Week 39
+                  Sample
                 </span>
               </span>
               <p style={{ margin: "0", fontFamily: "'Newsreader', serif", fontSize: "clamp(18px, 1.5vw, 22px)", lineHeight: "1.35", color: "#f5f5f2" }}>
@@ -207,7 +207,7 @@ export default function render(v) {
                   Cover Story
                 </span>
                 <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", color: "#d6d6d2" }}>
-                  Issue 041
+                  Sample story
                 </span>
               </div>
               <h1 style={{ margin: "0", fontWeight: "900", fontStretch: "62%", fontSize: "clamp(56px, 8.6vw, 148px)", lineHeight: "0.84", letterSpacing: "-0.015em", textTransform: "uppercase" }}>
@@ -241,7 +241,7 @@ export default function render(v) {
               <ImageSlot id="hero-b" placeholder="Portrait — late-night host at the desk" />
             </div>
             <span style={{ position: "absolute", top: "14px", left: "14px", zIndex: "2", pointerEvents: "none", background: "#0a0a0a", color: "#ffd400", padding: "4px 8px", fontWeight: "800", fontStretch: "75%", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase" }}>
-              Late Night
+              Late Night · Sample
             </span>
           </a>
           <h2 style={{ margin: "0", fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(30px, 2.8vw, 42px)", lineHeight: "1.02", letterSpacing: "-0.01em" }}>
@@ -299,7 +299,7 @@ export default function render(v) {
                 The Latest
               </h2>
               <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "0.08em", textTransform: "uppercase", color: "#ffd400" }}>
-                Mon, Sep 28
+                Sample stories
               </span>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 260px), 1fr))", gap: "40px 28px" }}>
@@ -332,6 +332,9 @@ export default function render(v) {
               <h2 style={{ margin: "0", fontWeight: "900", fontStretch: "62%", fontSize: "44px", lineHeight: "1", textTransform: "uppercase", color: "#ffd400" }}>
                 Most Read
               </h2>
+              <span style={{ fontSize: "12px", fontWeight: "700", letterSpacing: "0.1em", textTransform: "uppercase", color: "#a3a39e" }}>
+                Sample · no real traffic yet
+              </span>
             </div>
             {(v.mostRead || []).map((m, _i0) => (
               <Fragment key={_i0}>
@@ -432,7 +435,7 @@ export default function render(v) {
                 ✕ Bomb of the Week
               </span>
               <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "0.06em", textTransform: "uppercase", color: "#a3a39e" }}>
-                Week 39 · Laugh Shack, Tampa
+                Sample · not a real set
               </span>
             </div>
             <a href="#" style={{ display: "block", position: "relative", aspectRatio: "16 / 9", overflow: "hidden", background: "#161616" }}>
@@ -546,7 +549,7 @@ export default function render(v) {
           <aside style={{ flex: "1 1 340px", minWidth: "0", display: "flex", flexDirection: "column", gap: "14px" }}>
             <div style={{ background: "#ffd400", color: "#0a0a0a", padding: "22px", display: "flex", flexDirection: "column", gap: "12px", marginBottom: "14px" }}>
               <span style={{ fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase" }}>
-                ★ This week’s winner
+                ★ Sample winner
               </span>
               <p style={{ margin: "0", fontFamily: "'Newsreader', serif", fontSize: "24px", lineHeight: "1.3" }}>
                 My dad says comedy isn’t a real job. Rich, coming from a man who’s done the same eleven minutes at Thanksgiving since 1994.
@@ -589,7 +592,7 @@ export default function render(v) {
         <div style={{ maxWidth: "1440px", margin: "0 auto 32px", padding: "0 clamp(16px, 3vw, 40px)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "20px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             <span style={{ fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#ffd400" }}>
-              Video · Hover to preview
+              Video · Sample clips
             </span>
             <h2 style={{ margin: "0", fontWeight: "900", fontStretch: "62%", fontSize: "clamp(52px, 7vw, 104px)", lineHeight: "0.85", textTransform: "uppercase" }}>
               The Tight Minute
@@ -641,7 +644,7 @@ export default function render(v) {
         <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(16px, 3vw, 40px)", display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "center" }}>
           <div style={{ flex: "1 1 340px", minWidth: "0", display: "flex", flexDirection: "column", gap: "20px", position: "relative", zIndex: "2" }}>
             <span style={{ fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#ffd400" }}>
-              The List · Class of 2026
+              The List · Sample
             </span>
             <h2 style={{ margin: "0", fontWeight: "900", fontStretch: "62%", fontSize: "clamp(60px, 7.5vw, 120px)", lineHeight: "0.84", textTransform: "uppercase" }}>
               8 Comics
@@ -713,7 +716,7 @@ export default function render(v) {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "space-between", alignItems: "flex-end", borderBottom: "2px solid #f5f5f2", paddingBottom: "16px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             <span style={{ fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#ffd400" }}>
-              Reviews · Ranked
+              Reviews · Sample, not real reviews
             </span>
             <h2 style={{ margin: "0", fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(40px, 5vw, 72px)", lineHeight: "0.95", letterSpacing: "-0.02em" }}>
               The Best Specials of 2026,
@@ -835,6 +838,10 @@ export default function render(v) {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "16px", borderBottom: "2px solid #f5f5f2", paddingBottom: "10px", marginBottom: "32px" }}>
           <h2 style={{ margin: "0", fontWeight: "900", fontStretch: "62%", fontSize: "44px", lineHeight: "1", textTransform: "uppercase" }}>
             Heckle Originals
+            {" "}
+            <span style={{ fontSize: "18px", color: "#a3a39e" }}>
+              Sample
+            </span>
           </h2>
           <a href="#" style={{ fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#ffd400" }}>
             All series →

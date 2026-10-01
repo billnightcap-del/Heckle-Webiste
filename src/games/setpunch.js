@@ -48,7 +48,7 @@ const SETUPPUNCH_SEED = [
     const shown=list.slice(0,limit);
     $('#sp-list').innerHTML=shown.length?shown.map((x,i)=>{const mv=votes[x.id]||0;return '<li class="sp-item'+(x.id===fresh?' new':'')+'"><span class="sp-rank">'+(sort==='recent'?'':i+1)+'</span>'
       +'<div class="vote"><button class="up" data-id="'+x.id+'" data-d="1" aria-label="Vote up" aria-pressed="'+(mv===1)+'">'+UP+'</button><b>'+x.v+'</b><button class="dn" data-id="'+x.id+'" data-d="-1" aria-label="Vote down" aria-pressed="'+(mv===-1)+'">'+DN+'</button></div>'
-      +'<div><span class="su">'+esc(SETUPPUNCH_SETUPS[x.s]||'')+'</span><p class="pu">'+esc(x.p)+'</p><span class="me">'+esc(x.by)+(x.mine?'<span class="you">You</span>':'')+'<span>· '+ago(x.t)+'</span></span></div></li>'}).join('')
+      +'<div><span class="su">'+esc(SETUPPUNCH_SETUPS[x.s]||'')+'</span><p class="pu">'+esc(x.p)+'</p><span class="me">'+esc(x.by)+(x.mine?'<span class="you">You</span>':'')+(String(x.id).startsWith('seed')?'<span class="you" style="background:var(--panel-3);color:var(--muted)">Sample</span>':'')+'<span>· '+ago(x.t)+'</span></span></div></li>'}).join('')
       :'<li class="po-empty">No punches for this setup yet. Be first.</li>';
     $('#sp-more').hidden=list.length<=limit;
     $$('#sp-tabs .pick').forEach(b=>b.setAttribute('aria-pressed',b.dataset.sort===sort));

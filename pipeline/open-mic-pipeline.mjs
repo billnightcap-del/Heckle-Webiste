@@ -127,7 +127,7 @@ function toSchedule(events) {
       : /FREQ=WEEKLY/.test(g.rrule || '') ? 'Weekly' : /FREQ=MONTHLY/.test(g.rrule || '') ? 'Monthly'
       : !gaps.length ? 'One-off' : avg <= 8 ? 'Weekly' : avg <= 16 ? 'Every other week' : 'Monthly';
     return { city: g.city, name: g.name, venue: g.venue, address: g.address, day: g.day, dayName: DAYS[g.day],
-      time: g.time, frequency, cost: g.cost || '', url: g.url, source: g.source, nextDates: ds.slice(0, 4) };
+      time: g.time, frequency, cost: g.cost || '', url: g.url, source: g.source, checked: new Date().toISOString().slice(0, 10), nextDates: ds.slice(0, 4) };
   });
 }
 
@@ -136,7 +136,8 @@ async function main() {
   for (const c of CITIES) { raw.push(...await fromTicketmaster(c)); console.log('TM', c.name); }
   for (const v of VENUES) raw.push(...(v.type === 'ics' ? await fromIcs(v) : await fromJsonLd(v)));
   let subs = []; try { subs = JSON.parse(await fs.readFile(SUBMISSIONS, 'utf8')); } catch {}
-  const mics = [...toSchedule(raw), ...subs.map((s) => ({ ...s, source: 'Submitted' }))];
+  // The site shows only listings with a public source URL and a checked date; anything else is dropped there.
+  const mics = [...toSchedule(raw), ...subs.filter((s) => s.url && s.source && s.checked)];
   await fs.writeFile(OUTPUT, JSON.stringify({ updated: new Date().toISOString(), cities: CITIES, mics }, null, 2));
   console.log(`Wrote ${mics.length} mics → public/open-mics.json`);
 }

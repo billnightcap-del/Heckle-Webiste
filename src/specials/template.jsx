@@ -42,7 +42,7 @@ export default function render(v) {
               <span style={{ fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#ffd400" }}>
                 {"1996 — 2026 · "}
                 {v.total}
-                {" specials scored · streaming, cable & YouTube"}
+                {" specials · streaming, cable & YouTube · scores coming once they’re sourced"}
               </span>
               <h1 style={{ margin: "0", fontWeight: "900", fontStretch: "62%", fontSize: "clamp(64px, 10vw, 168px)", lineHeight: "0.8", textTransform: "uppercase" }}>
                 The Specials
@@ -96,61 +96,12 @@ export default function render(v) {
                 last 60 days
               </h2>
               <span style={{ fontSize: "13px", color: "#a3a39e" }}>
-                Rank change since July 30
+                Not available yet
               </span>
             </div>
-            <ol style={{ listStyle: "none", margin: "0", padding: "0", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 520px), 1fr))", columnGap: "32px" }}>
-              {(v.climbers || []).map((c, _i0) => (
-                <Fragment key={_i0}>
-                  <li style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", background: c.rowBg }}>
-                    <a className="sp-1" href="#" style={{ display: "grid", gridTemplateColumns: "52px 44px minmax(0, 1fr) auto", alignItems: "center", gap: "14px", padding: "12px 10px", color: "inherit", textDecoration: "none" }}>
-                      <span style={{ fontWeight: "900", fontStretch: "62%", fontSize: "40px", lineHeight: "1", color: c.placeColor, fontVariantNumeric: "tabular-nums" }}>
-                        {c.place}
-                      </span>
-                      <span style={{ position: "relative", width: "44px", height: "66px", overflow: "hidden", background: "#1c1c1c", color: "#ffd400", display: "grid", placeItems: "center", fontWeight: "900", fontStretch: "62%", fontSize: "16px" }}>
-                        {c.initials}
-                        {c.hasPoster ? (
-                          <>
-                            <img src={c.poster} alt="" loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
-                          </>
-                        ) : null}
-                      </span>
-                      <span style={{ display: "flex", flexDirection: "column", gap: "6px", minWidth: "0" }}>
-                        <span style={{ fontWeight: "800", fontStretch: "70%", fontSize: "20px", lineHeight: "1", textTransform: "uppercase", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                          {c.title}
-                        </span>
-                        <span style={{ fontSize: "13px", color: "#a3a39e", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                          {c.comic}
-                          {" · "}
-                          {c.network}
-                          {" · "}
-                          {c.year}
-                        </span>
-                        <span style={{ height: "4px", background: "rgba(255,255,255,0.08)" }}>
-                          <span style={{ display: "block", height: "100%", width: c.bar, background: "#ffd400" }} />
-                        </span>
-                      </span>
-                      <span style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "4px" }}>
-                        <span style={{ background: "#ffd400", color: "#0a0a0a", padding: "3px 8px", fontWeight: "900", fontStretch: "62%", fontSize: "18px", lineHeight: "1" }}>
-                          {"▲ "}
-                          {c.delta}
-                        </span>
-                        <span style={{ fontSize: "12px", color: "#a3a39e", fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>
-                          #
-                          {c.oldRank}
-                          {" →"}
-                          {" "}
-                          <strong style={{ color: "#f5f5f2" }}>
-                            #
-                            {c.rank}
-                          </strong>
-                        </span>
-                      </span>
-                    </a>
-                  </li>
-                </Fragment>
-              ))}
-            </ol>
+            <p style={{ margin: "0", fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", color: "#c8c8c3", maxWidth: "70ch" }}>
+              Rank movement needs real scores. It appears once specials are rated from sourced critic, press and audience reviews. Until then, nothing here is ranked.
+            </p>
           </div>
         </div>
       </section>
@@ -186,25 +137,11 @@ export default function render(v) {
                 </Fragment>
               ))}
             </select>
-            <select value={v.rating} onChange={v.onRating} aria-label="Rating" style={{ height: "44px", padding: "0 12px", background: "#0a0a0a", color: "#f5f5f2", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "0", fontFamily: "inherit", fontSize: "14px" }}>
-              {(v.ratingOpts || []).map((o, _i0) => (
-                <Fragment key={_i0}>
-                  <option value={o}>
-                    {o}
-                  </option>
-                </Fragment>
-              ))}
-            </select>
-            <button type="button" onClick={v.toggleOnNow} aria-pressed={v.onNowPressed} style={{ height: "44px", padding: "0 14px", display: "inline-flex", gap: "8px", alignItems: "center", background: v.onNowBg, color: v.onNowFg, border: `1px solid ${v.onNowBd}`, fontFamily: "inherit", fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap" }}>
-              <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "currentColor" }} />
-              On now
-              {" "}
-            </button>
             <button type="button" onClick={v.toggleFree} aria-pressed={v.freePressed} style={{ height: "44px", padding: "0 14px", display: "inline-flex", gap: "8px", alignItems: "center", background: v.freeBg, color: v.freeFg, border: `1px solid ${v.freeBd}`, fontFamily: "inherit", fontWeight: "800", fontStretch: "75%", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap" }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                 <polygon points="6 3 20 12 6 21 6 3" />
               </svg>
-              Free on YouTube
+              Released on YouTube
               {" "}
             </button>
             <div style={{ display: "flex", border: "1px solid rgba(255,255,255,0.25)" }}>
@@ -246,7 +183,7 @@ export default function render(v) {
           </span>
           <span>
             {v.artNote}
-            {" · Scores, views and rank movement are sample data."}
+            {" · No scores yet: a special gets a rating only once its reviews are sourced."}
           </span>
         </div>
         {v.isGrid ? (
@@ -286,24 +223,17 @@ export default function render(v) {
                         {s.cert}
                       </span>
                       <span style={{ fontWeight: "900", fontStretch: "62%", fontSize: "24px", lineHeight: "1" }}>
-                        {s.critic}
-                        %
+                        {s.criticText}
                       </span>
                       <span style={{ fontSize: "12px", color: "#a3a39e", marginLeft: "auto" }}>
                         {"Crowd "}
-                        {s.crowd}
-                        %
+                        {s.crowdText}
                       </span>
                     </div>
                     <span style={{ fontWeight: "800", fontStretch: "70%", fontSize: "18px", lineHeight: "1.05", textTransform: "uppercase" }}>
                       {s.title}
                     </span>
                     <span style={{ fontSize: "12px", color: "#a3a39e" }}>
-                      #
-                      {s.rank}
-                      {" · "}
-                      {s.views}
-                      {" views · "}
                       {s.genreText}
                     </span>
                     <span style={{ fontSize: "12px", fontWeight: "800", letterSpacing: "0.04em", color: s.onNowColor }}>
@@ -324,7 +254,7 @@ export default function render(v) {
                     Rank
                   </span>
                   <span>
-                    60 days
+                    Movement
                   </span>
                   <span>
                     Special
@@ -345,7 +275,7 @@ export default function render(v) {
                     Views
                   </span>
                   <span>
-                    On now
+                    Where to watch
                   </span>
                 </div>
                 {(v.rows || []).map((s, _i0) => (
@@ -385,16 +315,14 @@ export default function render(v) {
                       </span>
                       <span style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
                         <span style={{ fontWeight: "900", fontStretch: "62%", fontSize: "22px", lineHeight: "1" }}>
-                          {s.critic}
-                          %
+                          {s.criticText}
                         </span>
                         <span style={{ alignSelf: "flex-start", background: s.certBg, color: s.certFg, border: `1px solid ${s.certBd}`, padding: "0 5px", fontWeight: "900", fontStretch: "62%", fontSize: "11px", textTransform: "uppercase" }}>
                           {s.cert}
                         </span>
                       </span>
                       <span style={{ fontWeight: "700", fontSize: "15px" }}>
-                        {s.crowd}
-                        %
+                        {s.crowdText}
                       </span>
                       <span style={{ fontSize: "14px", fontWeight: "600" }}>
                         {s.views}

@@ -143,28 +143,17 @@ More Feelings|Ramy Youssef|2024|HBO|Confessional,Political
 Night Thoughts|Kumail Nanjiani|2024|Prime Video|Storytelling,Confessional
 Drop Dead Years|Bill Burr|2025|Hulu|Observational,Political
 Panicked|Marc Maron|2025|HBO|Confessional,Dark`;
-const WHERE = { HBO: 'Max', Netflix: 'Netflix', 'Comedy Central': 'Paramount+', Showtime: 'Paramount+', 'Prime Video': 'Prime Video', Hulu: 'Hulu', YouTube: 'YouTube · free', Epix: 'MGM+', 'Self-released': 'Creator site' };
-function hash(s) { let h = 2166136261; for (const c of s) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return () => ((h = Math.imul(h ^ (h >>> 15), 2246822507) ^ Math.imul(h ^ (h >>> 13), 3266489909)) >>> 0) / 4294967296; }
-const DATA = (() => {
-  const list = RAW.trim().split('\n').map((l, i) => {
-    const [title, comic, year, network, g] = l.split('|'); const r = hash(title + comic); const y = +year;
-    const critic = Math.round(58 + r() * 41), crowd = Math.max(40, Math.min(99, Math.round(critic + (r() - 0.5) * 30)));
-    const views = (y >= 2016 ? 4 + r() * 38 : y >= 2008 ? 1 + r() * 9 : 0.5 + r() * 4);
-    const onNow = network === 'YouTube' || r() > 0.22;
-    return { id: i, title, comic, year: y, network, genres: g.split(','), critic, crowd, viewsN: views, onNow, free: network === 'YouTube', trend: Math.round((r() - 0.45) * 24) };
-  });
-  const byScore = [...list].sort((a, b) => (b.critic * 0.6 + b.crowd * 0.4) - (a.critic * 0.6 + a.crowd * 0.4));
-  byScore.forEach((s, i) => { s.rank = i + 1; s.trend = Math.max(-(list.length - s.rank), Math.min(s.rank - 1, s.trend)); });
-  return list;
-})();
+// Only real fields: title, comic, year, original network, genre tags. There are no scores, views,
+// rankings or "on now" flags until each one has a source (see reports/cco/ for the scoring rubric).
+const DATA = RAW.trim().split('\n').map((l, i) => {
+  const [title, comic, year, network, g] = l.split('|');
+  return { id: i, title, comic, year: +year, network, genres: g.split(','), youtube: network === 'YouTube' };
+});
 const GENRES = ['All', 'Observational', 'Storytelling', 'Confessional', 'Political', 'Dark', 'Alt', 'Absurdist', 'Clean', 'Musical', 'Crowd Work'];
 const NETWORKS = ['All networks', ...[...new Set(DATA.map((d) => d.network))].sort()];
 const ERAS = ['All years', '2021–2026', '2016–2020', '2006–2015', '1996–2005'];
-const RATINGS = ['All ratings', 'Killed (75%+)', 'Solid (60–74%)', 'Bombed (<60%)'];
-const SORTS = [{ v: 'rank', l: 'Heckle rank' }, { v: 'critic', l: 'Critics score' }, { v: 'crowd', l: 'Crowd score' }, { v: 'views', l: 'Most viewed' }, { v: 'trend', l: 'Biggest movers' }, { v: 'new', l: 'Newest' }, { v: 'old', l: 'Oldest' }];
+const SORTS = [{ v: 'new', l: 'Newest' }, { v: 'old', l: 'Oldest' }, { v: 'comic', l: 'Comic A–Z' }, { v: 'title', l: 'Title A–Z' }];
 const PAGE = 36;
-const cert = (c) => c >= 75 ? { cert: 'Killed', certBg: '#ffd400', certFg: '#0a0a0a', certBd: '#ffd400' } : c >= 60 ? { cert: 'Solid', certBg: 'transparent', certFg: '#ffd400', certBd: '#ffd400' } : { cert: 'Bombed', certBg: 'transparent', certFg: '#a3a39e', certBd: '#7a7a76' };
-const fmtViews = (n) => n >= 1 ? `${n.toFixed(1)}M` : `${Math.round(n * 1000)}K`;
 
 const ART_KEY = 'heckle-special-posters-v2';
 const norm = (t) => (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, ' ').trim();
@@ -234,45 +223,41 @@ class SpecialsPage extends Component {
     this.setState({ artError: null });
     await Promise.all([worker(), worker(), worker(), worker()]);
   }
-  state = { posters: {}, artError: null, q: '', sort: 'rank', network: 'All networks', era: 'All years', rating: 'All ratings', genre: 'All', onNow: false, free: false, view: 'grid', shown: PAGE };
+  state = { posters: {}, artError: null, q: '', sort: 'new', network: 'All networks', era: 'All years', genre: 'All', free: false, view: 'grid', shown: PAGE };
   set(p) { this.setState({ ...p, shown: PAGE }); }
   renderVals() {
     const s = this.state, q = s.q.trim().toLowerCase();
     let rows = DATA.filter((d) => (!q || `${d.title} ${d.comic}`.toLowerCase().includes(q)) &&
       (s.network === 'All networks' || d.network === s.network) &&
-      (s.genre === 'All' || d.genres.includes(s.genre)) && (!s.onNow || d.onNow) && (!s.free || d.free) &&
+      (s.genre === 'All' || d.genres.includes(s.genre)) && (!s.free || d.youtube) &&
       (s.era === 'All years' || (() => { const [a, b] = s.era.split('–').map(Number); return d.year >= a && d.year <= b; })()) &&
-      (s.rating === 'All ratings' || (s.rating.startsWith('Killed') ? d.critic >= 75 : s.rating.startsWith('Solid') ? d.critic >= 60 && d.critic < 75 : d.critic < 60)));
-    const cmp = { rank: (a, b) => a.rank - b.rank, critic: (a, b) => b.critic - a.critic, crowd: (a, b) => b.crowd - a.crowd, views: (a, b) => b.viewsN - a.viewsN,
-      trend: (a, b) => b.trend - a.trend, new: (a, b) => b.year - a.year || a.rank - b.rank, old: (a, b) => a.year - b.year || a.rank - b.rank }[s.sort];
+      true);
+    const cmp = { new: (a, b) => b.year - a.year || a.title.localeCompare(b.title), old: (a, b) => a.year - b.year || a.title.localeCompare(b.title),
+      comic: (a, b) => a.comic.localeCompare(b.comic) || a.year - b.year, title: (a, b) => a.title.localeCompare(b.title) }[s.sort];
     rows = rows.sort(cmp);
     const view = rows.slice(0, s.shown).map((d) => {
-      const up = d.trend > 0, down = d.trend < 0, dark = d.id % 3 === 0;
+      const dark = d.id % 3 === 0;
       const poster = ((s.posters || {})[d.id + '|' + d.title] || {}).url || '';
-      return { ...d, ...cert(d.critic), poster, hasPoster: !!poster, views: fmtViews(d.viewsN), genreText: d.genres.join(' · '),
-        trendText: up ? `▲ ${d.trend}` : down ? `▼ ${-d.trend}` : '— 0', trendColor: up ? '#ffd400' : down ? '#8a8a86' : '#5a5a56',
-        trendBg: up ? '#ffd400' : '#0a0a0a', trendFg: up ? '#0a0a0a' : down ? '#a3a39e' : '#7a7a76',
+      return { ...d, poster, hasPoster: !!poster, genreText: d.genres.join(' · '),
+        cert: 'Not rated', certBg: 'transparent', certFg: '#a3a39e', certBd: '#5a5a56',
+        criticText: '—', crowdText: '—', rank: '—', views: '—', trendText: '', trendColor: '#5a5a56', trendBg: 'transparent', trendFg: 'transparent',
         posterBg: dark ? '#ffd400' : d.id % 3 === 1 ? '#1c1c1c' : '#f5f5f2', posterFg: dark ? '#0a0a0a' : d.id % 3 === 1 ? '#ffd400' : '#0a0a0a',
         titleSize: d.title.length > 22 ? '26px' : d.title.length > 12 ? '34px' : '46px',
         initials: d.comic.split(' ').map((w) => w[0]).join('').slice(0, 2),
-        onNowText: d.onNow ? `● ${WHERE[d.network] || d.network}` : 'Not streaming', onNowColor: d.onNow ? '#ffd400' : '#7a7a76',
-        whereText: d.onNow ? 'Watch: ' + (WHERE[d.network] || d.network) : 'Not streaming right now', isFree: d.free };
+        onNowText: 'Not verified', onNowColor: '#7a7a76',
+        whereText: 'Where to watch: not verified yet' };
     });
-    const onNow = s.onNow;
     return {
       total: DATA.length,
       artNote: (() => { const v = Object.values(s.posters || {}); const got = v.filter((p) => p.url); const by = (k) => got.filter((p) => p.src === k).length; if (s.artError) return s.artError + ' — check the key in Tweaks'; if (!v.length) return 'Loading cover art…'; const parts = [['tmdb','TMDB'],['apple','Apple TV'],['wikipedia','Wikipedia'],['portrait','comic portraits']].filter(([k]) => by(k)).map(([k, l]) => by(k) + ' ' + l); return 'Cover art: ' + got.length + ' of ' + DATA.length + (parts.length ? ' (' + parts.join(', ') + ')' : ''); })(),
-      climbers: (() => { const top = [...DATA].sort((a, b) => b.trend - a.trend).slice(0, 10); const max = top[0]?.trend || 1; return top.map((d, i) => { const poster = ((s.posters || {})[d.id + '|' + d.title] || {}).url || ''; return { ...d, delta: d.trend, place: String(i + 1).padStart(2, '0'), oldRank: d.rank + d.trend, bar: Math.max(8, Math.round(d.trend / max * 100)) + '%', lead: i === 0, placeColor: i < 3 ? '#ffd400' : '#5a5a56', rowBg: i === 0 ? 'rgba(255,212,0,0.08)' : 'transparent', poster, hasPoster: !!poster, initials: d.comic.split(' ').map((w) => w[0]).join('').slice(0, 2) }; }); })(),
+      climbers: [],
       q: s.q, onQ: (e) => this.set({ q: e.target.value }),
       sort: s.sort, sortOpts: SORTS, onSort: (e) => this.set({ sort: e.target.value }), sortLabel: 'sorted by ' + SORTS.find((o) => o.v === s.sort).l.toLowerCase(),
       network: s.network, networkOpts: NETWORKS, onNetwork: (e) => this.set({ network: e.target.value }),
       era: s.era, eraOpts: ERAS, onEra: (e) => this.set({ era: e.target.value }),
-      rating: s.rating, ratingOpts: RATINGS, onRating: (e) => this.set({ rating: e.target.value }),
-      toggleOnNow: () => this.set({ onNow: !onNow }), onNowPressed: onNow ? 'true' : 'false',
       toggleFree: () => this.set({ free: !s.free }), freePressed: s.free ? 'true' : 'false',
       freeBg: s.free ? '#ffd400' : 'transparent', freeFg: s.free ? '#0a0a0a' : '#f5f5f2', freeBd: s.free ? '#ffd400' : 'rgba(255,255,255,0.25)',
-      freeTotal: DATA.filter((d) => d.free).length,
-      onNowBg: onNow ? '#ffd400' : 'transparent', onNowFg: onNow ? '#0a0a0a' : '#f5f5f2', onNowBd: onNow ? '#ffd400' : 'rgba(255,255,255,0.25)',
+      freeTotal: DATA.filter((d) => d.youtube).length,
       genreChips: GENRES.map((g) => { const on = s.genre === g; return { label: g, bg: on ? '#f5f5f2' : 'transparent', fg: on ? '#0a0a0a' : '#d6d6d2', bd: on ? '#f5f5f2' : 'rgba(255,255,255,0.2)', onClick: () => this.set({ genre: g }) }; }),
       isGrid: s.view === 'grid', isList: s.view === 'list',
       setGrid: () => this.setState({ view: 'grid' }), setList: () => this.setState({ view: 'list' }),
