@@ -42,3 +42,5 @@ the weekly rollup.
 | 2026-10-01 | The Setlist's "find a mic" item covers fewer than 10 cities until it expands (which cities: not decided yet). | All 25 cities in the newsletter at launch. |
 | 2026-10-01 | Set of the Week will mostly come from Don't Tell Comedy or Comedy Cellar uploads; Bomb of the Week from major-platform sets that are drastically underperforming. | Picking sets only by taste. |
 | 2026-10-01 | Operator wants a notification for every new Setlist sign-up and every mic submission, even when there's nothing to act on. | Weekly batch only. |
+| 2026-10-01 | The Setlist goes out daily (7 days a week), 3 to 20 items per issue (replaces "five items"). At least one tool item every issue. | A fixed five-item format; weekdays only. |
+| 2026-10-01 | Set / Bomb of the Week use whatever viewer data is publicly available (retention is private to channel owners). | Waiting for retention data. |
