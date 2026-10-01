@@ -49,3 +49,11 @@ Variety, not to the festivals' own pages.
 ## Unknown
 - Number of real stale mics: UNKNOWN until real listings exist.
 - Festival fees/pay terms for all 8: UNKNOWN until checked on each festival's own page.
+
+## Escalation (added after reading the go-live decision in `memory/shared.md`)
+The site is set to go public on GitHub Pages. The Open Mic Finder would then show ~300 invented
+mics, each with a badge like "✓ Confirmed 3d ago" (`src/open-mics/main.jsx:101`), next to fake
+venues in real neighbourhoods. A small page note says "Showing sample listings", but the per-card
+confirm badge reads as fact. A comic who trusts one card drives to a bar that never had a mic.
+Ask (to CTO, draft as PR): until real data lands, sample cards must not show a confirm date —
+show "SAMPLE — not a real mic" on every card, or hide sample listings on the public build.
