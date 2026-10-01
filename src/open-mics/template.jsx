@@ -141,9 +141,7 @@ export default function render(v) {
                       Crickets.
                     </span>
                     <span style={{ fontFamily: "'Newsreader', serif", fontSize: "19px", color: "#d6d6d2" }}>
-                      {"No mics match those filters in "}
-                      {v.cityName}
-                      . Know one we’re missing?
+                      {v.emptyText}
                     </span>
                     <a href="#submit" onClick={v.goSubmit} style={{ fontWeight: "800", fontStretch: "75%", fontSize: "14px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#ffd400" }}>
                       Submit a mic →
@@ -266,7 +264,7 @@ export default function render(v) {
                   Run a mic?
                 </span>
                 <span style={{ fontSize: "16px", lineHeight: "1.45", fontWeight: "500" }}>
-                  List it free. It shows up in your city’s schedule the moment you submit.
+                  List it free. It goes on the schedule once we’ve matched it to a public post by the venue or host.
                 </span>
                 <a className="om-4" href="#submit" onClick={v.goSubmit} style={{ alignSelf: "flex-start", background: "#0a0a0a", color: "#ffd400", padding: "12px 16px", fontWeight: "800", fontStretch: "75%", fontSize: "14px", letterSpacing: "0.08em", textTransform: "uppercase" }}>
                   Submit your mic
@@ -285,26 +283,20 @@ export default function render(v) {
               </div>
               <div style={{ border: "1px solid rgba(255,255,255,0.18)", padding: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
                 <span style={{ fontWeight: "800", fontStretch: "75%", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#ffd400" }}>
-                  How “confirmed” works
+                  Where listings come from
                 </span>
                 <span style={{ fontSize: "14px", lineHeight: "1.5", color: "#d6d6d2" }}>
-                  Every listing shows when a host, a comic or our pipeline last saw it running. Went tonight? Tap
-                  {" "}
-                  <strong style={{ color: "#f5f5f2" }}>
-                    Still running
-                  </strong>
-                  . Showed up to a sports bar? Tap
+                  Every listing comes from a public post by the venue or host, links to it, and shows the date we last checked it. Nothing is made up, and a mic we can’t source isn’t listed. Showed up and it was gone? Tap
                   {" "}
                   <strong style={{ color: "#f5f5f2" }}>
                     Report closed
                   </strong>
-                  {" "}
-                  and we pull it for a recheck.
+                  .
                 </span>
                 <span style={{ display: "flex", flexDirection: "column", gap: "6px", fontSize: "13px", color: "#a3a39e" }}>
                   <span>
                     <span style={{ display: "inline-block", width: "10px", height: "10px", background: "#ffd400", marginRight: "8px" }} />
-                    Confirmed in the last 14 days
+                    Source checked in the last 14 days
                   </span>
                   <span>
                     <span style={{ display: "inline-block", width: "10px", height: "10px", border: "1px solid #f5f5f2", marginRight: "8px" }} />
@@ -312,7 +304,7 @@ export default function render(v) {
                   </span>
                   <span>
                     <span style={{ display: "inline-block", width: "10px", height: "10px", border: "1px solid #7a7a76", marginRight: "8px" }} />
-                    Older — call ahead
+                    Older than 45 days, call ahead
                   </span>
                 </span>
               </div>

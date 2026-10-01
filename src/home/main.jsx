@@ -6,10 +6,10 @@ import { BEEHIIV_FORM_ID } from '../shared/newsletter.js';
 import './template.hover.css';
 
 const TICKER = [
-  { k: 'Tour', t: 'Mara Quell adds 22 arena dates after a sold-out spring' },
+  { k: 'Tour', t: 'Mara Quell adds arena dates after a sold-out spring' },
   { k: 'Special', t: '“Soft Opinions” streams Friday' },
   { k: 'Festival', t: 'Fringe comedy lineup drops at noon ET' },
-  { k: 'Podcast', t: 'Green Room ep. 112 is live' },
+  { k: 'Podcast', t: 'Green Room is coming soon' },
   { k: 'Late Night', t: 'Another network desk goes dark in January' }
 ];
 const STORIES = [
@@ -42,7 +42,7 @@ const COMICS = [
   { name: 'Keisha Moreau', city: 'Atlanta', pitch: 'Family stories so specific they turn universal by the second tag.', credit: 'Writer, two network sitcoms' },
   { name: 'Ollie Szabo', city: 'Toronto', pitch: 'Built an act out of replaying his worst sets on stage. It works.', credit: 'New Faces, 2025' },
   { name: 'Sunny Ahmadi', city: 'Los Angeles', pitch: 'Open-mic veteran with the tightest fifteen in the city.', credit: 'Opening a stadium tour' },
-  { name: 'Rafa Delgado', city: 'Miami', pitch: 'Bilingual punchlines that land twice — once per language.', credit: 'Viral clip, 41M views' },
+  { name: 'Rafa Delgado', city: 'Miami', pitch: 'Bilingual punchlines that land twice — once per language.', credit: 'Bilingual clips' },
   { name: 'Wren Okafor', city: 'London', pitch: 'The year’s best special, from four years on stage.', credit: '“Soft Opinions,” out Friday' },
   { name: 'Dev Castillo', city: 'New York', pitch: 'Observational comedy with a lawyer’s precision.', credit: 'Residency at The Basement' }
 ];
@@ -55,10 +55,10 @@ const RANKED = [
   { title: 'Doble', comic: 'Rafa Delgado', format: 'Hour', runtime: '60 min', score: 3, verdict: 'Two languages, one mostly airtight hour.' }
 ];
 const SERIES = [
-  { t: 'Tight Five', eps: 'S3 · 12 eps', d: 'Five minutes, one take, no edits. New comics every Tuesday.', ph: 'Single mic on a dark stage' },
-  { t: 'Green Room', eps: 'Podcast · 112 eps', d: 'Two headliners, one couch, the hour before showtime.', ph: 'Green room couch' },
-  { t: 'Bombed', eps: 'S1 · 8 eps', d: 'Comics rewatch their worst sets and explain what died.', ph: 'Empty club, chairs stacked' },
-  { t: 'Night Shift', eps: 'S2 · 10 eps', d: 'Riding along with the comics doing four spots a night.', ph: 'Comic in a cab at night' }
+  { t: 'Tight Five', eps: 'Coming soon', d: 'Five minutes, one take, no edits. New comics every Tuesday.', ph: 'Single mic on a dark stage' },
+  { t: 'Green Room', eps: 'Coming soon', d: 'Two headliners, one couch, the hour before showtime.', ph: 'Green room couch' },
+  { t: 'Bombed', eps: 'Coming soon', d: 'Comics rewatch their worst sets and explain what died.', ph: 'Empty club, chairs stacked' },
+  { t: 'Night Shift', eps: 'Coming soon', d: 'Riding along with the comics doing four spots a night.', ph: 'Comic in a cab at night' }
 ];
 const STEPS = [
   { t: 'Setup', d: 'Establish a world the room already agrees with. Short, specific, no jokes yet — you are borrowing trust.', line: 'My dad just learned to text.' },
