@@ -37,6 +37,20 @@ npm run preview   # serve dist/ locally
   (`PUNCHLINE_WORDS`, `CALLBACKS_PUZZLES`, `SHORTSET_PUZZLES`, `ADLIBS_TEMPLATES`,
   `PUNOFF_PAIRS`, `SETUPPUNCH_SETUPS`, `BUZZ_PUZZLES`) for adding puzzles.
 
+## Email list and analytics
+
+Both are built in and switched off until their IDs are set (see `.env.example`):
+
+- **The Setlist (Beehiiv):** create a Beehiiv publication and a subscribe form, then set
+  `VITE_BEEHIIV_FORM_ID`. The home page's sign-up box becomes the Beehiiv form. Until then the
+  button says "Opening soon", so nobody thinks they've subscribed.
+- **Google Analytics 4:** create a GA4 property with a web data stream for the site's address,
+  then set `VITE_GA_ID`. Events: `game_play` and `game_complete` (with `game`), `joke_submit`,
+  `mic_submit` and `festival_submit_click`. To answer "do the games bring people back next week",
+  open GA4's Retention report, or build a cohort exploration on `game_play`.
+
+Both need the site to be live at a public address first.
+
 ## Data and what is still placeholder
 
 - **Photos:** the two home hero photos placed in the design are in `public/images/`. Every other

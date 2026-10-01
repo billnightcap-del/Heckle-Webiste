@@ -1,7 +1,7 @@
 /* ============================================================
    GAME 01 — PUNCHLINE (five-letter word guess)
    ============================================================ */
-import { $, $$, store, esc, toast, copyText, keyboard, Games } from './shared.js';
+import { track, $, $$, store, esc, toast, copyText, keyboard, Games } from './shared.js';
 
 /* ---------- PUNCHLINE DATA ----------
    Add answers here. w = exactly 5 letters. n = the note shown after the round.
@@ -77,6 +77,7 @@ const PUNCHLINE_WORDS = [
     },L*260+280);
   }
   function finish(win){
+    track('game_complete',{game:'punchline',result:win?'win':'loss'});
     done=true;const st=store.get('pl-stats',{played:0,wins:0,streak:0,max:0,dist:[0,0,0,0,0,0]});
     st.played++;if(win){st.wins++;st.streak++;st.max=Math.max(st.max,st.streak);st.dist[guesses.length-1]++}else st.streak=0;
     store.set('pl-stats',st);

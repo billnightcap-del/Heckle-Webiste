@@ -1,7 +1,7 @@
 /* ============================================================
    GAME 05 — PUN-OFF (two topics → puns, scored by syllables)
    ============================================================ */
-import { $, store, esc, shuffle, toast, copyText } from './shared.js';
+import { track, $, store, esc, shuffle, toast, copyText } from './shared.js';
 
 /* ---------- PUN-OFF DATA ----------
    Each pair has two topics. words: space-separated, with hyphens marking
@@ -79,6 +79,7 @@ const PUNOFF_SECONDS = 120;
   }
   function tick(){left--;if(left<=0){left=0;end()}paint()}
   function end(){
+    track('game_complete',{game:'punoff',result:'scored',score});
     clearInterval(timer);timer=null;over=true;$in.disabled=true;
     const best=Math.max(store.get('po-best',0),score);store.set('po-best',best);
     const top=[...entries].sort((a,b)=>b.total-a.total)[0];

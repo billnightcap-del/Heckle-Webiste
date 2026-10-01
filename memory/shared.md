@@ -14,8 +14,9 @@ no email list and no analytics on the site (see blockers 4 and 5).
 3. **Specials scores:** scores, views and rank movement are sample data. Owner: CTO + CCO.
    Status: not started.
 4. **Festival fees and pay terms:** mostly unverified. Owner: CPO. Status: not started.
-5. **Analytics and email list:** neither exists, so nothing can be measured or sold. Owner: CTO
-   (analytics) + CAO (email). Status: waiting on the operator to pick providers and hosting.
+5. **Analytics and email list:** code is ready (GA4 and Beehiiv), switched off until their IDs
+   are set. Owner: CTO (analytics) + CAO (email). Status: waiting on hosting and on the operator
+   creating the GA4 property and the Beehiiv publication.
 
 ## Site status
 Not deployed yet. No public URL. Code is on `main` in this repo.
@@ -29,3 +30,6 @@ the weekly rollup.
 | Date | Decision | Rules out |
 | --- | --- | --- |
 | 2026-10-01 | Run all six seats as named Claude Code sessions, with memory and reports in this repo. | Claude chat projects for now. |
+| 2026-10-01 | Email list on Beehiiv; analytics on Google Analytics 4. | Kit, Buttondown, Plausible, Cloudflare Web Analytics. |
+| 2026-10-01 | Hosting: not yet. The site stays unpublished for now. | — |
+| 2026-10-01 | Weekly COS rollup and audit, Mondays, US Central. | Daily runs; per-seat scheduled runs. |

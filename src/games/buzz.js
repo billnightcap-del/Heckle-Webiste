@@ -1,7 +1,7 @@
 /* ============================================================
    GAME 07 — BUZZ WORDS (honeycomb word-finder)
    ============================================================ */
-import { $, $$, store, esc, shuffle, toast, Games } from './shared.js';
+import { track, $, $$, store, esc, shuffle, toast, Games } from './shared.js';
 
 /* ---------- BUZZ WORDS DATA ----------
    letters: exactly 7 unique letters. center: the required letter (one of them).
@@ -64,6 +64,7 @@ const BUZZ_RANKS = ['Open Mic','Regular','Feature','Headliner','Special','Legend
     if(!w.includes(c))return shake('Missing center letter');
     if(found.includes(w))return shake('Already found');
     if(!valid.includes(w))return shake('Not in our word list');
+    track('game_complete',{game:'buzz',result:'word'});
     found.push(w);lastAdded=w;store.set(saveKey(),found);
     const b=store.get('bz-best',{});b[pi]=Math.max(b[pi]||0,score());store.set('bz-best',b);
     const p=pts(w);toast(new Set(w).size===7?'Pangram! +'+p:p>=7?'Big laugh! +'+p:p>=5?'Nice! +'+p:'Good +'+p);

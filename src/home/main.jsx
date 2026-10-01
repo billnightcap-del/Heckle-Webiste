@@ -1,6 +1,8 @@
 import { Component, createRef } from 'react';
 import { mount, view } from '../shared/mount.jsx';
 import template from './template.jsx';
+import { track } from '../shared/analytics.js';
+import { beehiivEmbedUrl } from '../shared/newsletter.js';
 import './template.hover.css';
 
 const TICKER = [
@@ -82,6 +84,7 @@ class HomePage extends Component {
     const myJokes = [entry, ...this.state.myJokes];
     try { localStorage.setItem('heckle-jokes-v1', JSON.stringify(myJokes)); } catch {}
     this.setState({ myJokes, joke: { text: '', name: j.name, city: j.city, handle: j.handle, original: false }, jokeMsg: "Got it. Winners hear from us by Monday." });
+    track('joke_submit');
   };
   tickerRef = createRef(); bandRef = createRef(); heroCard = createRef(); heroImg = createRef(); heroType = createRef();
   ringRef = createRef(); railRef = createRef(); storyRef = createRef();
@@ -217,8 +220,9 @@ class HomePage extends Component {
       jokeLines: STEPS.map((s, i) => ({ t: s.line, op: i <= step ? 1 : 0.12, x: i <= step ? '0px' : '-24px' })),
       bars: BASE.map((b) => ({ h: Math.max(4, b * AMP[step] * 100) + '%' })),
       meterLabel: METER[step],
+      beehiivEmbedUrl,
       onSubscribe: (e) => { e.preventDefault(); this.setState({ subscribed: true }); },
-      subLabel: this.state.subscribed ? 'You’re in ✓' : 'Sign up'
+      subLabel: this.state.subscribed ? 'Opening soon' : 'Sign up'
     };
   }
 

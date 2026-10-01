@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import './base.css';
+import './analytics.js';
 
 // Template scope: the page's view model layered over the component instance,
 // so templates can read both computed values and instance refs (e.g. v.tickerRef).

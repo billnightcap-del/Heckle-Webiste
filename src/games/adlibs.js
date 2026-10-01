@@ -1,7 +1,7 @@
 /* ============================================================
    GAME 04 — AD-LIBS (fill-in-the-blank stand-up bits)
    ============================================================ */
-import { $, $$, store, esc, pick, copyText, Games } from './shared.js';
+import { track, $, $$, store, esc, pick, copyText, Games } from './shared.js';
 
 /* ---------- AD-LIBS DATA ----------
    fields: [label shown to player, word-bank key for "fill for me", placeholder hint]
@@ -90,6 +90,7 @@ const ADLIBS_WORDBANK = {
   }
   function fill(){T.fields.forEach((f,j)=>{if(!String(vals[j]).trim())vals[j]=pick(ADLIBS_WORDBANK[f[1]]||ADLIBS_WORDBANK.noun)})}
   function show(){
+    track('game_complete',{game:'adlibs',result:'performed'});
     fill();store.set('al-done',store.get('al-done',0)+1);
     const html=T.bit.map((p,k)=>'<p style="animation-delay:'+(.4+k*.6)+'s">'+esc(p).replace(/\{(\d+)\}/g,(m,n)=>'<mark>'+esc(String(vals[+n]).trim())+'</mark>')+'</p>').join('');
     body.innerHTML='<div class="stage"><div class="bulbs" style="position:absolute;left:0;right:0;top:0" aria-hidden="true"></div><span class="kicker" style="margin-top:6px">'+MIC+'Now performing</span><h3>'+esc(T.title)+'</h3><div class="bit">'+html+'</div>'

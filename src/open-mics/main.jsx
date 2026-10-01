@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { mount, view } from '../shared/mount.jsx';
 import template from './template.jsx';
+import { track } from '../shared/analytics.js';
 import './template.hover.css';
 
 const CITIES = [
@@ -143,6 +144,7 @@ class OpenMicsPage extends Component {
         const entries = s.formDays.map((d) => ({ id: `sub-${stamp}-${d}`, city: f.city, name: f.name, venue: f.venue, hood: f.hood, address: f.address, day: d, time: hh + mm / 60,
           frequency: f.frequency, signup: f.bringer ? 'Bringer' : f.signup, setLen: f.setLen, cost: f.cost, host: f.host, url: f.url, window: f.window, bringer: f.bringer, submitted: new Date(stamp).toISOString() }));
         this.saveSubs([...s.subs, ...entries]);
+        track('mic_submit', { city: f.city });
         e.currentTarget.reset();
         this.setState({ formDays: [], last: { name: f.name, city: f.city } });
       },
