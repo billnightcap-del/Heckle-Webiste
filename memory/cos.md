@@ -9,7 +9,7 @@ First assignment (escalation rule + first rollup) started 2026-10-01. Clarifying
 - First assignment.
 
 ## Waiting on
-Operator answers to the 6 clarifying questions (2026-10-01): interrupt channel, money/legal thresholds, quiet hours, blocker order, hosting/provider status, rollup day + build hours.
+Operator answers to 5 clarifying questions (2026-10-01): interrupt channel, money/legal thresholds, quiet hours, blocker order, build hours. Already answered by the decision log: hosting (GitHub Pages, public repo), providers (GA4, Beehiiv), rollup day (Mondays, US Central).
 
 ## Last run
 Never.
