@@ -4,6 +4,11 @@ How every seat session works. It sits under the universal block and the seat's o
 applies to all six seats. Each seat has its own named Claude Code session ("Heckle · CTO" and so
 on). Sessions don't remember each other, so the repo is the memory.
 
+## 0. This repo is public
+
+Anyone can read every report and memory file. Never write credentials, private contact details,
+or anything said in confidence. Use names of private people only where the work needs them.
+
 ## 1. Start of every task: read your memory
 
 1. `memory/shared.md`: blockers, decisions, the escalation rule, and the north star metric.
