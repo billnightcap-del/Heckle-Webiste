@@ -1,7 +1,7 @@
 /* ============================================================
    GAME 06 — SETUP / PUNCH (write punchlines, vote on the board)
    ============================================================ */
-import { $, $$, store, esc, toast, current } from './shared.js';
+import { track, $, $$, store, esc, toast, current } from './shared.js';
 
 /* ---------- SETUP / PUNCH DATA ----------
    SETUPPUNCH_SETUPS: the setups players write punchlines for.
@@ -62,6 +62,7 @@ const SETUPPUNCH_SEED = [
   $('#sp-form').addEventListener('submit',e=>{e.preventDefault();const p=ta.value.trim().replace(/\s+/g,' ');if(p.length<3)return toast('That’s not a punchline yet');
     if(board.some(x=>x.s===cur&&x.p.toLowerCase()===p.toLowerCase()))return toast('Someone already told that one');
     const by=nm.value.trim()||'Anonymous Heckler';store.set('sp-name',nm.value.trim());
+    track('game_complete',{game:'setpunch',result:'submitted'});
     const x={id:Date.now().toString(36),s:cur,p,by,v:1,t:Date.now(),mine:true};board.push(x);votes[x.id]=1;store.set('sp-board',board);store.set('sp-votes',votes);
     ta.value='';$('#sp-count').textContent='0/180';fresh=x.id;sort='recent';limit=8;render();toast('Your punch is on the board');
     setTimeout(()=>{$('#sp-skip').click()},900);

@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { mount, view } from '../shared/mount.jsx';
 import template from './template.jsx';
+import { track } from '../shared/analytics.js';
 import './template.hover.css';
 
 const SEED = [
@@ -93,6 +94,8 @@ function dateText(f) {
 class FestivalsPage extends Component {
   state = { month: 'all', openOnly: false, sort: 'date', imported: [], art: {}, json: '', msg: '', msgOk: true, copied: false };
   componentDidMount() {
+    // Count clicks through to a festival's submission page.
+    document.addEventListener('click', (e) => { const a = e.target.closest && e.target.closest('a[href]'); if (a && /^(Submit now|Submission page|Submission info)/.test(a.textContent.trim())) track('festival_submit_click', { link_url: a.href }); });
     let imported = [], art = {};
     try { imported = JSON.parse(localStorage.getItem(IMP_KEY) || '[]'); } catch {}
     try { art = JSON.parse(localStorage.getItem(ART_KEY) || '{}'); } catch {}

@@ -1,7 +1,7 @@
 /* ============================================================
    GAME 03 — SHORT SET (mini crossword)
    ============================================================ */
-import { totals, $, $$, store, esc, toast, copyText, keyboard, Games } from './shared.js';
+import { track, totals, $, $$, store, esc, toast, copyText, keyboard, Games } from './shared.js';
 
 /* ---------- SHORT SET DATA ----------
    grid: one string per row, letters for answers, # for black squares.
@@ -113,6 +113,7 @@ totals.shortset = SHORTSET_PUZZLES.length;
     if(full&&right)solve(false);else if(full)toast('So close — something’s off');
   }
   function solve(revealed){
+    track('game_complete',{game:'shortset',result:revealed?'revealed':'win'});
     done=true;stopClock();root.classList.add('solved');$('#xw-check').disabled=$('#xw-reveal').disabled=true;
     if(!revealed&&!rev.size){const b=store.get('xw-best',{});if(b[idx]==null||elapsed<b[idx]){b[idx]=elapsed;store.set('xw-best',b)}}
     picker();const next=(idx+1)%SHORTSET_PUZZLES.length;

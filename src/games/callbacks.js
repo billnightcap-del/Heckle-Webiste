@@ -1,7 +1,7 @@
 /* ============================================================
    GAME 02 — CALLBACKS (find four groups of four)
    ============================================================ */
-import { totals, $, $$, store, esc, shuffle, toast, Games } from './shared.js';
+import { track, totals, $, $$, store, esc, shuffle, toast, Games } from './shared.js';
 
 /* ---------- CALLBACKS DATA ----------
    One object per show. Exactly 4 groups of exactly 4 words.
@@ -58,6 +58,7 @@ totals.callbacks = CALLBACKS_PUZZLES.length;
     setTimeout(()=>{render();if(!mistakes)end(false)},480);
   }
   function end(win){
+    track('game_complete',{game:'callbacks',result:win?'win':'loss'});
     done=true;sel=new Set();
     if(!win){P.groups.forEach((g,i)=>{if(!solved.includes(i))solved.push(i)});remaining=[]}
     else{const s=store.get('cb-solved',[]);if(!s.includes(idx)){s.push(idx);store.set('cb-solved',s)}}

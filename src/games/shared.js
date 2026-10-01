@@ -1,6 +1,9 @@
 /* ============================================================
    SHARED — keyboard routing, on-screen keyboard, toasts, storage
    ============================================================ */
+import { track } from '../shared/analytics.js';
+export { track };
+
 export const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 export const store = { get(k, d) { try { const v = localStorage.getItem('heckle-games:' + k); return v == null ? d : JSON.parse(v) } catch (e) { return d } }, set(k, v) { try { localStorage.setItem('heckle-games:' + k, JSON.stringify(v)) } catch (e) { } refreshStatus() } };
 export const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -27,8 +30,11 @@ export function keyboard(el, onKey, opt = {}) {
 
 /* Physical keyboard goes to whichever game you last touched, or the one on screen. */
 export const Games = {}; export let current = 'punchline';
+const played = new Set();
 function setActive(id) { if (!document.getElementById(id)) return; current = id; $$('.game').forEach(s => s.classList.toggle('active', s.id === id)) }
-['pointerdown', 'focusin'].forEach(ev => document.addEventListener(ev, e => { const s = e.target.closest && e.target.closest('.game'); if (s) setActive(s.id); const j = e.target.closest && e.target.closest('[data-set]'); if (j) setActive(j.dataset.set) }, true));
+/* First real interaction with a game in this visit counts as a play (analytics). */
+const markPlayed = id => { if (id && !played.has(id)) { played.add(id); track('game_play', { game: id }) } };
+['pointerdown', 'focusin'].forEach(ev => document.addEventListener(ev, e => { const s = e.target.closest && e.target.closest('.game'); if (s) { setActive(s.id); if (ev === 'pointerdown') markPlayed(s.id) } const j = e.target.closest && e.target.closest('[data-set]'); if (j) setActive(j.dataset.set) }, true));
 let raf = 0; window.addEventListener('scroll', () => {
   if (raf) return; raf = requestAnimationFrame(() => {
     raf = 0; const h = innerHeight, a = document.getElementById(current).getBoundingClientRect();
@@ -42,7 +48,7 @@ document.addEventListener('keydown', e => {
   const k = e.key.length === 1 ? e.key.toUpperCase() : e.key;
   if (/^[A-Z]$/.test(k) || ['Enter', 'Backspace', 'Delete', 'Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(k)) {
     if (e.target.matches('button') && (k === 'Enter' || k === ' ')) return;
-    if (g.onKey(k === 'Delete' ? 'Backspace' : k, e) !== false) e.preventDefault();
+    if (g.onKey(k === 'Delete' ? 'Backspace' : k, e) !== false) { e.preventDefault(); markPlayed(current) }
   }
 });
 
