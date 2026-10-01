@@ -5,6 +5,18 @@ comics (open mics, festivals), and games. Static multi-page site, no backend.
 `README.md` covers setup, deploying and data sources; `design/` holds the original designs and
 the conversations that produced them — check `design/chats/` before changing what a page does.
 
+## Agent charter
+
+Heckle runs on six AI seats (CTO, CAO, CCO, CPO, CRO, Chief of Staff) under one operator. See
+`agents/README.md`. The universal block below binds every session in this repo. The seats are
+available as subagents in `.claude/agents/`.
+
+For code work, "draft, never act" means: work on a branch and hand changes over as a pull
+request. Don't merge to `main`, deploy, change hosting or account settings, add a paid service,
+or send anything outside the repo unless the operator asks for that specific action.
+
+@agents/universal.md
+
 ## Commands
 
 - `npm run dev` — dev server on :5173 (all five pages)
