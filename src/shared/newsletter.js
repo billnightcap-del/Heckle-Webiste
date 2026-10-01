@@ -1,5 +1,5 @@
-// The Setlist runs on Beehiiv. Set VITE_BEEHIIV_FORM_ID to the ID from your Beehiiv subscribe
-// form's embed code (the part after embeds.beehiiv.com/). Until then the sign-up form says
-// sign-ups are opening soon instead of pretending to subscribe anyone.
-export const BEEHIIV_FORM_ID = import.meta.env.VITE_BEEHIIV_FORM_ID || '';
-export const beehiivEmbedUrl = BEEHIIV_FORM_ID ? `https://embeds.beehiiv.com/${encodeURIComponent(BEEHIIV_FORM_ID)}?slim=true` : '';
+// The Setlist runs on Beehiiv. Set VITE_BEEHIIV_EMBED_SRC to the script URL from the subscribe
+// form's "Get embed code" button (the src="…" of the <script> tag). Until then the sign-up box
+// says sign-ups are opening soon instead of pretending to subscribe anyone.
+// Form: "Heckle site · The Setlist (home page)" in Subscribers → Subscribe forms.
+export const BEEHIIV_EMBED_SRC = import.meta.env.VITE_BEEHIIV_EMBED_SRC || '';

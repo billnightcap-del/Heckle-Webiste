@@ -2,6 +2,7 @@
 // `v` is the view model returned by the page component (see the sibling page module).
 import { Fragment } from 'react';
 import ImageSlot from '../shared/ImageSlot.jsx';
+import BeehiivForm from '../shared/BeehiivForm.jsx';
 import HeckleMic from '../shared/HeckleMic.jsx';
 
 export default function render(v) {
@@ -878,8 +879,8 @@ export default function render(v) {
               Tour drops, new specials, and the one clip worth your minute. Five items, every morning.
             </p>
           </div>
-          {v.beehiivEmbedUrl ? (
-            <iframe src={v.beehiivEmbedUrl} title="Sign up for The Setlist" data-test-id="beehiiv-embed" height="58" frameBorder="0" scrolling="no" style={{ flex: "1 1 380px", maxWidth: "520px", width: "100%", margin: "0", border: "0", background: "transparent" }} />
+          {v.beehiivEmbedSrc ? (
+            <BeehiivForm src={v.beehiivEmbedSrc} style={{ flex: "1 1 380px", maxWidth: "520px", width: "100%", minHeight: "56px" }} />
           ) : (
             <form onSubmit={v.onSubscribe} style={{ display: "flex", gap: "0", flex: "1 1 380px", maxWidth: "520px", border: "1px solid rgba(255,255,255,0.3)" }}>
               <input type="email" required placeholder="you@example.com" aria-label="Email address" style={{ flex: "1", minWidth: "0", minHeight: "56px", padding: "0 16px", background: "transparent", border: "0", color: "#f5f5f2", fontFamily: "inherit", fontSize: "16px", outline: "none" }} />

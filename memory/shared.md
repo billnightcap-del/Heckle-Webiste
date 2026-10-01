@@ -14,9 +14,11 @@ no email list and no analytics on the site (see blockers 4 and 5).
 3. **Specials scores:** scores, views and rank movement are sample data. Owner: CTO + CCO.
    Status: not started.
 4. **Festival fees and pay terms:** mostly unverified. Owner: CPO. Status: not started.
-5. **Analytics and email list:** code is ready (GA4 and Beehiiv), switched off until their IDs
-   are set. Owner: CTO (analytics) + CAO (email). Status: waiting on hosting and on the operator
-   creating the GA4 property and the Beehiiv publication.
+5. **Analytics and email list:** code is ready (GA4 and Beehiiv), switched off until configured.
+   Beehiiv publication exists (hecklecomedy.beehiiv.com, currently named "Brian's Newsletter")
+   with an inline form for the home page, styled but not yet published. Owner: CTO (analytics) +
+   CAO (email). Status: waiting on hosting, the operator publishing the Beehiiv form, and a GA4
+   property.
 
 ## Site status
 Not deployed yet. No public URL. Code is on `main` in this repo.
