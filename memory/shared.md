@@ -14,11 +14,10 @@ no email list and no analytics on the site (see blockers 4 and 5).
 3. **Specials scores:** scores, views and rank movement are sample data. Owner: CTO + CCO.
    Status: not started.
 4. **Festival fees and pay terms:** mostly unverified. Owner: CPO. Status: not started.
-5. **Analytics and email list:** code is ready (GA4 and Beehiiv), switched off until configured.
-   Beehiiv publication exists (hecklecomedy.beehiiv.com, currently named "Brian's Newsletter")
-   with an inline form for the home page, styled but not yet published. Owner: CTO (analytics) +
-   CAO (email). Status: waiting on hosting, the operator publishing the Beehiiv form, and a GA4
-   property.
+5. **Analytics and email list:** set up 2026-10-01. GA4 (`G-8EP75MZ62L`) and the Beehiiv form
+   on the home page (hecklecomedy.beehiiv.com) are configured and go live with the site.
+   Owner: CTO (analytics) + CAO (email). Status: done once the site is published; real numbers
+   start accruing from launch day.
 
 ## Site status
 Published by GitHub Pages from `main` once the repo is public: https://billnightcap-del.github.io/Heckle-Webiste/
