@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Game Night — Heckle.</title>
+<meta name="description" content="Seven games from the world of stand-up: Punchline, Callbacks, Short Set, Ad-Libs, Pun-Off, Setup / Punch and Buzz Words.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Arial Narrow,Arial,sans-serif' font-weight='900' font-size='44' fill='%23ffd400'%3EGN.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Sections">
+      <a href="./#latest">Stand-Up</a><a href="./#clips">Video</a><a href="specials.html">Specials</a><a href="festivals.html">Festivals</a><a href="open-mics.html">Open Mics</a><a href="#top" aria-current="page">Games</a>
+    </nav>
+    <a class="logo" href="./">Heckle<span>.</span></a>
+    <a class="head-cta" href="#punchline">Play today’s word</a>
+  </div>
+</header>
+
+<section class="hero" id="top" data-screen-label="Game Night — Header">
+  <div class="bulbs" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-top">
+      <div><span class="kicker">Heckle Games · New word every night</span>
+      <h1 style="margin-top:10px">Game Night<span>.</span></h1></div>
+      <p class="deck">Seven games from the world of stand-up. No login, no two-drink minimum. Start typing — Punchline is already listening.</p>
+    </div>
+    <nav class="jump" aria-label="Games on this page">
+      <a href="#punchline" data-set="punchline"><span class="n">01</span><span><b>Punchline</b><small>Guess the comedy word in six</small></span><span class="st" id="st-punchline"></span></a>
+      <a href="#callbacks" data-set="callbacks"><span class="n">02</span><span><b>Callbacks</b><small>Sixteen words, four hidden groups</small></span><span class="st" id="st-callbacks"></span></a>
+      <a href="#shortset" data-set="shortset"><span class="n">03</span><span><b>Short Set</b><small>A mini crossword against the clock</small></span><span class="st" id="st-shortset"></span></a>
+      <a href="#adlibs" data-set="adlibs"><span class="n">04</span><span><b>Ad-Libs</b><small>Fill the blanks, then take the stage</small></span><span class="st" id="st-adlibs"></span></a>
+      <a href="#punoff" data-set="punoff"><span class="n">05</span><span><b>Pun-Off</b><small>Mash two topics into puns</small></span><span class="st" id="st-punoff"></span></a>
+      <a href="#setpunch" data-set="setpunch"><span class="n">06</span><span><b>Setup/Punch</b><small>Write the punchline, get voted</small></span><span class="st" id="st-setpunch"></span></a>
+      <a href="#buzz" data-set="buzz"><span class="n">07</span><span><b>Buzz Words</b><small>Make words from the honeycomb</small></span><span class="st" id="st-buzz"></span></a>
+    </nav>
+  </div>
+  <div class="bulbs dim" aria-hidden="true"></div>
+</section>
+
+<main>
+  <section class="game active" id="punchline" data-screen-label="01 Punchline">
+    <div class="wrap">
+      <div class="g-head">
+        <div class="g-title"><span class="n">01</span><div><span class="kicker" id="pl-label">Tonight’s word</span><h2>Punchline</h2></div></div>
+        <div class="g-side">
+          <span class="kb-chip"><svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>Your keyboard types here</span>
+          <p>Six tries to find the five-letter word from the world of stand-up.</p>
+        </div>
+      </div>
+      <div class="pl-wrap">
+        <div class="pl-board" id="pl-board" role="grid" aria-label="Guess board"></div>
+        <div class="pl-side">
+          <div class="legend" aria-hidden="true">
+            <span><i style="background:var(--yellow)"></i>Right spot</span>
+            <span><i style="background:var(--yellow-deep);border:2px solid var(--yellow)"></i>Wrong spot</span>
+            <span><i style="background:var(--absent);border:1px solid var(--line-2)"></i>Not in the word</span>
+          </div>
+          <div class="kb" id="pl-keys"></div>
+          <div class="result" id="pl-result" hidden></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="game" id="callbacks" data-screen-label="02 Callbacks">
+    <div class="wrap">
+      <div class="g-head">
+        <div class="g-title"><span class="n">02</span><div><span class="kicker" id="cb-label">Show No. 1</span><h2>Callbacks</h2></div></div>
+        <div class="g-side">
+          <p>Pick four words that share a thread. Four groups, four mistakes.</p>
+          <div class="picker" id="cb-picker"></div>
+        </div>
+      </div>
+      <div class="cb-wrap">
+        <div class="cb-board" id="cb-board"></div>
+        <div class="cb-aside">
+          <div class="mistakes" id="cb-mistakes"></div>
+          <div class="row-btns" id="cb-btns">
+            <button class="btn" id="cb-shuffle"><svg class="icon" viewBox="0 0 24 24"><path d="m18 14 4 4-4 4"/><path d="m18 2 4 4-4 4"/><path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-7.6a4 4 0 0 1 3.3-1.7H22"/><path d="M2 6h1.972a4 4 0 0 1 3.6 2.2"/><path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45"/></svg>Shuffle</button>
+            <button class="btn" id="cb-clear">Deselect</button>
+            <button class="btn btn-primary" id="cb-submit" disabled style="flex-basis:100%">Submit</button>
+          </div>
+          <div class="result" id="cb-result" hidden></div>
+          <div class="levels" aria-hidden="true">
+            <span><i class="lv0"></i>Opener</span><span><i class="lv1"></i>Feature</span><span><i class="lv2"></i>Headliner</span><span><i class="lv3"></i>Closer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="game" id="shortset" data-screen-label="03 Short Set">
+    <div class="wrap">
+      <div class="g-head">
+        <div class="g-title"><span class="n">03</span><div><span class="kicker" id="xw-label">Grid No. 1</span><h2>Short Set</h2></div></div>
+        <div class="g-side">
+          <span class="kb-chip"><svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>Your keyboard types here</span>
+          <p>Tap a square, tap again to switch direction. The clock starts when you do.</p>
+          <div class="picker" id="xw-picker"></div>
+        </div>
+      </div>
+      <div class="xw" id="xw">
+        <div class="xw-main">
+          <div class="xw-top">
+            <span class="xw-time" id="xw-time">0:00</span>
+            <div class="xw-actions"><button class="btn btn-sm" id="xw-check">Check</button><button class="btn btn-sm" id="xw-reveal">Reveal</button></div>
+          </div>
+          <div class="xw-grid" id="xw-grid" role="grid" aria-label="Crossword grid"></div>
+          <div class="cluebar">
+            <button id="xw-prev" aria-label="Previous clue"><svg class="icon" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+            <div class="txt" id="xw-bartxt"></div>
+            <button id="xw-next" aria-label="Next clue"><svg class="icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+          <div class="result" id="xw-result" hidden></div>
+          <div class="kb xw-keys" id="xw-keys"></div>
+        </div>
+        <div class="clues" id="xw-clues"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="game" id="adlibs" data-screen-label="04 Ad-Libs">
+    <div class="wrap">
+      <div class="g-head">
+        <div class="g-title"><span class="n">04</span><div><span class="kicker">Fill in the bit</span><h2>Ad-Libs</h2></div></div>
+        <div class="g-side">
+          <p>Fill the blanks blind. Then take the stage and hear what you wrote.</p>
+          <div class="picker" id="al-picker"></div>
+        </div>
+      </div>
+      <div id="al-body"></div>
+    </div>
+  </section>
+  <section class="game" id="punoff" data-screen-label="05 Pun-Off">
+    <div class="wrap">
+      <div class="g-head">
+        <div class="g-title"><span class="n">05</span><div><span class="kicker" id="po-label">Two topics, one groan</span><h2>Pun-Off</h2></div></div>
+        <div class="g-side">
+          <p>Mash both topics into puns. Bigger words score more — fuse them into one word for triple points.</p>
+          <div class="picker"><button class="pick" id="po-new">New pair</button></div>
+        </div>
+      </div>
+      <div class="po-wrap">
+        <div class="po-main">
+          <div class="po-topics" id="po-topics"></div>
+          <form class="po-form" id="po-form" autocomplete="off">
+            <input class="input" id="po-in" maxlength="120" spellcheck="false" placeholder="e.g. One small step for brie-kind" aria-label="Your pun">
+            <button class="btn btn-primary" type="submit">Pun it</button>
+          </form>
+          <ol class="po-list" id="po-list"></ol>
+        </div>
+        <aside class="po-aside">
+          <div class="po-score"><div><span class="kicker">Score</span><b id="po-score">0</b></div><div><span class="kicker">Clock</span><b id="po-time">2:00</b></div></div>
+          <ul class="po-rules">
+            <li><b>+1</b><span>per syllable of every topic word you work in</span></li>
+            <li><b>×2</b><span>when one pun hits both topics</span></li>
+            <li><b>×3</b><span>when both topics fuse into a single word</span></li>
+            <li><b>0</b><span>for a word you already scored this round</span></li>
+          </ul>
+          <button class="btn" id="po-hint">Stuck? Show a few words</button>
+          <div class="po-hints" id="po-hints"></div>
+          <div class="result" id="po-result" hidden></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="game" id="setpunch" data-screen-label="06 Setup / Punch">
+    <div class="wrap">
+      <div class="g-head">
+        <div class="g-title"><span class="n">06</span><div><span class="kicker">You land it, the room votes</span><h2>Setup / Punch</h2></div></div>
+        <div class="g-side"><p>We give you the setup. You write the punchline. The best punches rise up the board.</p></div>
+      </div>
+      <div class="sp-wrap">
+        <div class="sp-main">
+          <div class="sp-setup" id="sp-setup">
+            <span class="kicker">The setup</span>
+            <blockquote id="sp-text"></blockquote>
+            <div class="row-btns"><div class="sp-dots" id="sp-dots"></div><button class="btn btn-sm" id="sp-skip" type="button">Different setup</button></div>
+          </div>
+          <form id="sp-form" autocomplete="off">
+            <div class="field"><label for="sp-punch">Your punchline <em id="sp-count">0/180</em></label><textarea class="input" id="sp-punch" maxlength="180" rows="3" placeholder="Land it…"></textarea></div>
+            <div class="sp-row">
+              <div class="field"><label for="sp-name">Stage name <em>optional</em></label><input class="input" id="sp-name" maxlength="24" placeholder="e.g. Tight Five Tina"></div>
+              <button class="btn btn-primary" type="submit">Send it up</button>
+            </div>
+          </form>
+        </div>
+        <aside class="sp-board">
+          <div class="sp-board-head"><h3>Leaderboard</h3><div class="picker" id="sp-tabs"><button class="pick" data-sort="recent" aria-pressed="true">Recent</button><button class="pick" data-sort="top" aria-pressed="false">Top</button><button class="pick" data-sort="this" aria-pressed="false">This setup</button></div></div>
+          <ol id="sp-list"></ol>
+          <button class="btn sp-more" id="sp-more" hidden>Show more punches</button>
+          <p class="al-note" style="margin-top:12px">Punches and votes are saved in this browser.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+  <section class="game" id="buzz" data-screen-label="07 Buzz Words">
+    <div class="wrap">
+      <div class="g-head">
+        <div class="g-title"><span class="n">07</span><div><span class="kicker" id="bz-label">Hive No. 1</span><h2>Buzz Words</h2></div></div>
+        <div class="g-side">
+          <span class="kb-chip"><svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>Your keyboard types here</span>
+          <p>Make words of four or more letters. Every word needs the yellow center letter. Letters can repeat.</p>
+          <div class="picker" id="bz-picker"></div>
+        </div>
+      </div>
+      <div class="bz-wrap">
+        <div class="bz-play">
+          <div class="bz-entry" id="bz-entry" aria-live="polite"></div>
+          <div class="hive" id="bz-hive"></div>
+          <div class="bz-btns">
+            <button class="btn" id="bz-del">Delete</button>
+            <button class="btn round" id="bz-shuf" aria-label="Shuffle letters"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></button>
+            <button class="btn btn-primary" id="bz-enter">Enter</button>
+          </div>
+        </div>
+        <div class="bz-side">
+          <div class="bz-rank">
+            <div class="bz-rank-top"><b id="bz-rankname">Open Mic</b><span id="bz-score">0</span></div>
+            <div class="bz-track" id="bz-track"></div>
+            <span class="bz-next" id="bz-next"></span>
+          </div>
+          <div class="bz-found">
+            <header><span id="bz-count">0 words</span><button class="btn btn-sm" id="bz-reveal" style="min-height:30px">Show all words</button></header>
+            <ul id="bz-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section style="border-top:1px solid var(--line)" data-screen-label="Setlist hook">
+  <div class="wrap" style="padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px);display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between">
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:620px">
+      <span class="kicker">Tomorrow’s word drops at 7 a.m.</span>
+      <h2 style="font-size:clamp(44px,6vw,80px)">Keep the streak<span style="color:var(--yellow)">.</span></h2>
+      <p style="font-family:var(--serif);font-size:19px;line-height:1.4;color:var(--soft)">The Setlist brings the new Punchline, the week’s best Setup / Punch and one clip worth your minute to your inbox every morning.</p>
+    </div>
+    <a class="btn btn-primary" href="./#setlist">Get The Setlist</a>
+  </div>
+</section>
+<footer class="site-foot">
+  <div class="wrap">
+    <a class="logo" href="./">Heckle<span>.</span></a>
+    <nav><a href="./">Home</a><a href="specials.html">Specials</a><a href="festivals.html">Festivals</a><a href="open-mics.html">Open Mics</a><a href="#top">Games</a></nav>
+  </div>
+</footer>
+<div id="toast" aria-live="polite"></div>
+
+
+<button type="button" id="tw-open" aria-controls="tweaks" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Tweaks</button>
+<div id="tweaks" hidden role="dialog" aria-label="Tweaks">
+  <header><b>Tweaks</b><button id="tw-close" aria-label="Close tweaks"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></header>
+  <div class="tw"><span>House lights</span><div class="seg" data-k="mood"><button data-v="club">Club</button><button data-v="matinee">Matinee</button><button data-v="blackout">Blackout</button></div><small id="tw-mood-note"></small></div>
+  <div class="tw"><span>Showtime energy</span><div class="seg" data-k="energy"><button data-v="calm">Calm</button><button data-v="lively">Lively</button><button data-v="full">Full marquee</button></div><small id="tw-energy-note"></small></div>
+  <div class="tw"><span>Room size</span><div class="seg" data-k="room"><button data-v="intimate">Intimate</button><button data-v="theater">Theater</button><button data-v="arena">Arena</button></div><small id="tw-room-note"></small></div>
+</div>
+<script type="module" src="/src/games/main.js"></script>
+</body>
+</html>

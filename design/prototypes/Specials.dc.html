@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0a0a0a"/><text x="50" y="64" text-anchor="middle" font-family="Arial Narrow,Arial,sans-serif" font-weight="900" font-size="40" fill="#ffd400">SP</text></svg></template>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+body { margin: 0; background: #0a0a0a; color: #f5f5f2; font-family: 'Archivo', system-ui, sans-serif; text-wrap: pretty; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: #ffd400; }
+::selection { background: #ffd400; color: #0a0a0a; }
+:focus-visible { outline: 2px solid #ffd400; outline-offset: 2px; }
+select option { background: #0a0a0a; color: #f5f5f2; }
+input::placeholder { color: #7a7a76; }
+.rail::-webkit-scrollbar { height: 0; }
+</style>
+</helmet>
+
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
+
+<header style="position: sticky; top: 0; z-index: 30; background: rgba(10,10,10,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.12);">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px); height: 60px; box-sizing: border-box; display: flex; align-items: center; gap: 16px 28px; overflow: hidden;">
+    <a href="Heckle.dc.html" style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 0.9; text-transform: uppercase;">Heckle<span style="color: #ffd400;">.</span></a>
+    <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #a3a39e; margin-right: auto;">The Specials Index</span>
+    <nav style="display: flex; gap: 20px; font-weight: 700; font-stretch: 75%; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;">
+      <a href="Heckle.dc.html">Home</a><a href="Specials.dc.html" style="color: #ffd400;">Specials</a><a href="Festivals.dc.html">Festivals</a><a href="Open Mics.dc.html">Open Mics</a><a href="Game Night v2.html">Games</a>
+    </nav>
+  </div>
+</header>
+
+<section style="border-bottom: 1px solid rgba(255,255,255,0.12); background: radial-gradient(ellipse 50% 80% at 90% 0%, rgba(255,212,0,0.12), transparent 70%);" data-screen-label="Specials — Header">
+  <div style="max-width: 1440px; margin: 0 auto; padding: clamp(36px, 5vw, 72px) clamp(16px, 3vw, 40px) 36px; display: flex; flex-direction: column; gap: 32px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-end; justify-content: space-between;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <span style="font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffd400;">1996 — 2026 · {{ total }} specials scored · streaming, cable &amp; YouTube</span>
+        <h1 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: clamp(64px, 10vw, 168px); line-height: 0.8; text-transform: uppercase;">The Specials<br><span style="color: #ffd400;">Index.</span></h1>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 420px;">
+        <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #a3a39e;">How we score</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; gap: 12px; align-items: center;"><span style="width: 64px; flex: none; text-align: center; background: #ffd400; color: #0a0a0a; padding: 3px 0; font-weight: 900; font-stretch: 62%; font-size: 16px; text-transform: uppercase;">Killed</span><span style="font-size: 14px; color: #d6d6d2;">75%+ of critics say it lands</span></div>
+          <div style="display: flex; gap: 12px; align-items: center;"><span style="width: 62px; flex: none; text-align: center; border: 1px solid #ffd400; color: #ffd400; padding: 2px 0; font-weight: 900; font-stretch: 62%; font-size: 16px; text-transform: uppercase;">Solid</span><span style="font-size: 14px; color: #d6d6d2;">60–74% — worth the hour</span></div>
+          <div style="display: flex; gap: 12px; align-items: center;"><span style="width: 62px; flex: none; text-align: center; border: 1px solid #7a7a76; color: #a3a39e; padding: 2px 0; font-weight: 900; font-stretch: 62%; font-size: 16px; text-transform: uppercase;">Bombed</span><span style="font-size: 14px; color: #d6d6d2;">Under 60% — the room went quiet</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #ffd400; padding-bottom: 8px;">
+        <h2 style="margin: 0; font-weight: 900; font-stretch: 62%; font-size: 32px; line-height: 1; text-transform: uppercase;">Climbing <span style="color: #ffd400;">▲</span> last 60 days</h2>
+        <span style="font-size: 13px; color: #a3a39e;">Rank change since July 30</span>
+      </div>
+      <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); column-gap: 32px;">
+        <sc-for list="{{ climbers }}" as="c" hint-placeholder-count="10">
+          <li style="border-bottom: 1px solid rgba(255,255,255,0.12); background: {{ c.rowBg }};">
+            <a href="#" style="display: grid; grid-template-columns: 52px 44px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 12px 10px; color: inherit; text-decoration: none;" style-hover="background: rgba(255,255,255,0.04);">
+              <span style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 1; color: {{ c.placeColor }}; font-variant-numeric: tabular-nums;">{{ c.place }}</span>
+              <span style="position: relative; width: 44px; height: 66px; overflow: hidden; background: #1c1c1c; color: #ffd400; display: grid; place-items: center; font-weight: 900; font-stretch: 62%; font-size: 16px;">{{ c.initials }}<sc-if value="{{ c.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ c.poster }}" alt="" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></sc-if></span>
+              <span style="display: flex; flex-direction: column; gap: 6px; min-width: 0;">
+                <span style="font-weight: 800; font-stretch: 70%; font-size: 20px; line-height: 1; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ c.title }}</span>
+                <span style="font-size: 13px; color: #a3a39e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ c.comic }} · {{ c.network }} · {{ c.year }}</span>
+                <span style="height: 4px; background: rgba(255,255,255,0.08);"><span style="display: block; height: 100%; width: {{ c.bar }}; background: #ffd400;"></span></span>
+              </span>
+              <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+                <span style="background: #ffd400; color: #0a0a0a; padding: 3px 8px; font-weight: 900; font-stretch: 62%; font-size: 18px; line-height: 1;">▲ {{ c.delta }}</span>
+                <span style="font-size: 12px; color: #a3a39e; font-variant-numeric: tabular-nums; white-space: nowrap;">#{{ c.oldRank }} → <strong style="color: #f5f5f2;">#{{ c.rank }}</strong></span>
+              </span>
+            </a>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section style="position: sticky; top: 60px; z-index: 20; background: rgba(10,10,10,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.12);" data-screen-label="Specials — Filters">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 14px clamp(16px, 3vw, 40px); display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+      <input value="{{ q }}" onInput="{{ onQ }}" placeholder="Search title or comic…" style="flex: 1 1 220px; min-width: 180px; height: 44px; padding: 0 14px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 15px;">
+      <select value="{{ sort }}" onChange="{{ onSort }}" aria-label="Sort" style="height: 44px; padding: 0 12px; background: #ffd400; color: #0a0a0a; border: 0; border-radius: 0; font-family: inherit; font-weight: 800; font-size: 14px; cursor: pointer;">
+        <sc-for list="{{ sortOpts }}" as="o" hint-placeholder-count="6"><option value="{{ o.v }}">Sort: {{ o.l }}</option></sc-for>
+      </select>
+      <select value="{{ network }}" onChange="{{ onNetwork }}" aria-label="Network" style="height: 44px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 14px;">
+        <sc-for list="{{ networkOpts }}" as="o" hint-placeholder-count="8"><option value="{{ o }}">{{ o }}</option></sc-for>
+      </select>
+      <select value="{{ era }}" onChange="{{ onEra }}" aria-label="Era" style="height: 44px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 14px;">
+        <sc-for list="{{ eraOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for>
+      </select>
+      <select value="{{ rating }}" onChange="{{ onRating }}" aria-label="Rating" style="height: 44px; padding: 0 12px; background: #0a0a0a; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.25); border-radius: 0; font-family: inherit; font-size: 14px;">
+        <sc-for list="{{ ratingOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for>
+      </select>
+      <button type="button" onClick="{{ toggleOnNow }}" aria-pressed="{{ onNowPressed }}" style="height: 44px; padding: 0 14px; display: inline-flex; gap: 8px; align-items: center; background: {{ onNowBg }}; color: {{ onNowFg }}; border: 1px solid {{ onNowBd }}; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: currentColor;"></span>On now
+      </button>
+      <button type="button" onClick="{{ toggleFree }}" aria-pressed="{{ freePressed }}" style="height: 44px; padding: 0 14px; display: inline-flex; gap: 8px; align-items: center; background: {{ freeBg }}; color: {{ freeFg }}; border: 1px solid {{ freeBd }}; font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>Free on YouTube
+      </button>
+      <div style="display: flex; border: 1px solid rgba(255,255,255,0.25);">
+        <button type="button" onClick="{{ setGrid }}" aria-label="Grid view" style="width: 44px; height: 42px; display: grid; place-items: center; background: {{ gridBg }}; color: {{ gridFg }}; border: 0; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg></button>
+        <button type="button" onClick="{{ setList }}" aria-label="List view" style="width: 44px; height: 42px; display: grid; place-items: center; background: {{ listBg }}; color: {{ listFg }}; border: 0; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg></button>
+      </div>
+    </div>
+    <div class="rail" style="display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;">
+      <sc-for list="{{ genreChips }}" as="g" hint-placeholder-count="10">
+        <button type="button" onClick="{{ g.onClick }}" style="flex: none; height: 32px; padding: 0 12px; background: {{ g.bg }}; color: {{ g.fg }}; border: 1px solid {{ g.bd }}; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap;">{{ g.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="max-width: 1440px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 28px clamp(16px, 3vw, 40px) clamp(56px, 7vw, 96px); display: flex; flex-direction: column; gap: 24px;" data-screen-label="Specials — Results">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; color: #a3a39e;">
+    <span><strong style="color: #f5f5f2;">{{ count }}</strong> specials · {{ sortLabel }}</span>
+    <span>{{ artNote }} · Scores, views and rank movement are sample data.</span>
+  </div>
+
+  <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ true }}">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 32px 20px;">
+      <sc-for list="{{ rows }}" as="s" hint-placeholder-count="12">
+        <a href="#" style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+          <div style="position: relative; aspect-ratio: 2 / 3; background: {{ s.posterBg }}; color: {{ s.posterFg }}; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 14px; box-sizing: border-box; transition: transform .35s cubic-bezier(.2,.7,.2,1);" style-hover="transform: translateY(-6px);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">
+              <span>{{ s.network }}</span><span>{{ s.year }}</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-weight: 900; font-stretch: 62%; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.8;">{{ s.comic }}</span>
+              <span style="font-weight: 900; font-stretch: 62%; font-size: {{ s.titleSize }}; line-height: 0.86; text-transform: uppercase; overflow-wrap: anywhere;">{{ s.title }}</span>
+            </div>
+            <sc-if value="{{ s.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ s.poster }}" alt="{{ s.title }} cover art" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></sc-if>
+            <span style="position: absolute; z-index: 2; right: 10px; top: 32px; font-weight: 900; font-stretch: 62%; font-size: 13px; padding: 2px 6px; background: {{ s.trendBg }}; color: {{ s.trendFg }};">{{ s.trendText }}</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <span style="min-width: 58px; text-align: center; background: {{ s.certBg }}; color: {{ s.certFg }}; border: 1px solid {{ s.certBd }}; padding: 2px 4px; font-weight: 900; font-stretch: 62%; font-size: 14px; text-transform: uppercase;">{{ s.cert }}</span>
+            <span style="font-weight: 900; font-stretch: 62%; font-size: 24px; line-height: 1;">{{ s.critic }}%</span>
+            <span style="font-size: 12px; color: #a3a39e; margin-left: auto;">Crowd {{ s.crowd }}%</span>
+          </div>
+          <span style="font-weight: 800; font-stretch: 70%; font-size: 18px; line-height: 1.05; text-transform: uppercase;">{{ s.title }}</span>
+          <span style="font-size: 12px; color: #a3a39e;">#{{ s.rank }} · {{ s.views }} views · {{ s.genreText }}</span>
+          <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: {{ s.onNowColor }};">{{ s.whereText }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}">
+    <div style="overflow-x: auto;">
+      <div style="min-width: 920px; display: flex; flex-direction: column;">
+        <div style="display: grid; grid-template-columns: 56px 64px minmax(0, 2.4fr) 110px minmax(0, 1.2fr) 88px 72px 84px 90px; gap: 14px; padding: 10px 0; border-bottom: 2px solid #f5f5f2; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #a3a39e;">
+          <span>Rank</span><span>60 days</span><span>Special</span><span>Network</span><span>Genre</span><span>Critics</span><span>Crowd</span><span>Views</span><span>On now</span>
+        </div>
+        <sc-for list="{{ rows }}" as="s" hint-placeholder-count="12">
+          <a href="#" style="display: grid; grid-template-columns: 56px 64px minmax(0, 2.4fr) 110px minmax(0, 1.2fr) 88px 72px 84px 90px; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.12);" style-hover="background: #141414; color: #f5f5f2;">
+            <span style="font-weight: 900; font-stretch: 62%; font-size: 32px; line-height: 1;">{{ s.rank }}</span>
+            <span style="font-weight: 900; font-stretch: 62%; font-size: 18px; color: {{ s.trendColor }};">{{ s.trendText }}</span>
+            <span style="display: flex; gap: 12px; align-items: center; min-width: 0;">
+              <span style="flex: none; position: relative; overflow: hidden; width: 36px; height: 54px; background: {{ s.posterBg }}; color: {{ s.posterFg }}; display: grid; place-items: center; font-weight: 900; font-stretch: 62%; font-size: 14px;">{{ s.initials }}<sc-if value="{{ s.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ s.poster }}" alt="" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></sc-if></span>
+              <span style="display: flex; flex-direction: column; gap: 3px; min-width: 0;">
+                <span style="font-weight: 800; font-stretch: 70%; font-size: 20px; line-height: 1; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ s.title }}</span>
+                <span style="font-size: 13px; color: #a3a39e;">{{ s.comic }} · {{ s.year }}</span>
+              </span>
+            </span>
+            <span style="font-size: 13px; font-weight: 600;">{{ s.network }}</span>
+            <span style="font-size: 13px; color: #d6d6d2;">{{ s.genreText }}</span>
+            <span style="display: flex; flex-direction: column; gap: 3px;">
+              <span style="font-weight: 900; font-stretch: 62%; font-size: 22px; line-height: 1;">{{ s.critic }}%</span>
+              <span style="align-self: flex-start; background: {{ s.certBg }}; color: {{ s.certFg }}; border: 1px solid {{ s.certBd }}; padding: 0 5px; font-weight: 900; font-stretch: 62%; font-size: 11px; text-transform: uppercase;">{{ s.cert }}</span>
+            </span>
+            <span style="font-weight: 700; font-size: 15px;">{{ s.crowd }}%</span>
+            <span style="font-size: 14px; font-weight: 600;">{{ s.views }}</span>
+            <span style="font-size: 12px; font-weight: 700; color: {{ s.onNowColor }};">{{ s.onNowText }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+    <div style="border: 1px dashed rgba(255,255,255,0.25); padding: 40px; display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-weight: 900; font-stretch: 62%; font-size: 40px; line-height: 0.9; text-transform: uppercase;">Crickets.</span>
+      <span style="font-family: 'Newsreader', serif; font-size: 19px; color: #d6d6d2;">No specials match those filters.</span>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+    <button type="button" onClick="{{ more }}" style="align-self: center; height: 52px; padding: 0 28px; background: transparent; color: #f5f5f2; border: 1px solid rgba(255,255,255,0.3); font-family: inherit; font-weight: 800; font-stretch: 75%; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;" style-hover="background: #ffd400; color: #0a0a0a; border-color: #ffd400;">Show more · {{ remaining }} left</button>
+  </sc-if>
+</section>
+
+<footer style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.12);">
+  <div style="max-width: 1440px; margin: 0 auto; padding: 24px clamp(16px, 3vw, 40px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #a3a39e;">
+    <span>© 2026 Heckle Media · The Specials Index · Cover art via Apple TV, Wikipedia/Wikimedia Commons and (optionally) TMDB; used for identification, rights remain with their owners.</span>
+    <a href="Heckle.dc.html">← Back to Heckle</a>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;comicFallback&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Cover art&quot;, &quot;label&quot;: &quot;Use comic portrait when no poster found&quot;}, &quot;tmdbKey&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Cover art&quot;, &quot;label&quot;: &quot;TMDB API key (v3, optional)&quot;}}">
+const RAW = `Bring the Pain|Chris Rock|1996|HBO|Observational,Political
+I'm Telling You for the Last Time|Jerry Seinfeld|1998|HBO|Observational,Clean
+Bigger & Blacker|Chris Rock|1999|HBO|Observational,Political
+You Are All Diseased|George Carlin|1999|HBO|Political,Dark
+Dress to Kill|Eddie Izzard|1999|HBO|Absurdist,Storytelling
+Killin' Them Softly|Dave Chappelle|2000|HBO|Observational,Storytelling
+Complaints and Grievances|George Carlin|2001|HBO|Political,Dark
+Live on Broadway|Robin Williams|2002|HBO|Absurdist,Political
+Here and Now|Ellen DeGeneres|2003|HBO|Observational,Clean
+For What It's Worth|Dave Chappelle|2004|Showtime|Observational,Storytelling
+Never Scared|Chris Rock|2004|HBO|Observational,Political
+No Reason to Complain|Patton Oswalt|2004|Comedy Central|Alt,Storytelling
+Life Is Worth Losing|George Carlin|2005|HBO|Political,Dark
+Beyond the Pale|Jim Gaffigan|2006|Comedy Central|Observational,Clean
+Sick and Tired|Wanda Sykes|2006|HBO|Political,Observational
+Werewolves and Lollipops|Patton Oswalt|2007|Comedy Central|Alt,Storytelling
+Shameless|Louis C.K.|2007|HBO|Confessional,Dark
+It's Bad for Ya|George Carlin|2008|HBO|Political,Dark
+Kill the Messenger|Chris Rock|2008|HBO|Observational,Political
+Chewed Up|Louis C.K.|2008|Showtime|Confessional,Dark
+Why Do I Do This?|Bill Burr|2008|Comedy Central|Observational,Dark
+I'ma Be Me|Wanda Sykes|2009|HBO|Political,Confessional
+Weapons of Self Destruction|Robin Williams|2009|HBO|Absurdist,Political
+King Baby|Jim Gaffigan|2009|Comedy Central|Observational,Clean
+Seriously Funny|Kevin Hart|2010|Comedy Central|Storytelling,Observational
+Let It Go|Bill Burr|2010|Showtime|Observational,Dark
+Hilarious|Louis C.K.|2010|Epix|Confessional,Dark
+Finest Hour|Patton Oswalt|2011|Comedy Central|Alt,Storytelling
+Live at the Beacon Theater|Louis C.K.|2011|Self-released|Confessional,Dark
+Me Doing Standup|Norm Macdonald|2011|Comedy Central|Absurdist,Dark
+New in Town|John Mulaney|2012|Comedy Central|Storytelling,Clean
+Mr. Universe|Jim Gaffigan|2012|Self-released|Observational,Clean
+You People Are All the Same|Bill Burr|2012|Netflix|Observational,Dark
+Animal Furnace|Hannibal Buress|2012|Comedy Central|Alt,Observational
+what.|Bo Burnham|2013|Netflix|Musical,Alt
+Oh My God|Louis C.K.|2013|HBO|Confessional,Dark
+Buried Alive|Aziz Ansari|2013|Netflix|Observational,Confessional
+We Are Miracles|Sarah Silverman|2013|HBO|Dark,Alt
+My Girlfriend's Boyfriend|Mike Birbiglia|2013|Netflix|Storytelling,Confessional
+Thinky Pain|Marc Maron|2013|Netflix|Confessional,Storytelling
+Caligula|Anthony Jeselnik|2013|Comedy Central|Dark,Absurdist
+Beta Male|Kumail Nanjiani|2013|Comedy Central|Storytelling,Alt
+I'm Sorry You Feel That Way|Bill Burr|2014|Netflix|Observational,Dark
+Obsessed|Jim Gaffigan|2014|Comedy Central|Observational,Clean
+One of the Greats|Chelsea Peretti|2014|Netflix|Alt,Absurdist
+BARE|Jim Jefferies|2014|Netflix|Political,Dark
+The Comeback Kid|John Mulaney|2015|Netflix|Storytelling,Clean
+Live at Madison Square Garden|Aziz Ansari|2015|Netflix|Observational,Confessional
+Boyish Girl Interrupted|Tig Notaro|2015|HBO|Confessional,Storytelling
+Live at the Apollo|Amy Schumer|2015|HBO|Confessional,Observational
+Thoughts and Prayers|Anthony Jeselnik|2015|Netflix|Dark,Political
+Baby Cobra|Ali Wong|2016|Netflix|Confessional,Observational
+Make Happy|Bo Burnham|2016|Netflix|Musical,Alt
+Talking for Clapping|Patton Oswalt|2016|Netflix|Alt,Storytelling
+Mostly Stories|Tom Segura|2016|Netflix|Storytelling,Dark
+Freedumb|Jim Jefferies|2016|Netflix|Political,Dark
+Comedy Camisado|Hannibal Buress|2016|Netflix|Alt,Observational
+The Age of Spin|Dave Chappelle|2017|Netflix|Storytelling,Political
+Deep in the Heart of Texas|Dave Chappelle|2017|Netflix|Storytelling,Observational
+Equanimity|Dave Chappelle|2017|Netflix|Political,Storytelling
+The Bird Revelation|Dave Chappelle|2017|Netflix|Political,Storytelling
+Annihilation|Patton Oswalt|2017|Netflix|Confessional,Storytelling
+Old Baby|Maria Bamford|2017|Netflix|Alt,Confessional
+Homecoming King|Hasan Minhaj|2017|Netflix|Storytelling,Political
+Walk Your Way Out|Bill Burr|2017|Netflix|Observational,Dark
+Thank God for Jokes|Mike Birbiglia|2017|Netflix|Storytelling,Confessional
+A Speck of Dust|Sarah Silverman|2017|Netflix|Dark,Alt
+Cinco|Jim Gaffigan|2017|Netflix|Observational,Clean
+The Leather Special|Amy Schumer|2017|Netflix|Confessional,Observational
+8|Jerrod Carmichael|2017|HBO|Observational,Dark
+3 Mics|Neal Brennan|2017|Netflix|Confessional,Alt
+She Ready!|Tiffany Haddish|2017|Showtime|Storytelling,Confessional
+Nanette|Hannah Gadsby|2018|Netflix|Confessional,Political
+Tamborine|Chris Rock|2018|Netflix|Confessional,Observational
+Kid Gorgeous at Radio City|John Mulaney|2018|Netflix|Storytelling,Clean
+Hard Knock Wife|Ali Wong|2018|Netflix|Confessional,Observational
+Happy to Be Here|Tig Notaro|2018|Netflix|Storytelling,Clean
+Humanity|Ricky Gervais|2018|Netflix|Dark,Political
+Disgraceful|Tom Segura|2018|Netflix|Storytelling,Dark
+Relatable|Ellen DeGeneres|2018|Netflix|Observational,Clean
+Hitler's Dog, Gossip and Trickery|Norm Macdonald|2017|Netflix|Absurdist,Dark
+Sticks & Stones|Dave Chappelle|2019|Netflix|Political,Dark
+Paper Tiger|Bill Burr|2019|Netflix|Observational,Political
+The Tennessee Kid|Nate Bargatze|2019|Netflix|Storytelling,Clean
+The Great Depresh|Gary Gulman|2019|HBO|Confessional,Storytelling
+Right Now|Aziz Ansari|2019|Netflix|Confessional,Political
+Not Normal|Wanda Sykes|2019|Netflix|Political,Observational
+The New One|Mike Birbiglia|2019|Netflix|Storytelling,Confessional
+Fire in the Maternity Ward|Anthony Jeselnik|2019|Netflix|Dark,Absurdist
+Black Mitzvah|Tiffany Haddish|2019|Netflix|Storytelling,Confessional
+Feelings|Ramy Youssef|2019|HBO|Confessional,Political
+Quality Time|Jim Gaffigan|2019|Prime Video|Observational,Clean
+23 Hours to Kill|Jerry Seinfeld|2020|Netflix|Observational,Clean
+Quarter-Life Crisis|Taylor Tomlinson|2020|Netflix|Confessional,Observational
+Ball Hog|Tom Segura|2020|Netflix|Storytelling,Dark
+End Times Fun|Marc Maron|2020|Netflix|Political,Confessional
+3 in the Morning|Sam Jay|2020|Netflix|Observational,Political
+Out to Lunch|Mark Normand|2020|YouTube|Observational,Dark
+I Hate Myself|Joe List|2020|YouTube|Confessional,Observational
+Only Fans|Matt Rife|2021|YouTube|Crowd Work,Observational
+Fat Rascal|Stavros Halkias|2022|YouTube|Confessional,Dark
+Inside|Bo Burnham|2021|Netflix|Musical,Confessional
+The Closer|Dave Chappelle|2021|Netflix|Political,Storytelling
+The Greatest Average American|Nate Bargatze|2021|Netflix|Storytelling,Clean
+Live in Austin|Shane Gillis|2021|YouTube|Observational,Dark
+Rothaniel|Jerrod Carmichael|2022|HBO|Confessional,Storytelling
+Look at You|Taylor Tomlinson|2022|Netflix|Confessional,Observational
+Don Wong|Ali Wong|2022|Netflix|Confessional,Observational
+Live at Red Rocks|Bill Burr|2022|Netflix|Observational,Dark
+The King's Jester|Hasan Minhaj|2022|Netflix|Storytelling,Political
+SuperNature|Ricky Gervais|2022|Netflix|Dark,Political
+Nothing Special|Norm Macdonald|2022|Netflix|Confessional,Absurdist
+The Intruder|Atsuko Okatsuka|2022|HBO|Alt,Absurdist
+Blocks|Neal Brennan|2022|Netflix|Confessional,Alt
+Selective Outrage|Chris Rock|2023|Netflix|Political,Observational
+Baby J|John Mulaney|2023|Netflix|Confessional,Storytelling
+Beautiful Dogs|Shane Gillis|2023|Netflix|Observational,Dark
+Hello World|Nate Bargatze|2023|Prime Video|Storytelling,Clean
+Sledgehammer|Tom Segura|2023|Netflix|Storytelling,Dark
+Mohammed in Texas|Mo Amer|2023|Netflix|Storytelling,Political
+Soup to Nuts|Mark Normand|2023|Netflix|Observational,Dark
+The Old Man and the Pool|Mike Birbiglia|2023|Netflix|Storytelling,Confessional
+The Dreamer|Dave Chappelle|2023|Netflix|Storytelling,Political
+Someone You Love|Sarah Silverman|2023|HBO|Confessional,Dark
+From Bleak to Dark|Marc Maron|2023|HBO|Confessional,Dark
+I'm Every Woman|Leanne Morgan|2023|Netflix|Storytelling,Clean
+Natural Selection|Matt Rife|2023|Netflix|Crowd Work,Observational
+Now More Than Ever|John Early|2023|HBO|Alt,Musical
+Armageddon|Ricky Gervais|2023|Netflix|Dark,Political
+I'm an Entertainer|Wanda Sykes|2023|Netflix|Political,Observational
+Have It All|Taylor Tomlinson|2024|Netflix|Confessional,Observational
+Single Lady|Ali Wong|2024|Netflix|Confessional,Observational
+Get on Your Knees|Jacqueline Novak|2024|Netflix|Alt,Confessional
+Your Friend, Nate Bargatze|Nate Bargatze|2024|Netflix|Storytelling,Clean
+Bones and All|Anthony Jeselnik|2024|Netflix|Dark,Absurdist
+More Feelings|Ramy Youssef|2024|HBO|Confessional,Political
+Night Thoughts|Kumail Nanjiani|2024|Prime Video|Storytelling,Confessional
+Drop Dead Years|Bill Burr|2025|Hulu|Observational,Political
+Panicked|Marc Maron|2025|HBO|Confessional,Dark`;
+const WHERE = { HBO: 'Max', Netflix: 'Netflix', 'Comedy Central': 'Paramount+', Showtime: 'Paramount+', 'Prime Video': 'Prime Video', Hulu: 'Hulu', YouTube: 'YouTube · free', Epix: 'MGM+', 'Self-released': 'Creator site' };
+function hash(s) { let h = 2166136261; for (const c of s) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return () => ((h = Math.imul(h ^ (h >>> 15), 2246822507) ^ Math.imul(h ^ (h >>> 13), 3266489909)) >>> 0) / 4294967296; }
+const DATA = (() => {
+  const list = RAW.trim().split('\n').map((l, i) => {
+    const [title, comic, year, network, g] = l.split('|'); const r = hash(title + comic); const y = +year;
+    const critic = Math.round(58 + r() * 41), crowd = Math.max(40, Math.min(99, Math.round(critic + (r() - 0.5) * 30)));
+    const views = (y >= 2016 ? 4 + r() * 38 : y >= 2008 ? 1 + r() * 9 : 0.5 + r() * 4);
+    const onNow = network === 'YouTube' || r() > 0.22;
+    return { id: i, title, comic, year: y, network, genres: g.split(','), critic, crowd, viewsN: views, onNow, free: network === 'YouTube', trend: Math.round((r() - 0.45) * 24) };
+  });
+  const byScore = [...list].sort((a, b) => (b.critic * 0.6 + b.crowd * 0.4) - (a.critic * 0.6 + a.crowd * 0.4));
+  byScore.forEach((s, i) => { s.rank = i + 1; s.trend = Math.max(-(list.length - s.rank), Math.min(s.rank - 1, s.trend)); });
+  return list;
+})();
+const GENRES = ['All', 'Observational', 'Storytelling', 'Confessional', 'Political', 'Dark', 'Alt', 'Absurdist', 'Clean', 'Musical', 'Crowd Work'];
+const NETWORKS = ['All networks', ...[...new Set(DATA.map((d) => d.network))].sort()];
+const ERAS = ['All years', '2021–2026', '2016–2020', '2006–2015', '1996–2005'];
+const RATINGS = ['All ratings', 'Killed (75%+)', 'Solid (60–74%)', 'Bombed (<60%)'];
+const SORTS = [{ v: 'rank', l: 'Heckle rank' }, { v: 'critic', l: 'Critics score' }, { v: 'crowd', l: 'Crowd score' }, { v: 'views', l: 'Most viewed' }, { v: 'trend', l: 'Biggest movers' }, { v: 'new', l: 'Newest' }, { v: 'old', l: 'Oldest' }];
+const PAGE = 36;
+const cert = (c) => c >= 75 ? { cert: 'Killed', certBg: '#ffd400', certFg: '#0a0a0a', certBd: '#ffd400' } : c >= 60 ? { cert: 'Solid', certBg: 'transparent', certFg: '#ffd400', certBd: '#ffd400' } : { cert: 'Bombed', certBg: 'transparent', certFg: '#a3a39e', certBd: '#7a7a76' };
+const fmtViews = (n) => n >= 1 ? `${n.toFixed(1)}M` : `${Math.round(n * 1000)}K`;
+
+const ART_KEY = 'heckle-special-posters-v2';
+const norm = (t) => (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, ' ').trim();
+const matches = (cand, title) => { const a = norm(cand), b = norm(title); return !!b && (a.includes(b) || b.includes(a) && a.length > 3); };
+const getJSON = async (u) => { const r = await fetch(u); if (!r.ok) throw new Error(r.status); return r.json(); };
+const SOURCES = {
+  async tmdb(d, key) {
+    if (!key) return null;
+    for (const q of [`${d.comic}: ${d.title}`, d.title]) {
+      const res = (await getJSON(`https://api.themoviedb.org/3/search/multi?api_key=${encodeURIComponent(key)}&query=${encodeURIComponent(q)}`)).results || [];
+      const hit = res.filter((x) => x.poster_path).sort((a, b) => Math.abs(+(a.release_date || a.first_air_date || '0').slice(0, 4) - d.year) - Math.abs(+(b.release_date || b.first_air_date || '0').slice(0, 4) - d.year))[0];
+      if (hit) return 'https://image.tmdb.org/t/p/w342' + hit.poster_path;
+    }
+    return null;
+  },
+  async itunes(d) {
+    const res = (await getJSON(`https://itunes.apple.com/search?media=movie&entity=movie&limit=15&term=${encodeURIComponent(d.comic + ' ' + d.title)}`)).results || [];
+    const hit = res.find((x) => x.artworkUrl100 && matches(x.trackName, d.title) && Math.abs(+(x.releaseDate || '0').slice(0, 4) - d.year) <= 2);
+    return hit ? hit.artworkUrl100.replace(/\/\d+x\d+bb\./, '/600x900bb.') : null;
+  },
+  async wiki(d, _, comicOnly) {
+    const q = comicOnly ? d.comic + ' comedian' : `${d.title} ${d.comic} stand-up special`;
+    const u = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrlimit=6&gsrsearch=${encodeURIComponent(q)}&prop=pageimages&piprop=thumbnail&pithumbsize=600&pilicense=any`;
+    const pages = Object.values((await getJSON(u)).query?.pages || {}).sort((a, b) => a.index - b.index);
+    const hit = pages.find((p) => p.thumbnail && matches(p.title.replace(/\s*\(.*\)$/, ''), comicOnly ? d.comic : d.title));
+    return hit ? hit.thumbnail.source : null;
+  },
+};
+class Component extends DCLogic {
+  componentDidMount() {
+    let cache = {};
+    try { cache = JSON.parse(localStorage.getItem(ART_KEY) || '{}'); } catch {}
+    fetch('data/special-posters.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : [])).catch(() => []).then((list) => {
+      const posters = { ...cache };
+      (Array.isArray(list) ? list : []).forEach((e) => {
+        if (!e || !e.url) return;
+        const d = DATA.find((x) => norm(x.title) === norm(e.title) && norm(x.comic) === norm(e.comic)) || (e.n && DATA[e.n - 1]);
+        if (d) posters[d.id + '|' + d.title] = { url: e.url, src: 'scraped', tried: ['scraped'] };
+      });
+      this.setState({ posters }, () => this.fetchArt());
+    });
+  }
+  componentDidUpdate(prev) { if (prev.tmdbKey !== this.props.tmdbKey || prev.comicFallback !== this.props.comicFallback) { this.artRun = null; this.fetchArt(); } }
+  async fetchArt() {
+    const key = (this.props.tmdbKey || '').trim(), portraits = this.props.comicFallback ?? true;
+    const run = key + '|' + portraits;
+    if (this.artRun === run) return;
+    this.artRun = run;
+    const cache = this.state.posters || {};
+    const todo = DATA.filter((d) => { const c = cache[d.id + '|' + d.title]; return !c || (!c.url && (key || portraits) && !c.tried?.includes(run)); });
+    let i = 0;
+    const worker = async () => {
+      while (i < todo.length && this.artRun === run) {
+        const d = todo[i++];
+        let url = null, src = null;
+        const chain = [['tmdb', () => SOURCES.tmdb(d, key)], ['apple', () => SOURCES.itunes(d)], ['wikipedia', () => SOURCES.wiki(d)]];
+        if (portraits) chain.push(['portrait', () => SOURCES.wiki(d, null, true)]);
+        for (const [name, fn] of chain) {
+          try { url = await fn(); } catch (e) { if (name === 'tmdb' && String(e.message) === '401') this.setState({ artError: 'TMDB key rejected' }); }
+          if (url) { src = name; break; }
+        }
+        const posters = { ...(this.state.posters || {}), [d.id + '|' + d.title]: { url: url || '', src, tried: [run] } };
+        this.setState({ posters });
+        if (i % 8 === 0 || i === todo.length) { try { localStorage.setItem(ART_KEY, JSON.stringify(posters)); } catch {} }
+      }
+    };
+    this.setState({ artError: null });
+    await Promise.all([worker(), worker(), worker(), worker()]);
+  }
+  state = { posters: {}, artError: null, q: '', sort: 'rank', network: 'All networks', era: 'All years', rating: 'All ratings', genre: 'All', onNow: false, free: false, view: 'grid', shown: PAGE };
+  set(p) { this.setState({ ...p, shown: PAGE }); }
+  renderVals() {
+    const s = this.state, q = s.q.trim().toLowerCase();
+    let rows = DATA.filter((d) => (!q || `${d.title} ${d.comic}`.toLowerCase().includes(q)) &&
+      (s.network === 'All networks' || d.network === s.network) &&
+      (s.genre === 'All' || d.genres.includes(s.genre)) && (!s.onNow || d.onNow) && (!s.free || d.free) &&
+      (s.era === 'All years' || (() => { const [a, b] = s.era.split('–').map(Number); return d.year >= a && d.year <= b; })()) &&
+      (s.rating === 'All ratings' || (s.rating.startsWith('Killed') ? d.critic >= 75 : s.rating.startsWith('Solid') ? d.critic >= 60 && d.critic < 75 : d.critic < 60)));
+    const cmp = { rank: (a, b) => a.rank - b.rank, critic: (a, b) => b.critic - a.critic, crowd: (a, b) => b.crowd - a.crowd, views: (a, b) => b.viewsN - a.viewsN,
+      trend: (a, b) => b.trend - a.trend, new: (a, b) => b.year - a.year || a.rank - b.rank, old: (a, b) => a.year - b.year || a.rank - b.rank }[s.sort];
+    rows = rows.sort(cmp);
+    const view = rows.slice(0, s.shown).map((d) => {
+      const up = d.trend > 0, down = d.trend < 0, dark = d.id % 3 === 0;
+      const poster = ((s.posters || {})[d.id + '|' + d.title] || {}).url || '';
+      return { ...d, ...cert(d.critic), poster, hasPoster: !!poster, views: fmtViews(d.viewsN), genreText: d.genres.join(' · '),
+        trendText: up ? `▲ ${d.trend}` : down ? `▼ ${-d.trend}` : '— 0', trendColor: up ? '#ffd400' : down ? '#8a8a86' : '#5a5a56',
+        trendBg: up ? '#ffd400' : '#0a0a0a', trendFg: up ? '#0a0a0a' : down ? '#a3a39e' : '#7a7a76',
+        posterBg: dark ? '#ffd400' : d.id % 3 === 1 ? '#1c1c1c' : '#f5f5f2', posterFg: dark ? '#0a0a0a' : d.id % 3 === 1 ? '#ffd400' : '#0a0a0a',
+        titleSize: d.title.length > 22 ? '26px' : d.title.length > 12 ? '34px' : '46px',
+        initials: d.comic.split(' ').map((w) => w[0]).join('').slice(0, 2),
+        onNowText: d.onNow ? `● ${WHERE[d.network] || d.network}` : 'Not streaming', onNowColor: d.onNow ? '#ffd400' : '#7a7a76',
+        whereText: d.onNow ? 'Watch: ' + (WHERE[d.network] || d.network) : 'Not streaming right now', isFree: d.free };
+    });
+    const onNow = s.onNow;
+    return {
+      total: DATA.length,
+      artNote: (() => { const v = Object.values(s.posters || {}); const got = v.filter((p) => p.url); const by = (k) => got.filter((p) => p.src === k).length; if (s.artError) return s.artError + ' — check the key in Tweaks'; if (!v.length) return 'Loading cover art…'; const parts = [['tmdb','TMDB'],['apple','Apple TV'],['wikipedia','Wikipedia'],['portrait','comic portraits']].filter(([k]) => by(k)).map(([k, l]) => by(k) + ' ' + l); return 'Cover art: ' + got.length + ' of ' + DATA.length + (parts.length ? ' (' + parts.join(', ') + ')' : ''); })(),
+      climbers: (() => { const top = [...DATA].sort((a, b) => b.trend - a.trend).slice(0, 10); const max = top[0]?.trend || 1; return top.map((d, i) => { const poster = ((s.posters || {})[d.id + '|' + d.title] || {}).url || ''; return { ...d, delta: d.trend, place: String(i + 1).padStart(2, '0'), oldRank: d.rank + d.trend, bar: Math.max(8, Math.round(d.trend / max * 100)) + '%', lead: i === 0, placeColor: i < 3 ? '#ffd400' : '#5a5a56', rowBg: i === 0 ? 'rgba(255,212,0,0.08)' : 'transparent', poster, hasPoster: !!poster, initials: d.comic.split(' ').map((w) => w[0]).join('').slice(0, 2) }; }); })(),
+      q: s.q, onQ: (e) => this.set({ q: e.target.value }),
+      sort: s.sort, sortOpts: SORTS, onSort: (e) => this.set({ sort: e.target.value }), sortLabel: 'sorted by ' + SORTS.find((o) => o.v === s.sort).l.toLowerCase(),
+      network: s.network, networkOpts: NETWORKS, onNetwork: (e) => this.set({ network: e.target.value }),
+      era: s.era, eraOpts: ERAS, onEra: (e) => this.set({ era: e.target.value }),
+      rating: s.rating, ratingOpts: RATINGS, onRating: (e) => this.set({ rating: e.target.value }),
+      toggleOnNow: () => this.set({ onNow: !onNow }), onNowPressed: onNow ? 'true' : 'false',
+      toggleFree: () => this.set({ free: !s.free }), freePressed: s.free ? 'true' : 'false',
+      freeBg: s.free ? '#ffd400' : 'transparent', freeFg: s.free ? '#0a0a0a' : '#f5f5f2', freeBd: s.free ? '#ffd400' : 'rgba(255,255,255,0.25)',
+      freeTotal: DATA.filter((d) => d.free).length,
+      onNowBg: onNow ? '#ffd400' : 'transparent', onNowFg: onNow ? '#0a0a0a' : '#f5f5f2', onNowBd: onNow ? '#ffd400' : 'rgba(255,255,255,0.25)',
+      genreChips: GENRES.map((g) => { const on = s.genre === g; return { label: g, bg: on ? '#f5f5f2' : 'transparent', fg: on ? '#0a0a0a' : '#d6d6d2', bd: on ? '#f5f5f2' : 'rgba(255,255,255,0.2)', onClick: () => this.set({ genre: g }) }; }),
+      isGrid: s.view === 'grid', isList: s.view === 'list',
+      setGrid: () => this.setState({ view: 'grid' }), setList: () => this.setState({ view: 'list' }),
+      gridBg: s.view === 'grid' ? '#f5f5f2' : 'transparent', gridFg: s.view === 'grid' ? '#0a0a0a' : '#f5f5f2',
+      listBg: s.view === 'list' ? '#f5f5f2' : 'transparent', listFg: s.view === 'list' ? '#0a0a0a' : '#f5f5f2',
+      rows: view, count: rows.length, noResults: !rows.length,
+      hasMore: rows.length > s.shown, remaining: rows.length - s.shown, more: () => this.setState({ shown: s.shown + PAGE })
+    };
+  }
+}
+</script>
+</body>
+</html>
