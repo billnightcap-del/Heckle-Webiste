@@ -37,3 +37,7 @@ the weekly rollup.
 | 2026-10-01 | Weekly COS rollup and audit, Mondays, US Central. | Daily runs; per-seat scheduled runs. |
 | 2026-10-01 | Specials badge = Heckle Score composite (aggregator critics, press reviews, audience ratings, YouTube engagement vs channel size, Heckle votes). Killed 90+, Bombed 60 and under. | The old 75/60 cut on critics % alone. |
 | 2026-10-01 | Critic score from an existing aggregator; crowd score from Heckle visitor votes; one Killed/Solid/Bombed scale sitewide (replaces home 1–5 pips). | Building our own critic tally as the only critic source; outside crowd ratings as the crowd score. |
+| 2026-10-01 | Mic listings come from scraping public sources across the web (Instagram/Facebook still excluded per CLAUDE.md); festival submissions scraped from festival sites and listing aggregators, by month. | Waiting on host sign-ups as the only mic source. |
+| 2026-10-01 | The Setlist's "find a mic" item covers fewer than 10 cities until it expands (which cities: not decided yet). | All 25 cities in the newsletter at launch. |
+| 2026-10-01 | Set of the Week will mostly come from Don't Tell Comedy or Comedy Cellar uploads; Bomb of the Week from major-platform sets that are drastically underperforming. | Picking sets only by taste. |
+| 2026-10-01 | Operator wants a notification for every new Setlist sign-up and every mic submission, even when there's nothing to act on. | Weekly batch only. |

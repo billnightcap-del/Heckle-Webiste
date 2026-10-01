@@ -3,17 +3,20 @@
 Kept current by the CAO seat. Replace sections, don't append forever.
 
 ## Current state
-First assignment started 2026-10-01: clarifying questions sent to the operator before drafting
-(as the assignment requires). No drafts yet. Quick scan: sign-up/Setlist mentions exist in
-home, specials and open-mics code; none found in festivals or games yet (to confirm in audit).
+First assignment (5 Setlist issues + sign-up placement audit): operator answered the first
+questions on 2026-10-01 (recorded in shared.md decision log). Correction made in chat: an email
+platform IS chosen (Beehiiv, hecklecomedy.beehiiv.com; form only on the home page so far).
+The Setlist = daily 7 a.m. email, five items, one tool item (seat block; home page #setlist).
 
 ## Open items
-- First assignment: 5 issues of The Setlist + sign-up placement audit.
+- Draft 5 issues; tool slot uses verified festival deadlines + mic item for <10 cities.
+- Sign-up placement audit (report + spec; code later as a PR).
+- Retention/view-duration are private YouTube Analytics: Set/Bomb of the Week criteria need
+  public signals (views, likes, comments vs channel norm). Raised with operator.
 
 ## Waiting on
-Operator answers (2026-10-01): which 5 dates / weekdays only; what a tool item may say while
-mics and fees are sample; real-only content vs placeholder stories; audit as report only or
-report + PR; output format with no email platform chosen.
+Operator: which <10 cities; weekdays vs 7 days; OK to save drafts as Beehiiv drafts (unsent)
+or keep them in reports/cao/; confirm public-signal criteria for Set/Bomb of the Week.
 
 ## Last run
-2026-10-01 · questions only, no report yet.
+2026-10-01 · operator answers recorded, follow-up questions sent. No report yet.
