@@ -41,8 +41,9 @@ npm run preview   # serve dist/ locally
 
 Both are built in and switched off until their IDs are set (see `.env.example`):
 
-- **The Setlist (Beehiiv):** create a Beehiiv publication and a subscribe form, then set
-  `VITE_BEEHIIV_FORM_ID`. The home page's sign-up box becomes the Beehiiv form. Until then the
+- **The Setlist (Beehiiv):** publication `hecklecomedy.beehiiv.com`, form "Heckle site · The
+  Setlist (home page)". Publish the form in Beehiiv, copy the `src` URL from its embed script, and
+  set `VITE_BEEHIIV_EMBED_SRC`. The home page's sign-up box becomes the Beehiiv form. Until then the
   button says "Opening soon", so nobody thinks they've subscribed.
 - **Google Analytics 4:** create a GA4 property with a web data stream for the site's address,
   then set `VITE_GA_ID`. Events: `game_play` and `game_complete` (with `game`), `joke_submit`,

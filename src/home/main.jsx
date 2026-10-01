@@ -2,7 +2,7 @@ import { Component, createRef } from 'react';
 import { mount, view } from '../shared/mount.jsx';
 import template from './template.jsx';
 import { track } from '../shared/analytics.js';
-import { beehiivEmbedUrl } from '../shared/newsletter.js';
+import { BEEHIIV_EMBED_SRC } from '../shared/newsletter.js';
 import './template.hover.css';
 
 const TICKER = [
@@ -220,7 +220,7 @@ class HomePage extends Component {
       jokeLines: STEPS.map((s, i) => ({ t: s.line, op: i <= step ? 1 : 0.12, x: i <= step ? '0px' : '-24px' })),
       bars: BASE.map((b) => ({ h: Math.max(4, b * AMP[step] * 100) + '%' })),
       meterLabel: METER[step],
-      beehiivEmbedUrl,
+      beehiivEmbedSrc: BEEHIIV_EMBED_SRC,
       onSubscribe: (e) => { e.preventDefault(); this.setState({ subscribed: true }); },
       subLabel: this.state.subscribed ? 'Opening soon' : 'Sign up'
     };

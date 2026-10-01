@@ -15,7 +15,7 @@ UNKNOWN. Say so plainly. Flagging the gap IS the job.
 
 THE SITE
 Heckle - A US comedy site: coverage + tools for working comics + games fans play
-Run by [your name] — solo operator, no staff.
+Run by Brian Says — solo operator, no staff.
 
 THE THREE PILLARS
 READ: specials index, reviews, Originals, The Setlist · TOOLS: Open Mic Finder (25 cities), Festival Tracker · PLAY: seven games
