@@ -3,16 +3,20 @@
 Kept current by the CPO seat. Replace sections, don't append forever.
 
 ## Current state
-First assignment scoped 2026-10-01, paused on operator questions. Mic listings are 100% sample
-(generated in `src/open-mics/main.jsx`), so no real stale queue is possible yet. 8 festivals in
-`src/festivals/main.jsx` SEED; none has a verified fee or pay term (page correctly shows "not published").
+Operator (2026-10-01): mics cut to 5 cities; a mic is verified by a post or listing ≤ 6 months old
+that names the venue and how often it runs; show "verified running" plus the date on each card.
+Festivals: fee from the festival's own site; if not published, a verified deadline is enough.
+thereitispod.com is a lead source. Mic verification design drafted (see last report). No
+festival has been checked yet: the network blocks the festival sites.
 
 ## Open items
-- First assignment: stale-listing queue + festival fee/pay flags.
+- Festival check of all 8 + thereitispod monthly lists (blocked: network).
+- Mic verification for 5 cities (blocked: cities not chosen, IG/FB rule).
+- Stale-listing queue: runs on real evidence once mics exist.
 
 ## Waiting on
-- Operator answers to 5 scoping questions (see last report).
-- CTO: real mic feed (`public/open-mics.json`, blocker 2) before a real queue can run.
+- Operator: the 5 cities; the IG/FB decision (keep rule vs override); allow network domains.
+- CTO: sample-card label fix (inbox, 2026-10-01); evidence fields in the mic feed.
 
 ## Last run
-2026-10-01 · [scoping](../reports/cpo/2026-10-01-stale-queue-scoping.md)
+2026-10-01 · [mics + festivals plan](../reports/cpo/2026-10-01-mics-festivals-plan.md)
