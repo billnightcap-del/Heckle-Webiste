@@ -41,15 +41,15 @@ other static host.
 
 ## Email list and analytics
 
-Both are built in and switched off until their IDs are set (see `.env.example`):
+Both are live on production builds. Their IDs are in `.env.production`. Local `npm run dev`
+leaves them off, so testing doesn't pollute the numbers.
 
 - **The Setlist (Beehiiv):** publication `hecklecomedy.beehiiv.com`, form "Heckle site · The
-  Setlist (home page)". Publish the form in Beehiiv, copy the `src` URL from its embed script, and
-  set `VITE_BEEHIIV_EMBED_SRC` (for the live site, as a repository variable: Settings → Secrets and
-  variables → Actions → Variables). The home page's sign-up box becomes the Beehiiv form. Until then the
-  button says "Opening soon", so nobody thinks they've subscribed.
-- **Google Analytics 4:** create a GA4 property with a web data stream for the site's address,
-  then set `VITE_GA_ID` the same way. Events: `game_play` and `game_complete` (with `game`), `joke_submit`,
+  Setlist (home page)", set in `.env.production`. Restyle the form in
+  Beehiiv and publish it there; the site picks up the change without a rebuild. Without the variable,
+  the button says "Opening soon", so nobody thinks they've subscribed.
+- **Google Analytics 4:** property ID `G-8EP75MZ62L`, set in `.env.production`.
+  Events: `game_play` and `game_complete` (with `game`), `joke_submit`,
   `mic_submit` and `festival_submit_click`. To answer "do the games bring people back next week",
   open GA4's Retention report, or build a cohort exploration on `game_play`.
 

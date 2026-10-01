@@ -1,7 +1,6 @@
 # Builds the site and publishes it to GitHub Pages on every push to main.
 # Site address: https://billnightcap-del.github.io/Heckle-Webiste/
-# Analytics and the newsletter form switch on when these repository variables are set
-# (Settings → Secrets and variables → Actions → Variables): VITE_GA_ID, VITE_BEEHIIV_EMBED_SRC.
+# Analytics and newsletter IDs come from .env.production in the repo.
 # Pushes that only touch the seats' reports or memory don't redeploy.
 name: Deploy site
 
@@ -31,10 +30,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-        env:
-          VITE_GA_ID: ${{ vars.VITE_GA_ID }}
-          VITE_BEEHIIV_EMBED_SRC: ${{ vars.VITE_BEEHIIV_EMBED_SRC }}
-          VITE_TMDB_KEY: ${{ vars.VITE_TMDB_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

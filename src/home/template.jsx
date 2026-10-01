@@ -879,8 +879,8 @@ export default function render(v) {
               Tour drops, new specials, and the one clip worth your minute. Five items, every morning.
             </p>
           </div>
-          {v.beehiivEmbedSrc ? (
-            <BeehiivForm src={v.beehiivEmbedSrc} style={{ flex: "1 1 380px", maxWidth: "520px", width: "100%", minHeight: "56px" }} />
+          {v.beehiivFormId ? (
+            <BeehiivForm formId={v.beehiivFormId} style={{ flex: "1 1 380px", maxWidth: "520px", width: "100%", minHeight: "56px" }} />
           ) : (
             <form onSubmit={v.onSubscribe} style={{ display: "flex", gap: "0", flex: "1 1 380px", maxWidth: "520px", border: "1px solid rgba(255,255,255,0.3)" }}>
               <input type="email" required placeholder="you@example.com" aria-label="Email address" style={{ flex: "1", minWidth: "0", minHeight: "56px", padding: "0 16px", background: "transparent", border: "0", color: "#f5f5f2", fontFamily: "inherit", fontSize: "16px", outline: "none" }} />
