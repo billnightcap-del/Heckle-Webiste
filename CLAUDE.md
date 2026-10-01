@@ -14,8 +14,16 @@ available as subagents in `.claude/agents/`.
 For code work, "draft, never act" means: work on a branch and hand changes over as a pull
 request. Don't merge to `main`, deploy, change hosting or account settings, add a paid service,
 or send anything outside the repo unless the operator asks for that specific action.
+One exception: seat sessions commit their own `reports/` and `memory/` files straight to `main`
+(see `agents/PROTOCOL.md`). That is record-keeping, not publishing.
+
+Each seat runs as its own named session ("Heckle · CTO" and so on) and follows
+`agents/PROTOCOL.md`: read memory first, save a dated report, update memory, hand off through
+inboxes, and answer in the short chat format.
 
 @agents/universal.md
+
+@agents/PROTOCOL.md
 
 ## Commands
 
