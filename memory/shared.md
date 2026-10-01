@@ -12,7 +12,7 @@ no email list and no analytics on the site (see blockers 4 and 5).
    browser. Nothing is shared between visitors. Owner: CTO. Status: not started.
 2. **Open mic feed:** listings are sample data until the pipeline runs. Owner: CTO. Status: not started.
 3. **Specials scores:** scores, views and rank movement are sample data. Owner: CTO + CCO.
-   Status: not started.
+   Status: rubric drafted by CCO 2026-10-01 (reports/cco/2026-10-01-scoring-rubric.md); all 139 index entries + 6 home "Ranked" entries still sample. Needs the CTO ledger/pipeline.
 4. **Festival fees and pay terms:** mostly unverified. Owner: CPO. Status: not started.
 5. **Analytics and email list:** set up 2026-10-01. GA4 (`G-8EP75MZ62L`) and the Beehiiv form
    on the home page (hecklecomedy.beehiiv.com) are configured and go live with the site.
@@ -35,3 +35,5 @@ the weekly rollup.
 | 2026-10-01 | Email list on Beehiiv; analytics on Google Analytics 4. | Kit, Buttondown, Plausible, Cloudflare Web Analytics. |
 | 2026-10-01 | Make the repo public and host on GitHub Pages, accepting that reports and memory are public. | Cloudflare Pages with a private repo; splitting private files into a second repo. |
 | 2026-10-01 | Weekly COS rollup and audit, Mondays, US Central. | Daily runs; per-seat scheduled runs. |
+| 2026-10-01 | Specials badge = Heckle Score composite (aggregator critics, press reviews, audience ratings, YouTube engagement vs channel size, Heckle votes). Killed 90+, Bombed 60 and under. | The old 75/60 cut on critics % alone. |
+| 2026-10-01 | Critic score from an existing aggregator; crowd score from Heckle visitor votes; one Killed/Solid/Bombed scale sitewide (replaces home 1–5 pips). | Building our own critic tally as the only critic source; outside crowd ratings as the crowd score. |
