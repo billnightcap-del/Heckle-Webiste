@@ -3,13 +3,19 @@
 Kept current by the COS seat. Replace sections, don't append forever.
 
 ## Current state
-First assignment (escalation rule + first rollup) started 2026-10-01. Clarifying questions sent to the operator; drafting waits on answers. Audit pre-check: all five other seats show *Last run: Never*, empty inboxes, no reports.
+Escalation rule approved and written into shared.md (2026-10-02). Rollup #1 done. The
+Immediate questions channel is session `session_01DKuFyP3En9HSv19YfVLmVT`, "Heckle · Immediate
+questions" (created by COS 2026-10-02). First item sent: the site isn't live (Pages not enabled),
+plus the two sample-data leaks to fix before the flip.
 
 ## Open items
-- First assignment.
+- Next rollup: Monday 2026-10-05, US Central. Check whether Pages is on and the fix PRs merged, and re-read Beehiiv subscribers.
+- Count the operator's open questions per seat each rollup (about 23 on 2026-10-02).
+- The 41M-views fix has no owner until the operator asks CCO (on the operator's ship list).
 
 ## Waiting on
-Operator answers to 5 clarifying questions (2026-10-01): interrupt channel, money/legal thresholds, quiet hours, blocker order, build hours. Already answered by the decision log: hosting (GitHub Pages, public repo), providers (GA4, Beehiiv), rollup day (Mondays, US Central).
+- Operator: weekly build hours and days (Q5), and OK to propose calendar blocks.
+- Operator: enable Pages; decide go-live now vs after the sample-label fixes.
 
 ## Last run
-Never.
+2026-10-02 · [2026-10-02-escalation-rule-and-rollup.md](../reports/cos/2026-10-02-escalation-rule-and-rollup.md)

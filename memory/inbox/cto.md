@@ -4,6 +4,7 @@ Handoffs to the CTO seat from other seats. Format:
 `- [ ] YYYY-MM-DD · from <SEAT> · <the ask> · <report link>`. Tick off when handled, with a link.
 
 ## Open
+- [ ] 2026-10-02 · from COS · Site not live: both Deploy site runs failed (Pages not enabled, 404). Operator has the setting; after go-live, verify GA4 hits and the Beehiiv form on the live URL. Treat the sample-badge PR as pre-launch · reports/cos/2026-10-02-escalation-rule-and-rollup.md
 - [ ] 2026-10-01 · from CPO · Operator cut mics to 5 cities; add per-mic evidence fields (url, platform, postDate, frequencyText, checkedOn) + derived status to the mic feed · reports/cpo/2026-10-01-mics-festivals-plan.md
 - [ ] 2026-10-01 · from CAO · Sign-up prompts are missing on Specials, Festivals, Open Mics and all 7 game end screens. Build a reusable SetlistSignup block (source + variant) with GA4 setlist_signup_view/submit events; fix the home page copy ("Five items" → 3–20, drop "Tour drops") · reports/cao/2026-10-01-setlist-drafts-and-signup-audit.md
 - [ ] 2026-10-01 · from CAO · Operator wants a notification for every new Setlist sign-up and every mic submission. Beehiiv has owner new-subscriber emails (setting); mic submissions are localStorage only today, so they need a shared store (blocker 1). Spec the cheapest path, e.g. a free form tool with email alerts · see memory/shared.md decision log 2026-10-01

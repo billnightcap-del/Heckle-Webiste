@@ -4,29 +4,41 @@ Read by every seat at the start of every task. COS keeps it tidy. Any seat may u
 blocker's status. Only the operator makes decisions; seats record them.
 
 ## North star
-Setlist subscribers, and week-2 return rate on games. **Status: not measurable yet.** There's
-no email list and no analytics on the site (see blockers 4 and 5).
+Setlist subscribers, and week-2 return rate on games.
+- Setlist subscribers: **1 active** (Beehiiv publication stats, all time, read 2026-10-02; likely
+  a test sign-up, since the site isn't live).
+- Week-2 return rate: **not measurable yet**. Needs the site live, GA4 returning-user data, and 14 days.
 
-## Blockers, ranked
-1. **Backend:** mic reports, joke submissions, votes and leaderboards live in one visitor's
-   browser. Nothing is shared between visitors. Owner: CTO. Status: not started.
-2. **Open mic feed:** listings are sample data until the pipeline runs. Owner: CTO. Status: not started.
-3. **Specials scores:** scores, views and rank movement are sample data. Owner: CTO + CCO.
-   Status: rubric drafted by CCO 2026-10-01 (reports/cco/2026-10-01-scoring-rubric.md); all 139 index entries + 6 home "Ranked" entries still sample. Needs the CTO ledger/pipeline.
-4. **Festival fees and pay terms:** mostly unverified. Owner: CPO. Status: not started.
-5. **Analytics and email list:** set up 2026-10-01. GA4 (`G-8EP75MZ62L`) and the Beehiiv form
-   on the home page (hecklecomedy.beehiiv.com) are configured and go live with the site.
-   Owner: CTO (analytics) + CAO (email). Status: done once the site is published; real numbers
-   start accruing from launch day.
+## Blockers, ranked (COS re-rank 2026-10-02, see reports/cos/2026-10-02-escalation-rule-and-rollup.md)
+1. **Go live and measure:** GA4 (`G-8EP75MZ62L`) and the Beehiiv form are configured, but
+   GitHub Pages is not enabled, so deploys fail (404) and nothing records. Owner: operator
+   (setting) + CTO (verify after launch). Status: sent to Immediate questions 2026-10-02.
+2. **Open mic feed:** listings are sample data until the scraping pipeline runs. Sample cards
+   show fake "Confirmed Nd ago" badges; they must be labelled before go-live. Owner: CTO + CPO.
+   Status: source decided 2026-10-01; not built.
+3. **Backend:** mic reports, joke submissions, votes and leaderboards live in one visitor's
+   browser. Also needed for mic-submission notifications. Owner: CTO. Status: surfaces mapped;
+   waiting on operator answers.
+4. **Festival fees and pay terms:** 0 of 8 verified (CPO, 2026-10-01). The page correctly shows
+   "not published". Owner: CPO. Status: waiting on operator answers.
+5. **Specials scores:** scores, views and rank movement are sample data. Owner: CCO + CTO.
+   Status: rubric v1 done (reports/cco/2026-10-01-scoring-rubric.md); needs the CTO ledger.
 
 ## Site status
-Published by GitHub Pages from `main` once the repo is public: https://billnightcap-del.github.io/Heckle-Webiste/
+**Not live.** Deploy workflow runs on push to `main`, but both runs (2026-10-01) failed: Pages
+isn't enabled in repo settings. Intended address: https://billnightcap-del.github.io/Heckle-Webiste/
 **This repo is public.** Everything here, including reports and memory, is readable by anyone. Write accordingly: no private contact details, credentials, or anything said in confidence.
 
-## Escalation rule
-Not written yet; COS drafts it, and the operator approves it. Until then: money, legal, a broken
-site, or a comic harmed by bad data goes to the operator immediately. Everything else waits for
-the weekly rollup.
+## Escalation rule (operator approved 2026-10-02)
+**Interrupts, any hour, no quiet hours, as soon as known:** any spend at all; legal (takedown,
+cease-and-desist, privacy request, a dispute from a festival, venue, host or comic); a broken
+site (failed deploy, page down, broken form or analytics); a comic harmed by bad data on the
+live site; a credential or private detail exposed in this repo.
+**How:** one message per issue to the Claude Code session **"Heckle · Immediate questions"**
+(`session_01DKuFyP3En9HSv19YfVLmVT`), via the remote `send_message` tool, as
+WHAT / WHY NOW / YOU DO / sending seat. If you can't reach it, put it at the top of your chat
+answer. Not via inboxes.
+**Everything else waits for the Monday rollup.** Sign-up and submission notifications are not escalations.
 
 ## Decision log
 | Date | Decision | Rules out |
@@ -44,3 +56,5 @@ the weekly rollup.
 | 2026-10-01 | Operator wants a notification for every new Setlist sign-up and every mic submission, even when there's nothing to act on. | Weekly batch only. |
 | 2026-10-01 | The Setlist goes out daily (7 days a week), 3 to 20 items per issue (replaces "five items"). At least one tool item every issue. | A fixed five-item format; weekdays only. |
 | 2026-10-01 | Set / Bomb of the Week use whatever viewer data is publicly available (retention is private to channel owners). | Waiting for retention data. |
+| 2026-10-02 | Escalation rule: interrupts go to a separate "Heckle · Immediate questions" session, no quiet hours; any spend and the listed legal cases interrupt. | Interrupts in seat chats only; quiet hours; a spend threshold. |
+| 2026-10-02 | Blockers re-ranked: go live and measure, mic feed, backend, festival fees, specials scores. | The 2026-10-01 order (backend first). |
